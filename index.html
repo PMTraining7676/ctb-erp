@@ -1512,12 +1512,131 @@ tr.pv-org td{background:var(--surface2);padding-top:9px;padding-bottom:7px;font-
 .lk-ctl .chk{margin-bottom:9px}
 .lk-note{font-size:12.5px;color:var(--muted);line-height:1.55;margin:12px 0 0}
 .lk-ferr{color:var(--red);font-size:12.5px;line-height:1.45;min-height:18px}
+/* ===== EXPENSES, REMARKS, MESSAGES, TEAM UPDATES ===== */
+#pjModal .modal-card.pjx-wide{width:min(740px,100%)!important}
+.pjx-sum{margin:0 0 10px;font-size:13px;color:var(--muted);line-height:1.5}
+.pjx-sec{border-top:1px solid var(--line);padding:12px 0 6px}
+.pjx-sec h4{margin:0 0 8px;font-size:13.5px;display:flex;align-items:center;gap:8px;color:var(--text)}
+.pjx-tot{margin-left:auto;font-variant-numeric:tabular-nums}
+.pjx-list,.pjx-rlist,.pjx-upd{list-style:none;margin:0 0 10px;padding:0;display:flex;flex-direction:column;gap:5px}
+.pjx-list li{display:grid;grid-template-columns:104px minmax(0,1fr) auto 30px;gap:8px;align-items:center;font-size:13px;padding:6px 6px 6px 10px;background:var(--surface2);border:1px solid var(--line);border-radius:9px}
+.pjx-amt{font-weight:750;font-variant-numeric:tabular-nums}
+.pjx-what small{color:var(--muted)}
+.pjx-list time,.pjx-rlist time{font-size:11.5px;color:var(--muted);white-space:nowrap}
+.pjx-src{display:inline-block;background:#E8EEFC;color:#234BB0;border-radius:999px;padding:1px 7px;font-size:10.5px;font-weight:700;margin-left:2px}
+.pjx-src2{background:#E7F6EC;color:#15803D}
+.pjx-rlist li{display:grid;grid-template-columns:minmax(0,1fr) auto 30px;gap:8px;align-items:start;font-size:13px;padding:7px 6px 7px 10px;background:var(--surface2);border:1px solid var(--line);border-radius:9px;line-height:1.45}
+.pjx-rlist b{font-weight:650}
+.pjx-add{display:grid;grid-template-columns:130px minmax(0,1fr) 160px auto;gap:6px;align-items:center}
+.pjx-addr{grid-template-columns:minmax(0,1fr) auto;align-items:end}
+.pjx-addr textarea{min-height:44px;resize:vertical}
+.pjx-note{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted);font-weight:600;margin-top:10px}
+.pjx-msgs{display:flex;gap:8px;flex-wrap:wrap}
+.pjx-badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;background:none;border:none;padding:0;text-align:left;color:inherit;font-weight:500;cursor:pointer;max-width:100%}
+.pjx-badges:hover{background:none}
+.pjx-badges span{font-size:12px;background:var(--surface2);border:1px solid var(--border);border-radius:999px;padding:2px 10px;color:var(--text);max-width:100%;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pjx-badges .pjx-bn{color:var(--muted)}
+.pjx-badges small{color:var(--muted)}
+.pjx-more{font-weight:800;letter-spacing:.06em;min-width:38px}
+.pjx-rbtn{font-size:12px;padding:5px 10px;color:var(--muted);white-space:nowrap}
+.pjx-big{font-size:16px;font-variant-numeric:tabular-nums}
+.pjx-byrow{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:6px 0;border-bottom:1px solid var(--line)}
+.pjx-byrow b{font-variant-numeric:tabular-nums}
+.pjx-upd li{font-size:13.5px;padding:8px 10px;background:var(--surface2);border:1px solid var(--line);border-radius:9px;line-height:1.45}
+.pjx-upd small{color:var(--muted)}
+.pjx-inv{font-size:12px;padding:4px 9px}
+.pjx-invd{font-size:11.5px;color:var(--muted)}
+.pjx-linv{font-size:12.5px;margin-left:6px;white-space:nowrap}
+.pjx-dayb{gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.pjx-tw{max-height:min(56vh,520px);overflow:auto;border:1px solid var(--line);border-radius:10px}
+.pjx-table{width:100%;border-collapse:collapse;font-size:13px}
+.pjx-table th,.pjx-table td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.pjx-table th{position:sticky;top:0;background:var(--surface2);font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.pjx-table .right{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.pjx-table tfoot td{font-weight:750;border-bottom:none}
+#txtModal .row-flex{flex-wrap:wrap}
+#pjModal .modal-card .hdr,#txtModal .modal-card .hdr{flex-wrap:nowrap;align-items:flex-start}
+#pjModal .modal-card .hdr h3,#txtModal .modal-card .hdr h3{line-height:1.3;overflow-wrap:anywhere}
+[data-theme="dark"] .pjx-src{background:rgba(59,130,246,.2);color:#9CC0FF}[data-theme="dark"] .pjx-src2{background:rgba(22,163,74,.2);color:#86EFAC}
+.pjx-acts{display:flex;align-items:center;gap:6px;flex-wrap:wrap;flex-basis:100%}
+@media (max-width:640px){
+  .pjx-add:not(.pjx-addr){grid-template-columns:1fr 1fr;grid-template-areas:"amt by" "what what" "add add"}.pjx-add #pjxAmt{grid-area:amt}.pjx-add #pjxBy{grid-area:by}.pjx-add #pjxWhat{grid-area:what}.pjx-add:not(.pjx-addr) .ok{grid-area:add}
+  .pjx-addr{grid-template-columns:1fr}.pjx-list li{grid-template-columns:86px minmax(0,1fr) 30px}.pjx-list time{display:none}
+}
+/* phones: 16px fields so iPhone does not zoom in when typing */
+@media (max-width:640px) and (pointer:coarse){#pjModal input,#pjModal select,#pjModal textarea,#txtBody{font-size:16px}}
+/* ----- a team member's phone ----- */
+.tm-on body{overflow:hidden}
+.tm{position:fixed;inset:0;z-index:1000;overflow:auto;background:var(--bg);-webkit-overflow-scrolling:touch;color:var(--text)}
+.tm-wrap{max-width:760px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;padding-bottom:92px;background:var(--bg)}
+.tm-top{background:radial-gradient(700px 300px at 10% -40%,rgba(217,165,32,.22),transparent 60%),linear-gradient(165deg,#1B2A4A,#141E33);color:#fff;padding:18px 16px 16px}
+.tm-brand{display:flex;gap:12px;align-items:center}
+.tm-logo{width:42px;height:42px;border-radius:11px;background:linear-gradient(145deg,#E2B23A,#B8860B);color:#141E33;font-weight:800;font-size:13px;letter-spacing:.02em;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 16px rgba(0,0,0,.25)}
+.tm-brand b{display:block;font-size:16.5px;line-height:1.25}
+.tm-brand small{display:block;color:#C5CDDC;font-size:12.5px;line-height:1.4;margin-top:2px}
+.tm-meta{font-size:12.5px;color:#AEB8CC;margin-top:12px;line-height:1.5}
+.tm-me{display:inline-block;margin-top:10px;font-size:12.5px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:4px 11px;border-radius:999px}
+.tm-days{display:flex;gap:8px;overflow-x:auto;padding:12px 16px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:2;scrollbar-width:none}
+.tm-days::-webkit-scrollbar{display:none}
+.tm-day{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:1px;background:var(--surface2);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:7px 12px;font-weight:650;font-size:13px}
+.tm-day small{font-size:11px;color:var(--muted);font-weight:500}
+.tm-day.on{background:#141E33;color:#fff;border-color:#141E33}
+.tm-day.on small{color:#C5CDDC}
+.tm-dayh{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;padding:14px 16px 6px}
+.tm-dayh h2{font-size:16px;margin:0;line-height:1.3}
+.tm-dayh h2 small{font-size:12px;color:var(--muted);font-weight:600;margin-left:4px}
+.tm-dayb{display:flex;gap:6px;flex-wrap:wrap}
+.tm-list{padding:6px 12px;display:flex;flex-direction:column;gap:10px}
+.tm-it{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px;box-shadow:0 1px 2px rgba(20,30,51,.05)}
+.tm-it.mine{border-left:4px solid #B8860B}
+.tm-it.st-done{background:color-mix(in srgb,#16A34A 4%,var(--surface))}
+.tm-it.st-issue{background:color-mix(in srgb,var(--red) 5%,var(--surface));border-color:color-mix(in srgb,var(--red) 28%,var(--border))}
+.tm-ih{display:grid;grid-template-columns:50px minmax(0,1fr) auto;gap:10px;align-items:start}
+.tm-time{font-weight:750;font-variant-numeric:tabular-nums;font-size:14px}
+.tm-time small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.tm-tt b{display:block;font-size:14.5px;line-height:1.35}
+.tm-tt small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px;line-height:1.4}
+.tm-note{margin:8px 0 0;font-size:12.5px;color:var(--muted);line-height:1.45}
+.tm-iss{margin:8px 0 0;font-size:13px;color:var(--red);font-weight:650}
+.tm-ex,.tm-rm{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:4px;font-size:13px}
+.tm-ex li,.tm-rm li{background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:6px 8px;display:flex;gap:8px;align-items:center;line-height:1.4}
+.tm-ex li b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tm-ex li span,.tm-rm li span{flex:1;min-width:0}
+.tm-ex small,.tm-rm small{color:var(--muted);font-size:11px}
+.tm-ex li.of,.tm-rm li.of{background:transparent;border-style:dashed}
+.tm-rm li b{font-weight:650}
+.tm .tm-x{background:none;border:none;color:var(--muted);font-size:19px;line-height:1;padding:0 4px}
+.tm-acts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-top:10px}
+.tm .tm-b{background:var(--surface2);color:var(--text);border:1px solid var(--border);border-radius:10px;padding:8px 2px 7px;font-size:11.5px;font-weight:650;line-height:1.15;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:54px;text-align:center}
+.tm .tm-b i{font-style:normal;font-size:17px;line-height:1}
+.tm .tm-b span{max-width:100%;overflow-wrap:anywhere}
+.tm .tm-b.open{border-color:#B8860B;box-shadow:0 0 0 2px rgba(184,134,11,.18)}
+@media (min-width:600px){.tm .tm-b{flex-direction:row;gap:6px;font-size:13px;min-height:42px;padding:8px 6px}.tm .tm-b i{font-size:15px}}
+.tm .tm-b.on{background:#E7F6EC;border-color:#BFE3CB;color:#15803D}
+.tm .tm-b.bad{background:#FCEAEA;border-color:#F3CFCF;color:#B91C1C}
+.tm-form{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;align-items:stretch}
+.tm-form input,.tm-form textarea{flex:1 1 150px;width:auto;font-size:16px}
+.tm-msgs .ghost{flex:1 1 auto}
+.tm-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(760px,100%);background:var(--surface);border-top:1px solid var(--border);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;gap:10px;z-index:3;box-shadow:0 -8px 24px rgba(20,30,51,.08)}
+.tm-bar span{font-size:13px;color:var(--muted);line-height:1.35}
+.tm-bar b{color:var(--text)}
+.tm-bar .ok{white-space:nowrap;padding:10px 14px;font-size:14px}
+.tm-foot{text-align:center;font-size:12.5px;color:var(--muted);padding:16px 16px 6px;line-height:1.6}
+.tm-empty{text-align:center;color:var(--muted);padding:32px 12px}
+.tm-main{padding:14px 12px;display:flex;flex-direction:column;gap:10px}
+.tm-pjrow{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;background:var(--surface);border:1px solid var(--border);color:var(--text);border-radius:14px;padding:14px;font-weight:500}
+.tm-pjrow b{font-size:15px;line-height:1.35}
+.tm-pjrow small{color:var(--muted)}
+.tm-center{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:24px}
+.tm-center p{color:var(--muted);max-width:340px;line-height:1.5;margin:0}
+.tm-center .tm-err{color:var(--red)}
+@media (max-width:420px){.tm-ih{grid-template-columns:44px minmax(0,1fr)}.tm-ih .pill{grid-column:2;justify-self:start}.tm-bar span{font-size:12px}}
 </style>
 </head>
 <body>
 <div class="app">
   <div class="sidebar">
-    <div class="brand"><div class="logo">CTB</div><div><h2>CTB Thailand</h2><small>ERP Pro · build 2026.10.18.2</small></div></div>
+    <div class="brand"><div class="logo">CTB</div><div><h2>CTB Thailand</h2><small>ERP Pro · build 2026.10.18.3</small></div></div>
     <div class="nav" id="nav">
       <a class="active" data-page="dashboard"><span class="ico">📊</span> Dashboard</a>
       <a data-page="projects"><span class="ico">🗂</span> Training Projects</a>
@@ -2508,7 +2627,7 @@ tr.pv-org td{background:var(--surface2);padding-top:9px;padding-bottom:7px;font-
         <div class="card"><h3>💸 Record Internal Payment</h3>
           <input type="hidden" id="exId">
           <div class="field"><label>Category</label><select id="exCat" onchange="App.expCatChange()">
-            <option>Kitchen / Vegetable Expenses</option><option>Salary</option><option>Training Payment</option><option>Other Operations</option></select></div>
+            <option>Kitchen / Vegetable Expenses</option><option>Salary</option><option>Training Payment</option><option>Other Operations</option><option>Program Extras</option></select></div>
           <div class="grid" style="margin-top:10px">
             <div class="field"><label>Date</label><input id="exDate" type="date"></div>
             <div class="field" id="exMonthWrap" style="display:none"><label>Salary Month</label><input id="exMonth" type="month"></div>
@@ -2522,7 +2641,7 @@ tr.pv-org td{background:var(--surface2);padding-top:9px;padding-bottom:7px;font-
         </div>
       </div>
       <div class="card"><div class="hdr"><h3>Internal Payments Ledger</h3>
-        <div class="row-flex"><select id="exFilter" class="sm" style="width:auto" onchange="App.renderExpenses()"><option value="">All categories</option><option>Kitchen / Vegetable Expenses</option><option>Salary</option><option>Training Payment</option><option>Other Operations</option></select>
+        <div class="row-flex"><select id="exFilter" class="sm" style="width:auto" onchange="App.renderExpenses()"><option value="">All categories</option><option>Kitchen / Vegetable Expenses</option><option>Salary</option><option>Training Payment</option><option>Other Operations</option><option>Program Extras</option></select>
         <button class="ghost sm" onclick="App.exportExpensesCSV()">⬇ CSV</button></div></div>
         <table><thead><tr><th>Date</th><th>Category</th><th>Payee / Staff</th><th>Period</th><th class="right">Base</th><th class="right">Extra</th><th class="right">Total</th><th>Remarks</th><th></th></tr></thead><tbody id="expTable"></tbody></table>
         <div class="total-line grand" style="max-width:340px;margin-left:auto;margin-top:8px"><span>Total Out</span><span id="expTotal">0</span></div>
@@ -3182,9 +3301,9 @@ tr.pv-org td{background:var(--surface2);padding-top:9px;padding-bottom:7px;font-
 <div id="txtModal" class="modal-back" onclick="if(event.target===this)txtModal.classList.remove('show')">
   <div class="modal-card">
     <div class="hdr"><h3 style="margin:0" id="txtTitle">💬 Message Summary</h3><button class="ghost sm" onclick="txtModal.classList.remove('show')">✕</button></div>
-    <p class="muted" style="font-size:12.5px;margin:6px 0 8px">Plain text ready to paste into WhatsApp, Line or email. Edit it if you like, then copy.</p>
+    <p class="muted" id="txtNote" style="font-size:12.5px;margin:6px 0 8px">Plain text ready to paste into WhatsApp, Line or email. Edit it if you like, then copy.</p>
     <textarea id="txtBody" rows="14" style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px"></textarea>
-    <div class="row-flex" style="margin-top:10px;justify-content:flex-end;gap:8px"><button class="ghost sm" onclick="txtModal.classList.remove('show')">Close</button><button class="ok sm" onclick="App.copyMsg()">📋 Copy to clipboard</button></div>
+    <div class="row-flex" style="margin-top:10px;justify-content:flex-end;gap:8px"><button class="ghost sm" onclick="txtModal.classList.remove('show')">Close</button><button class="ghost sm" onclick="App.copyMsg()">📋 Copy</button><button class="ok sm" onclick="App.waMsg()">💬 WhatsApp</button></div>
   </div>
 </div>
 <div id="ppModal" class="modal-back" onclick="if(event.target===this)App.ppClose()">
@@ -4765,7 +4884,7 @@ const App={
   pjMember(p,id){return id?(p.team||[]).find(m=>m.id===id)||null:null;},
   pjExpert(p,id){return id?(p.experts||[]).find(m=>m.id===id)||null:null;},
   pjPerson(p,id){return (p.people||[]).find(x=>x.id===id)||null;},
-  pjWa(ph){let d=String(ph||'').replace(/\D/g,'');if(/^0\d{9}$/.test(d))d='66'+d.slice(1);return d;},
+  pjWa(ph){let d=String(ph||'').replace(/\D/g,'');if(/^00\d{6,}$/.test(d))d=d.slice(2);else if(/^0\d{8,9}$/.test(d))d='66'+d.slice(1);return d;},
   pjCall(m){if(!m||!m.phone)return '';let tel=String(m.phone).replace(/[^\d+]/g,'');
     return `<a class="pj-ph" href="tel:${this.esc(tel)}" title="Call ${this.esc(m.name)}" aria-label="Call ${this.esc(m.name)}">📞</a><a class="pj-ph" href="https://wa.me/${this.esc(this.pjWa(m.phone))}" target="_blank" rel="noopener" title="WhatsApp ${this.esc(m.name)}" aria-label="WhatsApp ${this.esc(m.name)}">💬</a>`;},
   pjTouch(p,msg){p.updated=Date.now();if(msg){p.log=p.log||[];p.log.unshift({t:Date.now(),x:String(msg).slice(0,240)});if(p.log.length>300)p.log.length=300;}Store.save();if(this.pjBellUpdate)this.pjBellUpdate();},
@@ -4958,7 +5077,7 @@ const App={
     let sub=[this.esc(p.client),A?this.rcptRange(A,Z):'Dates not set',n+' participant'+(n===1?'':'s'),p.hotel?'🏨 '+this.esc(p.hotel):'',p.venue&&p.venue!==p.hotel?'🏛 '+this.esc(p.venue):''].filter(Boolean).join(' · ');
     root.innerHTML=`<div class="card pj-top"><div class="pj-crumb"><button class="ghost sm" onclick="App.pjBack()">← All projects</button><span class="pill pj-stpill ${st.cls}">${st.lab}</span></div>
       <div class="pj-head"><div class="pj-hl"><h2 class="pj-title">${this.esc(p.name)}</h2><div class="pj-sub">${sub}</div>
-          <div class="pj-leadline">${lead?`${this.pjAv(lead)}<span>Project lead <b>${this.esc(lead.name)}</b>${lead.phone?' · '+this.esc(lead.phone):''}</span>${this.pjCall(lead)}`:`<button class="ghost sm" onclick="App.${(p.team||[]).length?'pjEdit':'pjAddMember'}()">＋ Choose a project lead</button>`}</div></div>
+          <div class="pj-leadline">${lead?`${this.pjAv(lead)}<span>Project lead <b>${this.esc(lead.name)}</b>${lead.phone?' · '+this.esc(lead.phone):''}</span>${this.pjCall(lead)}<button class="linkbtn pjx-linv" onclick="App.pjInvite('${lead.id}')">📲 Invite to update</button>`:`<button class="ghost sm" onclick="App.${(p.team||[]).length?'pjEdit':'pjAddMember'}()">＋ Choose a project lead</button>`}</div></div>
         <div class="pj-hb"><button class="ok sm" onclick="App.pjShare()">📲 Update for the team</button><button class="ghost sm" onclick="App.pjPrint('run')">🖨 Run sheet</button><button class="ghost sm" onclick="App.pjPrint('sched')">🖨 Participant schedule</button><button class="ghost sm" onclick="App.pjPhoneAlarms()" title="A calendar file with an alarm before every step — for phones">⏰ Phone alarms</button><button class="ghost sm" onclick="App.pjEdit()">✎ Details</button></div></div>
       <div class="pj-tabs" role="tablist">${tabs.map(([k,l,c])=>`<button role="tab" aria-selected="${k===tab}" class="${k===tab?'on':''}" onclick="App.pjTab('${k}')">${l}${c!==''&&c!=null?` <span class="${String(c).startsWith('⚠')?'pj-red':''}">${c}</span>`:''}</button>`).join('')}</div></div>
       <div id="pjBody"></div>`;
@@ -5029,9 +5148,9 @@ const App={
     let log=(p.log||[]).slice(0,8).map(l=>`<li><time>${this.pjWhen(l.t)}</time><span>${esc(l.x)}</span></li>`).join('');
     let lab=this.pjDayLab(p,d);
     return `${this.pjDayStrip(p,d)}${attH}
-      <div class="pj-ov"><div class="card pj-plan"><div class="hdr"><h3>${isToday?'Today':this.pjDow(d,true)} · ${this.pjD(d)}${lab?' <span class="muted pj-dlab">'+esc(lab)+'</span>':''}</h3><div class="row-flex" style="gap:6px"><select class="pj-addsel" aria-label="Add a step" onchange="App.pjAddItem('${d}',this.value);this.value=''">${this.pjKindOpts('＋ Add a step')}</select><button class="ghost sm" onclick="App.pjTab('run')">Edit run sheet</button></div></div>
+      <div class="pj-ov"><div class="card pj-plan"><div class="hdr"><h3>${isToday?'Today':this.pjDow(d,true)} · ${this.pjD(d)}${lab?' <span class="muted pj-dlab">'+esc(lab)+'</span>':''}</h3><div class="row-flex" style="gap:6px"><select class="pj-addsel" aria-label="Add a step" onchange="App.pjAddItem('${d}',this.value);this.value=''">${this.pjKindOpts('＋ Add a step')}</select><button class="ghost sm" onclick="App.pjTab('run')">Edit run sheet</button><button class="ghost sm" onclick="App.pjGuestDay('${d}')" title="A warm note with the day’s programme for the participants">💬 Participants</button><button class="ghost sm" onclick="App.pjVehDay('${d}')" title="The day’s transfers in one WhatsApp message for your transport vendor">🚐 Vehicles</button></div></div>
         ${items.length?`<div class="pj-tl">${tl}</div>`:`<div class="pj-empty">Nothing planned for this day yet.</div>`}</div>
-        <div class="pj-side"><div class="card pj-side-card"><h3>Participants</h3>${meters}</div>${teamCard}${exCard}</div></div>
+        <div class="pj-side"><div class="card pj-side-card"><h3>Participants</h3>${meters}</div>${teamCard}${exCard}${this.pjExpCard(p)}</div></div>
       ${log?`<div class="card"><h3>Latest updates</h3><ul class="pj-log">${log}</ul></div>`:''}`;},
   pjNowLine(m){return `<div class="pj-nowline" aria-label="Now"><span>Now ${this.pjHM(m)}</span></div>`;},
   pjWhen(ts){let d=new Date(ts);if(isNaN(d))return '';let hm=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
@@ -5041,9 +5160,9 @@ const App={
     let sm=this.pjMin(i.start),em=this.pjMin(i.end);let live=now!=null&&sm!=null&&sm<=now&&(em!=null?now<em:now<sm+45)&&i.st!=='done'&&i.st!=='cancelled';
     let meta=[i.place?'📍 '+esc(i.place):'',x?`${esc(x.kind||'Trainer')}: <b>${esc(x.name)}</b>${x.status==='confirmed'?'':' <span class="pj-tag pj-tag-w">'+(x.status==='declined'?'declined':'not confirmed')+'</span>'}`:'',i.who?'👥 '+esc(i.who):''].filter(Boolean).join(' · ');
     return `<div class="pj-it st-${i.st}${live?' live':''}" data-id="${i.id}"><div class="pj-tm">${i.start?esc(i.start):'<span class="muted">—</span>'}${i.end?`<small>${esc(i.end)}</small>`:''}</div><div class="pj-ic" aria-hidden="true">${K[0]}</div>
-      <div class="pj-tc"><div class="pj-tt">${esc(i.title||K[1])}${live?' <span class="pj-tag pj-tag-live">Happening now</span>':''}${i.team?' <span class="pj-tag">Team only</span>':''}</div>${meta?`<div class="pj-tmeta">${meta}</div>`:''}${i.note?`<div class="pj-tnote">${esc(i.note)}</div>`:''}${i.st==='issue'?`<div class="pj-tiss">⚠ ${esc(i.issue||'Marked as a problem')}</div>`:''}
+      <div class="pj-tc"><div class="pj-tt">${esc(i.title||K[1])}${live?' <span class="pj-tag pj-tag-live">Happening now</span>':''}${i.team?' <span class="pj-tag">Team only</span>':''}</div>${meta?`<div class="pj-tmeta">${meta}</div>`:''}${i.note?`<div class="pj-tnote">${esc(i.note)}</div>`:''}${i.st==='issue'?`<div class="pj-tiss">⚠ ${esc(i.issue||'Marked as a problem')}</div>`:''}${this.pjXBadges(i)}
         <div class="pj-to">${o?`${this.pjAv(o)}<span class="pj-on">${esc(o.name)}</span>${o.role?`<span class="pj-orole">${esc(o.role)}</span>`:''}${this.pjCall(o)}`:`<button class="linkbtn pj-noone" onclick="App.pjTab('run')">No one responsible yet</button>`}</div></div>
-      <div class="pj-ta">${i.st==='done'?`<button class="ghost sm pj-ok on" aria-pressed="true" title="Mark as not done" onclick="App.pjItemSt('${i.id}','planned')">✓ Done</button>`:`<button class="ghost sm pj-ok" aria-pressed="false" onclick="App.pjItemSt('${i.id}','done')">✓ Done</button>`}<button class="ghost sm pj-bad${i.st==='issue'?' on':''}" title="${i.st==='issue'?'Clear the problem':'Report a problem'}" aria-label="${i.st==='issue'?'Clear the problem':'Report a problem'}" onclick="App.pjItemIssue('${i.id}')">⚠</button></div></div>`;},
+      <div class="pj-ta">${i.st==='done'?`<button class="ghost sm pj-ok on" aria-pressed="true" title="Mark as not done" onclick="App.pjItemSt('${i.id}','planned')">✓ Done</button>`:`<button class="ghost sm pj-ok" aria-pressed="false" onclick="App.pjItemSt('${i.id}','done')">✓ Done</button>`}<button class="ghost sm pj-bad${i.st==='issue'?' on':''}" title="${i.st==='issue'?'Clear the problem':'Report a problem'}" aria-label="${i.st==='issue'?'Clear the problem':'Report a problem'}" onclick="App.pjItemIssue('${i.id}')">⚠</button>${this.pjXMore(i)}</div></div>`;},
   pjGoPeople(f,d){this._pjPF=f||'all';if(d)this._pjDay=d;this.pjTab('people');},
   /* ----- run sheet ----- */
   pjRunHTML(p){let ds=this.pjDates(p);
@@ -5052,7 +5171,7 @@ const App={
       +(ds.length?ds.map(d=>this.pjDayCard(p,d)).join(''):'<div class="card"><p class="muted">Set the dates under ✎ Details to plan day by day.</p></div>')+this.pjDayCard(p,'');},
   pjDayCard(p,d){let items=this.pjItemsOn(p,d);if(!d&&!items.length)return `<div class="card pj-dc"><div class="hdr"><h3>Not scheduled yet</h3><select class="pj-addsel" aria-label="Add a step without a date" onchange="App.pjAddItem('',this.value);this.value=''">${this.pjKindOpts('＋ Add a step')}</select></div><p class="muted pj-small">Activities or visits with no date yet go here.</p></div>`;
     let lab=d?this.pjDayLab(p,d):'';
-    return `<div class="card pj-dc" id="pjdc-${d||'none'}"><div class="hdr"><h3>${d?`${lab?'<span class="pj-dl">'+this.esc(lab)+'</span> ':''}${this.pjDLong(d)}`:'Not scheduled yet'}</h3><select class="pj-addsel" aria-label="Add a step" onchange="App.pjAddItem('${d}',this.value);this.value=''">${this.pjKindOpts('＋ Add a step')}</select></div>
+    return `<div class="card pj-dc" id="pjdc-${d||'none'}"><div class="hdr"><h3>${d?`${lab?'<span class="pj-dl">'+this.esc(lab)+'</span> ':''}${this.pjDLong(d)}`:'Not scheduled yet'}</h3><div class="row-flex pjx-dayb">${d?`<button class="ghost sm" onclick="App.pjGuestDay('${d}')" title="A warm note with the day’s programme for the participants">💬 Participants</button><button class="ghost sm" onclick="App.pjVehDay('${d}')" title="The day’s transfers in one WhatsApp message for your transport vendor">🚐 Vehicles</button>`:''}<select class="pj-addsel" aria-label="Add a step" onchange="App.pjAddItem('${d}',this.value);this.value=''">${this.pjKindOpts('＋ Add a step')}</select></div></div>
       ${items.length?`<div class="pj-rows"><div class="pj-rhead" aria-hidden="true"><span>Time</span><span>Kind</span><span>What and where</span><span>Responsible</span><span>Status &amp; alarm</span><span></span></div>${this.pjRowsWithGaps(p,d,items)}</div>`:'<div class="pj-empty">Nothing planned yet.</div>'}</div>`;},
   pjRowsWithGaps(p,d,items){let gm=d&&this.pjAlarmCfg?+this.pjAlarmCfg().gap||0:0;let lastEnd=null,h='';
     items.forEach(i=>{let s=this.pjMin(i.start);if(gm&&s!=null&&lastEnd!=null&&i.st!=='cancelled'&&s-lastEnd>=gm)h+=this.pjGapHTML(d,lastEnd,s);h+=this.pjRowHTML(p,i);
@@ -5072,7 +5191,7 @@ const App={
       <div class="pj-ro"><select aria-label="Responsible person" onchange="App.pjItemSet('${id}','owner',this.value)">${oOpts}</select>${showX?`<select aria-label="Trainer or expert" onchange="App.pjItemSet('${id}','expert',this.value)">${xOpts}</select>`:''}</div>
       <div class="pj-rs"><select class="pj-st st-${i.st}" aria-label="Status" onchange="App.pjItemSet('${id}','st',this.value)">${sOpts}</select><select class="pj-alsel${i.alarm==='off'?' off':''}" aria-label="Alarm" title="${i.start?'Alarm for this step':'Set a time to get an alarm'}" onchange="App.pjItemSet('${id}','alarm',this.value)">${aOpts}</select><label class="pj-team"><input type="checkbox"${i.team?' checked':''} onchange="App.pjItemSet('${id}','team',this.checked)"> Team only</label></div>
       <div class="pj-rx"><button class="sm pj-qb" title="Duplicate" aria-label="Duplicate" onclick="App.pjItemDup('${id}')">⧉</button><button class="sm pj-qb pj-del" title="Remove" aria-label="Remove" onclick="App.pjItemDel('${id}')">×</button></div>
-      <div class="pj-rn">${i.st==='issue'?`<input class="pj-riss" value="${esc(i.issue)}" placeholder="What is the problem?" aria-label="Problem" onchange="App.pjItemSet('${id}','issue',this.value)">`:''}<input class="pj-rnote" value="${esc(i.note)}" placeholder="Add a note — vehicle, menu, contact person…" aria-label="Notes" onchange="App.pjItemSet('${id}','note',this.value)"><input type="date" class="pj-rdate" value="${esc(i.date)}" aria-label="${i.date?'Move to another day':'Choose a day'}" title="${i.date?'Move to another day':'Choose a day'}" onchange="App.pjItemSet('${id}','date',this.value)"></div></div>`;},
+      <div class="pj-rn">${i.st==='issue'?`<input class="pj-riss" value="${esc(i.issue)}" placeholder="What is the problem?" aria-label="Problem" onchange="App.pjItemSet('${id}','issue',this.value)">`:''}<input class="pj-rnote" value="${esc(i.note)}" placeholder="Add a note — vehicle, menu, contact person…" aria-label="Notes" onchange="App.pjItemSet('${id}','note',this.value)">${this.pjXRowBtn(i)}<input type="date" class="pj-rdate" value="${esc(i.date)}" aria-label="${i.date?'Move to another day':'Choose a day'}" title="${i.date?'Move to another day':'Choose a day'}" onchange="App.pjItemSet('${id}','date',this.value)"></div></div>`;},
   pjStMsg(i,st){let t=i.title||(this.PJ_KINDS[i.kind]||[])[1]||'Step';return {done:t+' — done',issue:t+' — problem'+(i.issue?': '+i.issue:''),confirmed:t+' — confirmed',cancelled:t+' — cancelled',planned:t+' — back to planned'}[st]||t;},
   pjItemSet(id,f,v){let p=this.pjCur();if(!p)return;let i=(p.items||[]).find(x=>x.id===id);if(!i)return;
     if((f==='owner'||f==='expert')&&v==='+'){let back=()=>this.pjRefresh();
@@ -5244,7 +5363,7 @@ const App={
   pjTeamHTML(p){let esc=s=>this.esc(s);let ps=(p.people||[]).filter(x=>!x.gone);let b=this.pjBooking(p);let CUR=(b&&b.currency)||this.base();
     let team=(p.team||[]).map(m=>{let n=ps.filter(x=>x.care===m.id).length,k=(p.items||[]).filter(i=>i.owner===m.id).length;
       return `<div class="pj-mr" data-id="${m.id}">${this.pjAv(m)}<input value="${esc(m.name)}" aria-label="Name" onchange="App.pjMemberSet('${m.id}','name',this.value)"><input value="${esc(m.role)}" list="pjRoleList" placeholder="Role" aria-label="Role" onchange="App.pjMemberSet('${m.id}','role',this.value)"><input value="${esc(m.phone)}" type="tel" placeholder="Phone / WhatsApp" aria-label="Phone" onchange="App.pjMemberSet('${m.id}','phone',this.value)">
-        <div class="pj-mstat"><span>${n} participant${n===1?'':'s'} · ${k} step${k===1?'':'s'}</span>${p.lead===m.id?'<span class="pj-tag">Lead</span>':`<button class="linkbtn" onclick="App.pjSetLead('${m.id}')">Make lead</button>`}${this.pjCall(m)}</div><button class="sm pj-qb pj-del" aria-label="Remove ${esc(m.name)}" onclick="App.pjMemberDel('${m.id}')">×</button></div>`;}).join('');
+        <div class="pj-mstat"><span>${n} participant${n===1?'':'s'} · ${k} step${k===1?'':'s'}</span>${p.lead===m.id?'<span class="pj-tag">Lead</span>':`<button class="linkbtn" onclick="App.pjSetLead('${m.id}')">Make lead</button>`}<span class="pjx-acts">${this.pjInvBtn(p,m)}${this.pjCall(m)}</span></div><button class="sm pj-qb pj-del" aria-label="Remove ${esc(m.name)}" onclick="App.pjMemberDel('${m.id}')">×</button></div>`;}).join('');
     let ex=(p.experts||[]).map(x=>{let L=this.pjExpertLoad(p,x);
       return `<div class="pj-xr st-${x.status}" data-id="${x.id}">${this.pjAv(x)}<div class="pj-xf"><input value="${esc(x.name)}" aria-label="Name" onchange="App.pjExpertSet('${x.id}','name',this.value)"><select aria-label="Role" onchange="App.pjExpertSet('${x.id}','kind',this.value)">${this.PJ_EXK.map(k=>`<option${k===x.kind?' selected':''}>${k}</option>`).join('')}</select>
           <input value="${esc(x.topic)}" placeholder="Topic / expertise" aria-label="Topic" onchange="App.pjExpertSet('${x.id}','topic',this.value)"><input value="${esc(x.phone)}" type="tel" placeholder="Phone" aria-label="Phone" onchange="App.pjExpertSet('${x.id}','phone',this.value)"><input value="${esc(x.email)}" type="email" placeholder="Email" aria-label="Email" onchange="App.pjExpertSet('${x.id}','email',this.value)">
@@ -5252,8 +5371,8 @@ const App={
           <span class="pj-fee"><input type="number" value="${x.fee||''}" placeholder="Fee" aria-label="Fee" onchange="App.pjExpertSet('${x.id}','fee',this.value)"><select aria-label="Fee basis" onchange="App.pjExpertSet('${x.id}','basis',this.value);App.pjRefresh()">${[['day','per day'],['session','per session'],['total','total']].map(([k,l])=>`<option value="${k}"${k===x.basis?' selected':''}>${l}</option>`).join('')}</select></span></div>
         <div class="pj-xload">${L.its.length?L.its.length+' session'+(L.its.length>1?'s':'')+' on '+L.days+' day'+(L.days>1?'s':'')+(L.cost?' · '+this.money(L.cost,CUR):''):'<span class="muted">No sessions yet — choose them on the run sheet</span>'}<span class="pj-calls">${this.pjCall(x)}</span></div><button class="sm pj-qb pj-del" aria-label="Remove ${esc(x.name)}" onclick="App.pjExpertDel('${x.id}')">×</button></div>`;}).join('');
     let noCare=ps.filter(x=>!x.care).length;let cost=(p.experts||[]).reduce((s,x)=>s+this.pjExpertLoad(p,x).cost,0);
-    return `<div class="card"><div class="hdr"><h3>Team <span class="muted pj-n">${(p.team||[]).length}</span></h3><div class="row-flex" style="gap:6px">${(p.team||[]).length&&ps.length?`<button class="ghost sm" onclick="App.pjShareOut()">Share participants out${noCare?' ('+noCare+' without)':''}</button>`:''}<button class="ok sm" onclick="App.pjAddMember()">＋ Add a team member</button></div></div>
-        <p class="muted pj-small">The people who look after the group. Each participant gets a care person; each step on the run sheet gets a responsible person.</p>
+    return `<div class="card"><div class="hdr"><h3>Team <span class="muted pj-n">${(p.team||[]).length}</span></h3><div class="row-flex" style="gap:6px">${(p.team||[]).length&&ps.length?`<button class="ghost sm" onclick="App.pjShareOut()">Share participants out${noCare?' ('+noCare+' without)':''}</button>`:''}<button class="ghost sm" onclick="App.pjPaste()" title="Paste an update a team member sent you on WhatsApp">📥 Add a team update</button><button class="ok sm" onclick="App.pjAddMember()">＋ Add a team member</button></div></div>
+        <p class="muted pj-small">The people who look after the group. Each participant gets a care person; each step on the run sheet gets a responsible person. <b>📲 Invite</b> sends someone this run sheet on WhatsApp — they mark steps done and add expenses and remarks on their phone, and their updates come back to you.</p>
         ${team?`<div class="pj-mlist">${team}</div>`:'<div class="pj-empty">No team yet.</div>'}</div>
       <div class="card"><div class="hdr"><h3>Trainers &amp; experts <span class="muted pj-n">${(p.experts||[]).length}</span></h3><button class="ok sm" onclick="App.pjAddExpert()">＋ Add a trainer or expert</button></div>
         <p class="muted pj-small">Who teaches, speaks or interprets. Choose them for each session on the run sheet.${cost?' Expected fees: <b>'+this.money(cost,CUR)+'</b>.':''}</p>
@@ -5367,7 +5486,7 @@ const App={
       return `<div class="pj-bd-row" role="button" tabindex="0" onclick="App.pjOpen('${p.id}')" onkeydown="if(event.key==='Enter')App.pjOpen('${p.id}')"><div class="pj-bd-m"><b>${this.esc(p.name)}</b><small>${this.esc(p.client||'')}</small>${s.k==='live'?`<div class="pj-pnow">${one('Now',nn.cur)}${one('Next',nn.next)}</div>`:''}</div>
         <div class="pj-bd-s"><span class="pill ${s.cls}">${s.lab}</span><small>${stat}</small>${iss?`<small class="pj-red">⚠ ${iss} problem${iss>1?'s':''}</small>`:''}</div></div>`;}).join('')}</div>`;},
   /* a small form in a window — used across projects */
-  pjAsk(o){let m=document.getElementById('pjModal');if(!m)return;let F=o.fields||[];let esc=s=>this.esc(s);document.getElementById('pjmTitle').innerText=o.title||'';
+  pjAsk(o){let m=document.getElementById('pjModal');if(!m)return;{let mc=m.querySelector('.modal-card');if(mc)mc.classList.toggle('pjx-wide',!!o.wide);let cb=m.querySelector('.modal-card > .row-flex > button.ghost');if(cb)cb.style.display=o.noCancel?'none':'';}let F=o.fields||[];let esc=s=>this.esc(s);document.getElementById('pjmTitle').innerText=o.title||'';
     let body=document.getElementById('pjmBody');
     body.innerHTML=(o.intro?`<p class="muted pj-small" style="margin:0 0 12px">${o.intro}</p>`:'')+`<div class="pj-form">${F.map((f,i)=>{let id='pjf_'+i;let v=f.value==null?'':f.value;let lab=`<label for="${id}">${esc(f.label)}</label>`;
       if(f.type==='html')return `<div class="pj-f-full">${f.html||''}</div>`;
@@ -5381,7 +5500,7 @@ const App={
     ok.onclick=()=>{let vals={};F.forEach((f,i)=>{let id='pjf_'+i;if(f.type==='checks'){vals[f.k]=[...body.querySelectorAll('input[name="'+id+'"]:checked')].map(c=>c.value);return;}
         let el=document.getElementById(id);if(!el)return;vals[f.k]=f.type==='check'?el.checked:String(el.value||'').trim();});
       if(o.onSave&&o.onSave(vals)===false)return;this._pjAskCancel=null;this.pjModalClose(true);};
-    m.classList.add('show');let first=body.querySelector('input:not([type=checkbox]),select,textarea');if(first)setTimeout(()=>{try{first.focus();}catch(e){}},30);},
+    m.classList.add('show');{let mc=m.querySelector('.modal-card');if(mc)mc.scrollTop=0;}let first=body.querySelector('input:not([type=checkbox]),select,textarea');if(first)setTimeout(()=>{try{first.focus();}catch(e){}},30);},
   pjModalClose(saved){let m=document.getElementById('pjModal');if(m)m.classList.remove('show');let c=this._pjAskCancel;this._pjAskCancel=null;if(!saved&&c)c();},
   pjModalKey(ev){if(ev.key==='Escape'){ev.preventDefault();this.pjModalClose();}else if(ev.key==='Enter'&&ev.target&&ev.target.tagName!=='TEXTAREA'&&ev.target.tagName!=='BUTTON'){ev.preventDefault();let ok=document.getElementById('pjmOk');if(ok)ok.click();}},
 
@@ -5632,6 +5751,311 @@ const App={
           .catch(()=>{this.lockBusy(false);done=true;this.pjModalClose(true);this.toast('This backup file is damaged and can’t be opened','err');res(null);});
         return false;}});
     this.lockFields(['off']);});},
+  /* ===== EXTRA EXPENSES, REMARKS, READY-MADE MESSAGES AND TEAM UPDATES ===== */
+  pjOkId(s){return /^[A-Za-z0-9_-]{1,40}$/.test(String(s==null?'':s));},
+  pjItemOf(p,id){return p?(p.items||[]).find(x=>x.id===id)||null:null;},
+  pjMyName(){let s=this.d.settings||{};return s.pjMe||s.sigName||'Office';},
+  pjOrg(p){let b=p&&this.pjBooking?this.pjBooking(p):null;let s=(b&&this.deptIssuerFor)?this.deptIssuerFor(b):this.d.settings;
+    return String((s&&s.company)||'').replace(/[\s,]*(co\.?,?\s*ltd\.?|company limited|limited|ltd\.?)\s*$/i,'').trim();},
+  pjExpTotal(list){return (list||[]).reduce((s,e)=>s+(+e.amt||0),0);},
+  pjExpAll(p){let out=[];(p.items||[]).forEach(i=>(i.exp||[]).forEach(e=>out.push({e,i})));return out;},
+  pjTransferish(i){return ['transfer','arrival','departure'].includes(i.kind)||/pick.?up|drop.?off|transfer|→|->/i.test((i.title||'')+' '+(i.place||''));},
+  pjFromTo(i){if(i.from||i.to)return [i.from||'',i.to||''];let m=/^(.*?)\s*(?:→|->|=>)\s*(.+)$/.exec(i.place||'');return m?[m[1].trim(),m[2].trim()]:[i.place||'',''];},
+  pjVehFor(n){n=+n||0;if(n<=0)return '1 VAN';if(n<=3)return '1 CAR';if(n<=24)return Math.ceil(n/8)+' VAN';return Math.ceil(n/40)+' BUS';},
+  /* 02:00 → 2AM (Midnight), 12:00 → 12PM (Noon), 14:30 → 2:30PM */
+  pjT12(hm,label){let m=this.pjMin(hm);if(m==null)return hm||'';let h=Math.floor(m/60),mi=m%60;let s=(h%12||12)+(mi?':'+String(mi).padStart(2,'0'):'')+(h<12?'AM':'PM');
+    if(label!==false){if(h<4)s+=' (Midnight)';else if(h<6)s+=' (Early morning)';else if(h===12&&!mi)s+=' (Noon)';}return s;},
+  pjT12s(hm){let m=this.pjMin(hm);if(m==null)return hm||'';let h=Math.floor(m/60),mi=m%60;return (h%12||12)+':'+String(mi).padStart(2,'0')+' '+(h<12?'AM':'PM');},
+  pjDUp(d){if(!d)return '';let x=new Date(d+'T00:00:00');if(isNaN(x))return d;return x.getDate()+' '+['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'][x.getMonth()]+' '+x.getFullYear();},
+  pjDNice(d){if(!d)return '';let x=new Date(d+'T00:00:00');if(isNaN(x))return d;return this.pjDow(d,true)+' '+x.getDate()+' '+this.MONTHS[x.getMonth()];},
+  /* the vendor's format, exactly as CTB sends it */
+  pjVehBlock(o){let L=[this.pjDUp(o.date)||'Date to be confirmed','Required: '+(String(o.veh||'1 VAN').toUpperCase())+' | No. Of Pax: '+(+o.pax||0)+' Pax',
+      'Pick Time : '+(o.time?this.pjT12(o.time):'to be confirmed'),'Pick Up : '+(o.from||'to be confirmed')+' | Drop Off: '+(o.to||'to be confirmed')];
+    if(o.flight)L.push('Flight : '+o.flight);if(o.contact)L.push('Contact : '+o.contact);if(o.remarks)L.push('Remarks : '+o.remarks);return L.join('\n');},
+  pjBookBlock(o){let L=[this.pjDUp(o.date)||'Date to be confirmed'];
+    if(o.kind==='meal')L.push((o.title||'Meal')+' for '+(+o.pax||0)+' Pax');else L.push((o.kind==='visit'?'Visit: ':'Activity: ')+(o.title||'Activity')+' | No. Of Pax: '+(+o.pax||0)+' Pax');
+    L.push('Time : '+(o.start?this.pjT12(o.start,false):'to be confirmed')+(o.end?' – '+this.pjT12(o.end,false):''));
+    if(o.place)L.push((o.kind==='meal'?'Venue : ':'Location : ')+o.place);if(o.remarks)L.push('Remarks : '+o.remarks);return L.join('\n');},
+  /* warm, short and diplomatic notes for the participants */
+  pjGuestText(o){let t=this.pjToday(),tm=this.isoAdd(t,1);let when=!o.date?'':o.date===t?'today':o.date===tm?'tomorrow, '+this.pjDNice(o.date):'on '+this.pjDNice(o.date);
+    let tt=o.title||'the programme',at=o.start?this.pjT12s(o.start):'',pl=o.place||'';let wa=a=>a?(when?when+(when.indexOf(',')>0?',':'')+' at '+a:'at '+a):when;
+    let sm=this.pjMin(o.start);let beach=(sm==null||sm<16*60)&&/beach|seaside|sea |island|boat|pattaya|snorkel|swim/i.test(tt+' '+pl+' ');let tip=beach?' Please bring sunscreen, a hat and swimwear.':'';
+    let cap=x=>{x=String(x||'').trim().replace(/([^.!?])$/,'$1.');return x.charAt(0).toUpperCase()+x.slice(1);};let note=o.note?' '+cap(o.note):'';let pin=x=>x?'\n📍 '+x:'';let body;
+    if(o.type==='time'){let nt=o.newStart?this.pjT12s(o.newStart):at;body='A small update for '+(when||'the programme')+': '+tt+' will now be at '+nt+(at&&nt!==at?' (instead of '+at+')':'')+'.'+note+pin(pl)+'\nThank you for your kind understanding — we look forward to seeing you.';}
+    else if(o.type==='place'){let np=o.newPlace||pl;body='A small update for '+(when||'the programme')+': '+tt+(at?' at '+at:'')+' will now take place at '+np+(pl&&pl!==np?' instead of '+pl:'')+'.'+note+'\nThank you for your kind understanding.';}
+    else if(o.type==='cancel'){body='Please kindly note that '+tt+(when?', planned for '+wa(at):at?' at '+at:'')+', will not take place.'+(note||' We will share the updated plan with you shortly.')+'\nWe apologise for any inconvenience and thank you for your understanding.';}
+    else if(o.type==='added'){body='We are pleased to share that '+tt+' has been arranged for you '+(wa(at)||'soon')+'.'+tip+note+pin(pl)+'\nWe hope you will enjoy it!';}
+    else if(o.transfer&&o.from){body='A gentle reminder: our vehicle for '+tt+' leaves from '+o.from+' '+(wa(at)||'soon')+'. Kindly be ready 10 minutes before.'+note+'\nThank you, and see you there.';}
+    else body='A gentle reminder: '+tt+' is '+(wa(at)||'coming up')+'.'+tip+note+pin(pl)+'\nWe look forward to seeing you there.';
+    return ['Dear Participants,','',body,'','Warm regards,'].concat([o.sign,o.org].filter(Boolean)).join('\n');},
+  pjGuestDayText(o){let t=this.pjToday(),tm=this.isoAdd(t,1),d=o.d;let head=d===t?'today’s programme':d===tm?'tomorrow’s programme, '+this.pjDNice(d):'the programme for '+this.pjDNice(d);
+    let L=['Dear Participants,','','Here is '+head+':',''];
+    (o.items||[]).forEach(i=>{let K=this.PJ_KINDS[i.kind]||this.PJ_KINDS.other;L.push('• '+(i.start?this.pjT12s(i.start):'Time to be confirmed')+' — '+(i.title||K[1])+(i.place?' · '+i.place:''));});
+    L.push('');if(o.meet)L.push('Kindly be ready at '+(o.mp||'the meeting point')+' by '+this.pjT12s(o.meet)+'.');if(o.note){let x=String(o.note).trim().replace(/([^.!?])$/,'$1.');L.push(x.charAt(0).toUpperCase()+x.slice(1));}
+    L.push(d===t?'Wishing you a wonderful day!':d===tm?'Wishing you a pleasant evening — see you tomorrow!':'We look forward to seeing you.');
+    return L.concat(['','Warm regards,'],[o.sign,o.org].filter(Boolean)).join('\n');},
+  /* what a message window needs to know — from the project here, or from the invite on a team member's phone */
+  pjCtx(p){let ps=(p.people||[]).filter(x=>!x.gone);
+    return {pid:p.id,name:p.name,short:this.pjShort(p),pax:ps.length,lead:p.lead||'',org:this.pjOrg(p),
+      team:(p.team||[]).map(m=>({id:m.id,name:m.name,role:m.role||'',phone:m.phone||''})),
+      vendors:(this.d.vendors||[]).filter(v=>v&&v.phone).map(v=>({id:String(v.id),name:v.name||'Vendor',phone:v.phone,type:v.type||''})),
+      save:(i,patch)=>{Object.assign(i,patch);this.pjTouch(p);}};},
+  pjVendorForm(C,i,back){let tr=this.pjTransferish(i);let ft=this.pjFromTo(i);let pax=(i.pax!=null&&i.pax!=='')?+i.pax:C.pax;let K=this.PJ_KINDS[i.kind]||this.PJ_KINDS.other;
+    let vOpts=[['','— I’ll choose in WhatsApp —']].concat(C.vendors.map(v=>[v.id,v.name+(v.type?' · '+v.type:'')]));
+    let tOpts=[['','— None —']].concat(C.team.filter(m=>m.phone).map(m=>[m.id,m.name+' · '+m.phone]));
+    let fields=tr?[{k:'veh',label:'Vehicles needed',value:i.veh||this.pjVehFor(pax),list:'pjmVeh'},{k:'pax',label:'No. of pax',type:'number',value:String(pax)},
+        {k:'time',label:'Pick-up time',type:'time',value:i.start||''},{k:'flight',label:'Flight (optional)',value:i.flight||'',ph:'e.g. TG 315, lands 14:30'},
+        {k:'from',label:'Pick up',value:ft[0],full:true,ph:'e.g. Omni Tower (Sukhumvit Soi 04)'},{k:'to',label:'Drop off',value:ft[1],full:true,ph:'e.g. Suvarnabhumi Airport'},
+        {k:'contact',label:'Contact on site',type:'select',value:i.owner||'',options:tOpts},{k:'rem',label:'Remarks (optional)',value:i.vrem||'',ph:'e.g. luggage for 10'}]
+      :[{k:'pax',label:'No. of pax',type:'number',value:String(pax)},{k:'start',label:'From',type:'time',value:i.start||''},{k:'end',label:'Until',type:'time',value:i.end||''},
+        {k:'place',label:i.kind==='meal'?'Venue':'Location',value:i.place||'',full:true},{k:'rem',label:'Remarks (optional)',value:i.vrem||'',full:true,ph:i.kind==='meal'?'e.g. 2 vegetarian, 1 halal':'e.g. life jackets, towels, lunch included'}];
+    fields.push({k:'vendor',label:'Send to',type:'select',value:i.vendor||'',options:vOpts,full:true});
+    this.pjAsk({title:(tr?'🚐 Vehicle request':'📲 Booking request')+' — '+(i.title||K[1]),intro:(i.date?'For <b>'+this.esc(this.pjD(i.date))+'</b> — a':'This step has no date yet, so the message will say “Date to be confirmed”. A')+(tr?' short WhatsApp message for your transport vendor, in your usual format.':' short WhatsApp message for the restaurant, boat or activity vendor.'),
+      fields,datalists:{pjmVeh:['1 CAR','1 VAN','2 VAN','3 VAN','4 VAN','1 MINIBUS','1 BUS','2 BUS']},ok:'Create message',onCancel:back,
+      onSave:v=>{let px=Math.max(0,parseInt(v.pax,10)||0),msg,patch;let vd=C.vendors.find(x=>x.id===v.vendor);
+        if(tr){let ct=C.team.find(m=>m.id===v.contact);patch={veh:String(v.veh||'').toUpperCase(),pax:px,from:v.from,to:v.to,flight:v.flight,vrem:v.rem,vendor:v.vendor};
+          msg=this.pjVehBlock({date:i.date,veh:patch.veh||this.pjVehFor(px),pax:px,time:v.time||i.start,from:v.from,to:v.to,flight:v.flight,contact:ct?ct.name+' '+ct.phone:'',remarks:v.rem});}
+        else{patch={pax:px,vrem:v.rem,vendor:v.vendor};msg=this.pjBookBlock({date:i.date,kind:i.kind,title:i.title||K[1],pax:px,start:v.start,end:v.end,place:v.place,remarks:v.rem});}
+        C.save(i,patch);setTimeout(()=>this.showMsg(msg,(tr?'🚐 Vehicle request':'📲 Booking request')+(vd?' — '+vd.name:''),{wa:vd?vd.phone:'',note:vd?'“WhatsApp” opens a chat with '+vd.name+'.':'“WhatsApp” opens WhatsApp — choose the vendor there.'}),0);}});},
+  pjVehDayForm(C,items,d){if(!items.length){this.toast('No transfers on '+this.pjD(d)+' — add a 🚐 Transfer step first','err');return;}
+    let vOpts=[['','— I’ll choose in WhatsApp —']].concat(C.vendors.map(v=>[v.id,v.name+(v.type?' · '+v.type:'')]));
+    this.pjAsk({title:'🚐 Vehicle request — '+this.pjD(d),intro:items.length+' transfer'+(items.length>1?'s':'')+' this day, in one message. Vehicles and pick-up points come from each step — change them with ⋯ → Vehicle request.',
+      fields:[{k:'vendor',label:'Send to',type:'select',value:(items.find(i=>i.vendor)||{}).vendor||'',options:vOpts,full:true}],ok:'Create message',
+      onSave:v=>{let vd=C.vendors.find(x=>x.id===v.vendor);
+        let msg=items.map(i=>{let ft=this.pjFromTo(i);let px=(i.pax!=null&&i.pax!=='')?+i.pax:C.pax;let ct=C.team.find(m=>m.id===i.owner);
+          return this.pjVehBlock({date:i.date,veh:i.veh||this.pjVehFor(px),pax:px,time:i.start,from:ft[0],to:ft[1],flight:i.flight,contact:ct&&ct.phone?ct.name+' '+ct.phone:'',remarks:i.vrem});}).join('\n\n');
+        setTimeout(()=>this.showMsg(msg,'🚐 Vehicle request'+(vd?' — '+vd.name:''),{wa:vd?vd.phone:'',note:vd?'“WhatsApp” opens a chat with '+vd.name+'.':'“WhatsApp” opens WhatsApp — choose the vendor there.'}),0);}});},
+  pjGuestForm(C,i,back){let K=this.PJ_KINDS[i.kind]||this.PJ_KINDS.other;let sOpts=C.team.map(m=>[m.id,m.name+(m.role?' · '+m.role:'')]).concat([['_org',C.org||'The team']]);
+    this.pjAsk({title:'💬 Message to participants — '+(i.title||K[1]),intro:'A short, warm note for the participants’ WhatsApp group.',
+      fields:[{k:'type',label:'What is it about?',type:'select',full:true,value:'reminder',options:[['reminder','A friendly reminder'],['time','The time has changed'],['place','The place has changed'],['cancel','It is cancelled'],['added','Something new has been arranged']]},
+        {k:'nt',label:'New time (if it changed)',type:'time',value:i.start||''},{k:'np',label:'New place (if it changed)',value:i.place||''},
+        {k:'note',label:'Anything to add (optional)',full:true,ph:'e.g. please bring your passport'},{k:'sign',label:'Signed by',type:'select',full:true,value:i.owner||C.lead||'_org',options:sOpts}],ok:'Create message',onCancel:back,
+      onSave:v=>{let m=C.team.find(x=>x.id===v.sign);
+        let txt=this.pjGuestText({type:v.type,title:i.title||K[1],date:i.date,start:i.start,place:i.place,newStart:v.nt,newPlace:v.np,note:v.note,transfer:this.pjTransferish(i),from:this.pjFromTo(i)[0],sign:m?m.name:'',org:C.org});
+        setTimeout(()=>this.showMsg(txt,'💬 Message to participants',{note:'“WhatsApp” opens WhatsApp — choose the participants’ group there.'}),0);}});
+    let ty=document.getElementById('pjf_0');let sh=()=>{let v=ty.value;[['pjf_1','time'],['pjf_2','place']].forEach(([id,k])=>{let f=document.getElementById(id);let w=f&&f.closest('.field');if(w)w.style.display=v===k?'':'none';});};if(ty){ty.addEventListener('change',sh);sh();}},
+  pjGuestDayForm(C,items,d){if(!items.length){this.toast('Nothing on the participants’ programme for '+this.pjD(d),'err');return;}
+    let first=items.find(i=>i.start);let sOpts=C.team.map(m=>[m.id,m.name+(m.role?' · '+m.role:'')]).concat([['_org',C.org||'The team']]);
+    this.pjAsk({title:'💬 Programme for participants — '+this.pjD(d),intro:'A warm, short note with the day’s programme for the participants’ WhatsApp group. Team-only steps are left out.',
+      fields:[{k:'meet',label:'Be ready by',type:'time',value:first?this.pjShift(first.start,-10):''},{k:'mp',label:'Meeting point',value:'the hotel lobby'},
+        {k:'note',label:'Anything to add (optional)',full:true,ph:'e.g. smart casual for the closing ceremony'},{k:'sign',label:'Signed by',type:'select',full:true,value:C.lead||'_org',options:sOpts}],ok:'Create message',
+      onSave:v=>{let m=C.team.find(x=>x.id===v.sign);let txt=this.pjGuestDayText({items,d,meet:v.meet,mp:v.mp,note:v.note,sign:m?m.name:'',org:C.org});
+        setTimeout(()=>this.showMsg(txt,'💬 Programme for participants',{note:'“WhatsApp” opens WhatsApp — choose the participants’ group there.'}),0);}});},
+  pjVendorMsg(id){let p=this.pjCur();let i=this.pjItemOf(p,id);if(i)this.pjVendorForm(this.pjCtx(p),i,()=>this.pjStep(id));},
+  pjGuestMsg(id){let p=this.pjCur();let i=this.pjItemOf(p,id);if(i)this.pjGuestForm(this.pjCtx(p),i,()=>this.pjStep(id));},
+  pjVehDay(d){let p=this.pjCur();if(!p)return;this.pjVehDayForm(this.pjCtx(p),this.pjItemsOn(p,d).filter(i=>i.st!=='cancelled'&&this.pjTransferish(i)),d);},
+  pjGuestDay(d){let p=this.pjCur();if(!p)return;this.pjGuestDayForm(this.pjCtx(p),this.pjItemsOn(p,d).filter(i=>i.st!=='cancelled'&&!i.team),d);},
+  /* ----- the step window: extra expenses, remarks and messages for one step ----- */
+  pjStep(id){let p=this.pjCur();let i=this.pjItemOf(p,id);if(!i)return;let K=this.PJ_KINDS[i.kind]||this.PJ_KINDS.other;
+    this.pjAsk({title:K[0]+' '+(i.title||K[1]),wide:true,noCancel:true,fields:[{k:'_b',type:'html',html:'<div id="pjStepBody" class="pjx" data-id="'+id+'">'+this.pjStepHTML(p,i)+'</div>'}],ok:'Done',onSave:()=>{}});},
+  pjStepRefresh(id){let b=document.getElementById('pjStepBody');if(!b||b.dataset.id!==id)return;let p=this.pjCur();let i=this.pjItemOf(p,id);if(i)b.innerHTML=this.pjStepHTML(p,i);},
+  pjStepHTML(p,i){let esc=s=>this.esc(s),id=i.id,cur=this.base();let o=this.pjMember(p,i.owner);let ex=i.exp||[],rm=i.rmk||[];
+    let sum=[i.date?this.pjD(i.date):'Not scheduled',i.start?esc(i.start)+(i.end?'–'+esc(i.end):''):'',i.place?'📍 '+esc(i.place):'',o?'👤 '+esc(o.name):'No one responsible yet'].filter(Boolean).join(' · ');
+    let dflt=i.owner||p.lead||'';let byOpts='<option value="">— Paid by —</option>'+(p.team||[]).map(m=>`<option value="${m.id}"${m.id===dflt?' selected':''}>${esc(m.name)}</option>`).join('')+'<option value="office">Office</option>';
+    let exRows=ex.map(e=>`<li><span class="pjx-amt">${this.money(e.amt,e.cur||cur)}</span><span class="pjx-what">${esc(e.what)}${e.by?' <small>· '+esc(e.by)+'</small>':''}${e.src==='team'?' <span class="pjx-src">team update</span>':''}${e.xp?' <span class="pjx-src pjx-src2">in Expenses</span>':''}</span><time>${this.pjWhen(e.at)}</time><button type="button" class="sm pj-qb pj-del" aria-label="Remove this expense" onclick="App.pjExpDel('${id}','${e.id}')">×</button></li>`).join('');
+    let rmRows=rm.map(r=>`<li><span>${r.by?'<b>'+esc(r.by)+':</b> ':''}${esc(r.x)}</span><time>${this.pjWhen(r.at)}</time><button type="button" class="sm pj-qb pj-del" aria-label="Remove this remark" onclick="App.pjRmkDel('${id}','${r.id}')">×</button></li>`).join('');
+    let tr=this.pjTransferish(i);
+    return `<p class="pjx-sum">${sum}</p>
+      <section class="pjx-sec"><h4>💸 Extra expenses${ex.length?`<span class="pjx-tot">${this.money(this.pjExpTotal(ex),cur)}</span>`:''}</h4>${ex.length?`<ul class="pjx-list">${exRows}</ul>`:'<p class="muted pj-small">Taxis, tips, extra food or drinks, parking — anything spent during this step.</p>'}
+        <div class="pjx-add"><input id="pjxAmt" inputmode="decimal" placeholder="Amount (${esc(this.sym(cur))})" aria-label="Amount" onkeydown="App.pjxKey(event,'exp','${id}')"><input id="pjxWhat" placeholder="What for — e.g. taxi to the venue" aria-label="What for" onkeydown="App.pjxKey(event,'exp','${id}')"><select id="pjxBy" aria-label="Paid by">${byOpts}</select><button class="ok sm" type="button" onclick="App.pjExpAdd('${id}')">＋ Add</button></div></section>
+      <section class="pjx-sec"><h4>📝 Remarks${rm.length?` <span class="muted pj-n">${rm.length}</span>`:''}</h4>${rm.length?`<ul class="pjx-rlist">${rmRows}</ul>`:''}
+        <div class="pjx-add pjx-addr"><textarea id="pjxRmk" rows="2" placeholder="Add a remark — what happened, what to remember next time" aria-label="Remark" onkeydown="App.pjxKey(event,'rmk','${id}')"></textarea><button class="ok sm" type="button" onclick="App.pjRmkAdd('${id}')">＋ Add</button></div>
+        <label class="pjx-note"><span>Plan note</span><input value="${esc(i.note)}" placeholder="Vehicle, menu, contact person…" onchange="App.pjItemSet('${id}','note',this.value)" onkeydown="App.pjxKey(event,'note','${id}')"></label></section>
+      <section class="pjx-sec"><h4>📲 Messages</h4><div class="pjx-msgs"><button class="ghost sm" type="button" onclick="App.pjVendorMsg('${id}')">${tr?'🚐 Vehicle request':'📲 Booking request to a vendor'}</button><button class="ghost sm" type="button" onclick="App.pjGuestMsg('${id}')">💬 Message to participants</button></div></section>`;},
+  pjxKey(ev,k,id){if(ev.key!=='Enter'||(k==='rmk'&&ev.shiftKey))return;ev.preventDefault();ev.stopPropagation();if(k==='exp')this.pjExpAdd(id);else if(k==='rmk')this.pjRmkAdd(id);else if(ev.target&&ev.target.blur)ev.target.blur();},
+  pjExpAdd(id){let p=this.pjCur();let i=this.pjItemOf(p,id);if(!i)return;let a=document.getElementById('pjxAmt'),w=document.getElementById('pjxWhat'),b=document.getElementById('pjxBy');if(!a||!w)return;
+    let amt=Math.round((parseFloat(String(a.value).replace(/[,\s]/g,''))||0)*100)/100;if(!(amt>0)){this.toast('Enter the amount','err');a.focus();return;}
+    let what=String(w.value||'').trim();if(!what){this.toast('What was it for?','err');w.focus();return;}
+    let m=b?this.pjMember(p,b.value):null;let e={id:this.pjNewId('x'),amt,cur:this.base(),what:what.slice(0,160),by:m?m.name:(b&&b.value==='office'?'Office':''),byId:m?m.id:'',at:Date.now(),src:'office'};
+    (i.exp=i.exp||[]).push(e);this.pjTouch(p,'Expense '+this.money(amt,e.cur)+' — '+e.what+' ('+(i.title||'step')+')');this.pjStepRefresh(id);if(this.pjAfterChange)this.pjAfterChange(p);
+    let a2=document.getElementById('pjxAmt');if(a2)a2.focus();},
+  pjExpDel(id,eid){let p=this.pjCur();let i=this.pjItemOf(p,id);if(!i)return;let e=(i.exp||[]).find(x=>x.id===eid);if(!e)return;
+    if(!confirm('Remove the expense '+this.money(e.amt,e.cur||this.base())+' — '+e.what+'?'+(e.xp?'\n\nIt was also added to Expenses — remove it there too.':'')))return;
+    i.exp=i.exp.filter(x=>x!==e);this.pjTouch(p,'Removed the expense '+this.money(e.amt,e.cur||this.base())+' — '+e.what);this.pjStepRefresh(id);if(this.pjAfterChange)this.pjAfterChange(p);},
+  pjRmkAdd(id){let p=this.pjCur();let i=this.pjItemOf(p,id);if(!i)return;let t=document.getElementById('pjxRmk');if(!t)return;let x=String(t.value||'').trim();if(!x){t.focus();return;}
+    let r={id:this.pjNewId('r'),x:x.slice(0,500),by:this.pjMyName(),at:Date.now(),src:'office'};(i.rmk=i.rmk||[]).push(r);this.pjTouch(p,'Remark on '+(i.title||'a step')+': '+r.x);this.pjStepRefresh(id);if(this.pjAfterChange)this.pjAfterChange(p);
+    let t2=document.getElementById('pjxRmk');if(t2)t2.focus();},
+  pjRmkDel(id,rid){let p=this.pjCur();let i=this.pjItemOf(p,id);if(!i)return;let r=(i.rmk||[]).find(x=>x.id===rid);if(!r)return;if(!confirm('Remove this remark?\n\n'+r.x))return;
+    i.rmk=i.rmk.filter(x=>x!==r);this.pjTouch(p);this.pjStepRefresh(id);if(this.pjAfterChange)this.pjAfterChange(p);},
+  /* small signs on the overview and the run sheet */
+  pjXBadges(i){let ex=i.exp||[],rm=i.rmk||[];if(!ex.length&&!rm.length)return '';let last=rm[rm.length-1];let lx=last?String(last.x):'';
+    return `<button type="button" class="pjx-badges" onclick="App.pjStep('${i.id}')" title="Expenses and remarks">${ex.length?`<span>💸 ${this.money(this.pjExpTotal(ex),ex[0].cur||this.base())}</span>`:''}${last?`<span>📝 ${last.by?this.esc(last.by)+': ':''}${this.esc(lx.slice(0,70))}${lx.length>70?'…':''}</span>${rm.length>1?`<span class="pjx-bn">+${rm.length-1} more</span>`:''}`:''}</button>`;},
+  pjXMore(i){return `<button class="ghost sm pjx-more" type="button" title="Expenses, remarks and messages" aria-label="Expenses, remarks and messages" onclick="App.pjStep('${i.id}')">⋯</button>`;},
+  pjXRowBtn(i){let ex=i.exp||[],rm=i.rmk||[];let t=[ex.length?'💸 '+this.money(this.pjExpTotal(ex),ex[0].cur||this.base()):'',rm.length?'📝 '+rm.length:''].filter(Boolean).join(' · ');
+    return `<button type="button" class="ghost sm pjx-rbtn" onclick="App.pjStep('${i.id}')" title="Extra expenses, remarks and WhatsApp messages">${t?this.esc(t)+' · ⋯':'＋ Expenses · remarks · messages'}</button>`;},
+  /* extra spending for the whole project */
+  pjExpCard(p){let all=this.pjExpAll(p);if(!all.length)return '';let cur=this.base();let tot=all.reduce((s,x)=>s+(+x.e.amt||0),0);let by={};all.forEach(({e})=>{let k=e.by||'Not set';by[k]=(by[k]||0)+(+e.amt||0);});
+    let todo=all.filter(x=>!x.e.xp).length;
+    return `<div class="card pj-side-card"><div class="hdr"><h3>Extra spending</h3><b class="pjx-big">${this.money(tot,cur)}</b></div>${Object.keys(by).sort((a,b)=>by[b]-by[a]).map(k=>`<div class="pjx-byrow"><span>${this.esc(k)}</span><b>${this.money(by[k],cur)}</b></div>`).join('')}
+      <div class="row-flex" style="gap:6px;margin-top:10px"><button class="ghost sm" type="button" onclick="App.pjExpList()">See all ${all.length}</button>${todo?`<button class="ghost sm" type="button" onclick="App.pjExpToBooks()" title="Record them under Expenses → Program Extras">Add ${todo} to Expenses</button>`:'<span class="muted pj-small">✓ All in Expenses</span>'}</div></div>`;},
+  pjExpList(){let p=this.pjCur();if(!p)return;let esc=s=>this.esc(s),cur=this.base();let all=this.pjExpAll(p).sort((a,b)=>String(a.i.date||'9').localeCompare(String(b.i.date||'9'))||(a.e.at-b.e.at));
+    let tot=all.reduce((s,x)=>s+(+x.e.amt||0),0);
+    let rows=all.map(({e,i})=>`<tr><td>${esc(i.date?this.pjDM(i.date):'—')}</td><td>${esc(i.title||'')}</td><td>${esc(e.what)}</td><td>${esc(e.by||'')}</td><td class="right">${this.money(e.amt,e.cur||cur)}</td></tr>`).join('');
+    this.pjAsk({title:'💸 Extra spending — '+this.pjShort(p),wide:true,noCancel:true,fields:[{k:'_t',type:'html',html:`<div class="pjx-tw"><table class="pjx-table"><thead><tr><th>Day</th><th>Step</th><th>What for</th><th>Paid by</th><th class="right">Amount</th></tr></thead><tbody>${rows}</tbody><tfoot><tr><td colspan="4">Total</td><td class="right">${this.money(tot,cur)}</td></tr></tfoot></table></div><div class="row-flex" style="margin-top:12px"><button class="ghost sm" type="button" onclick="App.pjExpCsv()">⬇ Download CSV</button></div>`}],ok:'Close',onSave:()=>{}});},
+  pjExpCsv(){let p=this.pjCur();if(!p)return;let q=s=>'"'+String(s==null?'':s).replace(/"/g,'""')+'"';let L=[['Date','Step','What for','Paid by','Amount','Currency','Added by','Time'].map(q).join(',')];
+    this.pjExpAll(p).forEach(({e,i})=>L.push([i.date||'',i.title||'',e.what,e.by||'',e.amt,e.cur||this.base(),e.src==='team'?'Team update':'Office',new Date(e.at).toISOString().slice(0,16).replace('T',' ')].map(q).join(',')));
+    this.download('Extra_spending_'+this.safeName(this.pjShort(p))+'.csv','\ufeff'+L.join('\r\n'),'text/csv');},
+  pjExpToBooks(){let p=this.pjCur();if(!p)return;let all=this.pjExpAll(p).filter(x=>!x.e.xp);if(!all.length)return;let sh=this.pjShort(p);this.d.expenses=this.d.expenses||[];this.d.seq=this.d.seq||{};
+    all.forEach(({e,i})=>{let id='E'+(this.d.seq.exp=(+this.d.seq.exp||0)+1);let amt=+e.amt||0;
+      this.d.expenses.push({id,date:i.date||new Date(e.at).toISOString().slice(0,10),category:'Program Extras',employeeId:null,month:'',payee:(e.what||'Extra')+' — '+sh,base:amt,extra:0,amount:amt,remarks:[i.title||'',e.by?'paid by '+e.by:''].filter(Boolean).join(' · ')});e.xp=id;});
+    this.pjTouch(p,all.length+' extra expense'+(all.length>1?'s':'')+' added to Expenses');this.pjRefresh();this.toast(all.length+' added to Expenses → Program Extras','ok');},
+  /* ----- inviting a team member: the run sheet travels inside a WhatsApp link; nothing is stored on a server ----- */
+  pjAppUrl(){let s=this.d.settings||{};if(s.appUrl)return s.appUrl;if(/^https?:$/.test(location.protocol))return location.origin+location.pathname.replace(/index\.html$/,'');return 'https://pmtraining7676.github.io/ctb-erp/';},
+  async pjGz(u,undo){let s=undo?new DecompressionStream('gzip'):new CompressionStream('gzip');let w=s.writable.getWriter();w.write(u).catch(()=>{});w.close().catch(()=>{});
+    let r=s.readable.getReader(),parts=[],n=0;for(;;){let x=await r.read();if(x.done)break;parts.push(x.value);n+=x.value.length;}let out=new Uint8Array(n),o=0;for(const q of parts){out.set(q,o);o+=q.length;}return out;},
+  async pjPack(obj){let s=JSON.stringify(obj);let u=new TextEncoder().encode(s),pre='j';
+    if(typeof CompressionStream!=='undefined'){try{u=await this.pjGz(u,false);pre='z';}catch(e){u=new TextEncoder().encode(s);pre='j';}}
+    let b='';for(let i=0;i<u.length;i+=0x8000)b+=String.fromCharCode.apply(null,u.subarray(i,i+0x8000));return pre+'.'+btoa(b).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');},
+  async pjUnpack(code){let m=/^([zj])\.([A-Za-z0-9_-]+)$/.exec(String(code||'').trim());if(!m)throw new Error('bad');let s=m[2].replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';
+    let b=atob(s);let u=new Uint8Array(b.length);for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);if(m[1]==='z'){if(typeof DecompressionStream==='undefined')throw new Error('old');u=await this.pjGz(u,true);}
+    return JSON.parse(new TextDecoder().decode(u));},
+  pjInvitePayload(p,m,to){let ps=(p.people||[]).filter(x=>!x.gone);let sp=this.pjSpan(p);let base=this.base();
+    let cl=o=>{Object.keys(o).forEach(k=>{let v=o[k];if(v===''||v==null||(v===0&&k!=='a')||(Array.isArray(v)&&!v.length))delete o[k];});return o;};
+    return {v:1,k:'join',pid:p.id,nm:p.name,sh:this.pjShort(p),A:sp[0]||'',Z:sp[1]||'',ho:p.hotel||'',ve:p.venue||'',pax:ps.length,cur:base,org:this.pjOrg(p),lead:p.lead||'',me:m.id,
+      team:(p.team||[]).map(x=>cl({id:x.id,n:x.name,r:x.role||'',ph:x.phone||''})),to:{n:to.n,wa:to.wa,p:to.p?1:0},app:this.pjAppUrl(),at:Date.now(),days:this.pjDates(p).map(d=>[d,this.pjDayLab(p,d)||'']),
+      it:(p.items||[]).filter(i=>i.st!=='cancelled').map(i=>cl({id:i.id,d:i.date||'',s:i.start||'',e:i.end||'',k:i.kind||'other',t:i.title||'',pl:i.place||'',o:i.owner||'',st:i.st&&i.st!=='planned'?i.st:'',n:i.note||'',is:i.st==='issue'?(i.issue||''):'',tm:i.team?1:0,vh:i.veh||'',px:(i.pax==null||i.pax==='')?'':(+i.pax||0),fr:i.from||'',to:i.to||'',
+        x:(i.exp||[]).slice(-30).map(e=>cl({id:e.id,a:+e.amt||0,w:String(e.what||'').slice(0,160),b:String(e.by||'').slice(0,60),cu:e.cur&&e.cur!==base?e.cur:''})),
+        r:(i.rmk||[]).slice(-30).map(r=>cl({id:r.id,x:String(r.x||'').slice(0,300),b:String(r.by||'').slice(0,60)}))}))};},
+  pjFirst(n){return String(n||'').replace(/^(mr|mrs|ms|miss|dr|khun|k)\.?\s+/i,'').split(/\s+/)[0]||String(n||'');},
+  pjInvBtn(p,m){let iv=(p.inv||{})[m.id];return `<button class="ghost sm pjx-inv" type="button" onclick="App.pjInvite('${m.id}')" title="${iv?'Invited '+this.esc(this.pjWhen(iv.at))+' — send the latest run sheet':'Send '+this.esc(m.name)+' this run sheet on WhatsApp'}">📲 ${iv?'Send again':'Invite'}</button>${iv?`<span class="pjx-invd">Invited ${this.esc(this.pjWhen(iv.at))}</span>`:''}`;},
+  pjInvite(mid){let p=this.pjCur();if(!p)return;let m=this.pjMember(p,mid);if(!m)return;let s=this.d.settings;let esc=x=>this.esc(x);
+    this.pjAsk({title:'📲 Invite '+m.name,intro:m.name+' gets this project on WhatsApp. On their phone they can mark steps done, report a problem, and add expenses and remarks. Their updates come back to you on WhatsApp — one tap adds them here.',
+      fields:[{k:'wa',label:'Send updates to (your WhatsApp)',type:'tel',value:s.pjUpdTo||s.whatsapp||s.phone||''},{k:'me',label:'Your name, as the team sees it',value:s.pjMe||s.sigName||''},
+        {k:'_n',type:'html',html:`<p class="muted pj-small" style="margin:0">The link carries only this project’s run sheet (with the remarks and extra expenses on each step) and the team’s names and phone numbers — no participant details, passports or prices.${m.phone?'':' <b>'+esc(m.name)+' has no phone number yet</b> — you can copy the message instead.'}</p>`}],ok:'Create invite',
+      onSave:v=>{let wa=this.pjWa(v.wa);if(wa.length<8){this.toast('Enter your WhatsApp number','err');return false;}s.pjUpdTo=v.wa;if(v.me)s.pjMe=v.me;Store.save();
+        let pay=this.pjInvitePayload(p,m,{n:v.me||this.pjOrg(p)||'the office',wa,p:v.me?1:0});
+        this.pjPack(pay).then(code=>{let url=this.pjAppUrl()+'#join='+code;let [A,Z]=this.pjSpan(p);p.inv=p.inv||{};p.inv[m.id]={at:Date.now()};this.pjTouch(p,'Invited '+m.name+' to update the project');
+          let msg=['Hi '+this.pjFirst(m.name)+' 👋','','Here is the run sheet for *'+this.pjShort(p)+' — '+p.name+'*'+(A?' ('+this.rcptRange(A,Z)+')':'')+'.','',
+            'Please open the link below on your phone to mark steps done, report any problem, and add expenses and remarks. Tap “Send update” whenever something changes — it comes straight back to me.','','Thank you!'].concat(v.me?[v.me]:[],['','👉 Your run sheet:',url]).join('\n');
+          this.showMsg(msg,'📲 Invite '+m.name,{wa:m.phone||'',note:m.phone?'“WhatsApp” opens a chat with '+m.name+'.':'Copy the message and send it to '+m.name+'.'});this.pjRefresh();})
+          .catch(e=>{console.error(e);this.toast('The invite couldn’t be made — please try again','err');});}});},
+  /* ----- updates coming back from the team ----- */
+  pjInbox(){let m=/^#upd=([zj]\.[A-Za-z0-9_-]+)/.exec(location.hash||'');if(!m)return;try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}this.pjApplyCode(m[1]);},
+  pjApplyCode(code){this.pjUnpack(code).then(u=>this.pjApplyShow(u)).catch(()=>this.toast('This team update link is damaged or incomplete','err'));},
+  pjPaste(){this.pjAsk({title:'📥 Add a team update',intro:'Paste the WhatsApp message a team member sent you — or just its link.',fields:[{k:'t',label:'Message',type:'textarea',rows:6,full:true,ph:'… #upd= …'}],ok:'Read the update',
+      onSave:v=>{let m=/#upd=([zj]\.[A-Za-z0-9_-]+)/.exec(v.t||'');if(!m){this.toast('No team update found in that text','err');return false;}setTimeout(()=>this.pjApplyCode(m[1]),0);}});},
+  pjUpdDiff(p,u){let out={st:[],ex:[],rm:[],old:0,gone:0};let item=id=>this.pjOkId(id)?(p.items||[]).find(x=>x.id===id):null;
+    (Array.isArray(u.st)?u.st:[]).forEach(c=>{let i=item(c&&c.i);if(!i){out.gone++;return;}if(!this.PJ_ST[c.s])return;if((+i.at||0)>(+c.at||0)){if(i.st!==c.s)out.old++;return;}
+      if(i.st===c.s&&(c.s!=='issue'||(i.issue||'')===String(c.is||'')))return;out.st.push({c,i});});
+    (Array.isArray(u.ex)?u.ex:[]).forEach(c=>{let i=item(c&&c.i);if(!i){out.gone++;return;}let a=+c.a;if(!(a>0&&a<1e8)||!this.pjOkId(c.id))return;if((i.exp||[]).some(e=>e.id===c.id))return;out.ex.push({c,i});});
+    (Array.isArray(u.rm)?u.rm:[]).forEach(c=>{let i=item(c&&c.i);if(!i){out.gone++;return;}if(!c.x||!this.pjOkId(c.id))return;if((i.rmk||[]).some(r=>r.id===c.id))return;out.rm.push({c,i});});return out;},
+  pjApplyUpd(p,u,D){let who=String((u.by&&u.by.n)||'Team').slice(0,60);let n=0;p.log=p.log||[];let lg=x=>p.log.unshift({t:Date.now(),x:String(x).slice(0,240)});
+    D.st.forEach(({c,i})=>{i.st=c.s;i.issue=c.s==='issue'?String(c.is||'').slice(0,300):'';i.at=+c.at||Date.now();lg(who+': '+this.pjStMsg(i,c.s));n++;});
+    D.ex.forEach(({c,i})=>{let cu=CURRENCIES[c.cu]?c.cu:(CURRENCIES[u.cur]?u.cur:this.base());let e={id:c.id,amt:Math.round(+c.a*100)/100,cur:cu,what:String(c.w||'').slice(0,160),by:who,byId:this.pjOkId(u.by&&u.by.id)?u.by.id:'',at:+c.at||Date.now(),src:'team'};
+      (i.exp=i.exp||[]).push(e);lg(who+': expense '+this.money(e.amt,cu)+' — '+e.what+' ('+(i.title||'step')+')');n++;});
+    D.rm.forEach(({c,i})=>{(i.rmk=i.rmk||[]).push({id:c.id,x:String(c.x).slice(0,500),by:who,at:+c.at||Date.now(),src:'team'});lg(who+' on '+(i.title||'a step')+': '+c.x);n++;});
+    p.updIn=(p.updIn||[]).concat(this.pjOkId(u.uid)?[u.uid]:[]).slice(-200);if(p.log.length>300)p.log.length=300;this.pjTouch(p);return n;},
+  pjApplyShow(u){if(!u||u.k!=='upd'||!this.pjOkId(u.pid)){this.toast('This is not a team update','err');return;}let p=this.pjGet(u.pid);
+    if(!p){this.toast('This update is for “'+String(u.nm||'a project').slice(0,80)+'”, which isn’t on this device','err');return;}
+    let D=this.pjUpdDiff(p,u);let tot=D.st.length+D.ex.length+D.rm.length;let who=String((u.by&&u.by.n)||'A team member').slice(0,60);let esc=s=>this.esc(s);
+    if(!tot){this.toast('Nothing new — '+who+'’s update is already in '+this.pjShort(p),'ok');return;}
+    let li=[];D.st.forEach(({c,i})=>li.push(`<li>${c.s==='done'?'✓':c.s==='issue'?'⚠':'•'} <b>${esc(i.title||'Step')}</b>${i.start?' <small>'+esc(i.start)+'</small>':''} — ${esc(this.PJ_ST[c.s][0].toLowerCase())}${c.s==='issue'&&c.is?': '+esc(c.is):''}</li>`));
+    D.ex.forEach(({c,i})=>li.push(`<li>💸 <b>${this.money(+c.a,CURRENCIES[c.cu]?c.cu:this.base())}</b> — ${esc(c.w||'')} <small>(${esc(i.title||'step')})</small></li>`));
+    D.rm.forEach(({c,i})=>li.push(`<li>📝 <b>${esc(i.title||'Step')}:</b> ${esc(c.x)}</li>`));
+    let extra=[D.old?D.old+' status change'+(D.old>1?'s were':' was')+' left out — it was changed here more recently':'',D.gone?D.gone+' change'+(D.gone>1?'s were':' was')+' for a step no longer on the run sheet':''].filter(Boolean).join(' · ');
+    this.pjAsk({title:'📥 Update from '+who,intro:'For '+this.pjShort(p)+' — '+p.name+' · sent '+this.pjWhen(+u.at||Date.now()),fields:[{k:'_l',type:'html',html:`<ul class="pjx-upd">${li.join('')}</ul>${extra?`<p class="muted pj-small">${esc(extra)}</p>`:''}`}],ok:'Add to the project',
+      onSave:()=>{let n=this.pjApplyUpd(p,u,D);this.toast(n+' update'+(n>1?'s':'')+' from '+who+' added','ok');setTimeout(()=>this.pjOpen(p.id,'overview'),0);}});},
+  /* ----- a team member's phone: the run sheet from the invite; updates go back on WhatsApp ----- */
+  tmLoad(){let S=null;try{S=JSON.parse(localStorage.getItem('ctb_team')||'null');}catch(e){}if(!S||typeof S!=='object'||!S.pj)S={v:1,pj:{}};return S;},
+  tmSave(S){try{localStorage.setItem('ctb_team',JSON.stringify(S));return true;}catch(e){this.toast('This phone’s browser storage is full','err');return false;}},
+  tmErpEmpty(){let d=Store.data||{};return !((d.bookings||[]).length||(d.clients||[]).length||(d.projects||[]).length||(d.people||[]).length);},
+  tmStart(){if(!this._tmHash){this._tmHash=1;window.addEventListener('hashchange',()=>{if(/^#(join|upd)=/.test(location.hash||''))location.reload();});}
+    let h=location.hash||'';let skip=false;try{skip=sessionStorage.getItem('ctb_tm_full')==='1';}catch(e){}
+    let m=/^#join=([zj]\.[A-Za-z0-9_-]+)/.exec(h);
+    if(m){this.tmShell();this.tmMsg('Opening the run sheet…');
+      this.pjUnpack(m[1]).then(pay=>{let ok=this.tmClean(pay);if(!ok)throw new Error('bad');let S=this.tmLoad();this.tmImport(S,ok);if(!this.tmSave(S))return;this._tmPid=ok.pid;this._tmDay=undefined;
+          try{history.replaceState(null,'',location.pathname+location.search+'#team');}catch(e){}this.tmRender();this.toast('Run sheet saved on this phone','ok');})
+        .catch(e=>{console.error(e);this.tmMsg('This invite link is damaged or incomplete — please ask for a new one.',true);});return true;}
+    if(/^#team/.test(h)){this.tmShell();this.tmRender();return true;}
+    if(!skip&&!CtbLock.startLocked()&&Object.keys(this.tmLoad().pj).length&&this.tmErpEmpty()){this.tmShell();this.tmRender();return true;}
+    return false;},
+  /* only what the team view needs, and only safe ids */
+  tmClean(p){if(!p||p.k!=='join'||!this.pjOkId(p.pid)||!Array.isArray(p.it))return null;let S=x=>String(x==null?'':x).slice(0,300);
+    let team=(Array.isArray(p.team)?p.team:[]).filter(m=>m&&this.pjOkId(m.id)).map(m=>({id:m.id,n:S(m.n)||'Team member',r:S(m.r),ph:S(m.ph).slice(0,30)}));
+    let it=p.it.filter(i=>i&&this.pjOkId(i.id)).slice(0,400).map(i=>({id:i.id,d:/^\d{4}-\d\d-\d\d$/.test(i.d)?i.d:'',s:/^\d\d:\d\d$/.test(i.s)?i.s:'',e:/^\d\d:\d\d$/.test(i.e)?i.e:'',k:this.PJ_KINDS[i.k]?i.k:'other',t:S(i.t),pl:S(i.pl),o:this.pjOkId(i.o)?i.o:'',st:this.PJ_ST[i.st]?i.st:'planned',n:S(i.n),is:S(i.is),tm:i.tm?1:0,vh:S(i.vh).slice(0,30),px:(i.px===''||i.px==null)?'':(+i.px||0),fr:S(i.fr),to:S(i.to),
+      x:(Array.isArray(i.x)?i.x:[]).filter(e=>e&&this.pjOkId(e.id)&&+e.a>0&&+e.a<1e8).slice(0,30).map(e=>({id:e.id,a:Math.round(+e.a*100)/100,w:S(e.w).slice(0,160),b:S(e.b).slice(0,60),cu:CURRENCIES[e.cu]?e.cu:''})),
+      r:(Array.isArray(i.r)?i.r:[]).filter(r=>r&&this.pjOkId(r.id)&&r.x).slice(0,30).map(r=>({id:r.id,x:S(r.x),b:S(r.b).slice(0,60)}))}));
+    let to=p.to&&typeof p.to==='object'?{n:S(p.to.n).slice(0,60)||'the office',wa:String(p.to.wa||'').replace(/\D/g,'').slice(0,16),p:p.to.p?1:0}:{n:'the office',wa:'',p:0};
+    return {v:1,k:'join',pid:p.pid,nm:S(p.nm)||'Training project',sh:S(p.sh).slice(0,40),A:/^\d{4}-\d\d-\d\d$/.test(p.A)?p.A:'',Z:/^\d{4}-\d\d-\d\d$/.test(p.Z)?p.Z:'',ho:S(p.ho),ve:S(p.ve),pax:Math.max(0,+p.pax||0),
+      cur:CURRENCIES[p.cur]?p.cur:'THB',org:S(p.org),lead:this.pjOkId(p.lead)?p.lead:'',me:this.pjOkId(p.me)?p.me:'',team,to,app:/^https:\/\/[^\s"'<>]+$/.test(p.app||'')?p.app:'',at:+p.at||Date.now(),
+      days:(Array.isArray(p.days)?p.days:[]).filter(x=>Array.isArray(x)&&/^\d{4}-\d\d-\d\d$/.test(x[0])).map(x=>[x[0],S(x[1]).slice(0,40)]),it};},
+  tmImport(S,pay){let cur=S.pj[pay.pid]||{st:{},ex:[],rm:[]};if(!cur.inv||(+pay.at||0)>=(+cur.inv.at||0))cur.inv=pay;let ids=new Set(cur.inv.it.map(i=>i.id));
+    Object.keys(cur.st).forEach(k=>{let c=cur.st[k];if(!ids.has(k)||(c.sent&&(+c.at||0)<(+cur.inv.at||0)))delete cur.st[k];});let off=new Set();cur.inv.it.forEach(i=>{(i.x||[]).forEach(e=>off.add(e.id));(i.r||[]).forEach(r=>off.add(r.id));});
+    cur.ex=(cur.ex||[]).filter(e=>ids.has(e.i)&&!off.has(e.id));cur.rm=(cur.rm||[]).filter(r=>ids.has(r.i)&&!off.has(r.id));
+    S.pj[pay.pid]=cur;S.cur=pay.pid;},
+  tmItems(P){let loc=P.loc||{};return P.inv.it.map(x=>{let o=P.st[x.id];let it={id:x.id,date:x.d,start:x.s,end:x.e,kind:x.k,title:x.t,place:x.pl,owner:x.o,st:x.st,note:x.n,issue:x.is,team:!!x.tm,veh:x.vh,pax:x.px===''?null:x.px,from:x.fr,to:x.to,ox:x.x||[],or:x.r||[]};
+      if(o){it.st=o.s;it.issue=o.is||'';}return Object.assign(it,loc[x.id]||{});});},
+  tmGet(){let S=this.tmLoad();let P=S.pj[this._tmPid||S.cur]||null;return {S,P};},
+  tmShell(){if(document.getElementById('ctbTeam'))return;let ov=document.createElement('div');ov.id='ctbTeam';ov.className='tm';ov.innerHTML='<div class="tm-wrap" id="tmBox"></div>';document.body.appendChild(ov);document.documentElement.classList.add('tm-on');},
+  tmMsg(t,err){let b=document.getElementById('tmBox');if(b)b.innerHTML=`<div class="tm-center"><span class="tm-logo">CTB</span><p class="${err?'tm-err':''}">${this.esc(t)}</p>${err?'<button class="ok" type="button" onclick="App.tmHome()">My projects</button>':''}</div>`;},
+  tmRender(){let b=document.getElementById('tmBox');if(!b)return;let S=this.tmLoad();let pid=this._tmPid||S.cur;let P=pid?S.pj[pid]:null;let esc=s=>this.esc(s);
+    if(!P||!P.inv){let L=Object.values(S.pj).filter(x=>x&&x.inv);
+      b.innerHTML=`<header class="tm-top"><div class="tm-brand"><span class="tm-logo">CTB</span><div><b>Team updates</b><small>Your training projects on this phone</small></div></div></header>
+        <main class="tm-main">${L.length?L.map(x=>`<button class="tm-pjrow" type="button" onclick="App.tmOpen('${x.inv.pid}')"><b>${esc(x.inv.sh?x.inv.sh+' — ':'')}${esc(x.inv.nm)}</b><small>${x.inv.A?esc(this.rcptRange(x.inv.A,x.inv.Z)):'Dates not set'}</small></button>`).join(''):'<p class="tm-empty">No projects yet. Open the invite link you received on WhatsApp.</p>'}</main>
+        <p class="tm-foot"><button class="linkbtn" type="button" onclick="App.tmFull()">Open the full CTB ERP app</button></p>`;return;}
+    let inv=P.inv,team=inv.team||[];let me=team.find(m=>m.id===inv.me)||{id:inv.me,n:'Team member',r:''};let items=this.tmItems(P);let t=this.pjToday();
+    let days=(inv.days||[]).map(x=>x[0]);let lab=d=>((inv.days||[]).find(x=>x[0]===d)||[])[1]||'';let undated=items.some(i=>!i.date);
+    let day=this._tmDay;if(day===undefined||(day&&!days.includes(day)))day=days.includes(t)?t:(days.find(x=>x>=t)||days[days.length-1]||'');
+    let list=items.filter(i=>(i.date||'')===(day||'')).sort((a,c)=>this.pjSortKey(a)-this.pjSortKey(c));
+    let pend=Object.values(P.st).filter(c=>!c.sent).length+P.ex.filter(e=>!e.sent).length+P.rm.filter(r=>!r.sent).length;
+    let chips=days.map(d=>`<button type="button" class="tm-day${d===day?' on':''}${d===t?' today':''}" onclick="App.tmDay('${d}')"><b>${esc(lab(d)||this.pjDow(d))}</b><small>${esc(this.pjD(d))}${d===t?' · today':''}</small></button>`).join('')
+      +(undated?`<button type="button" class="tm-day${!day?' on':''}" onclick="App.tmDay('')"><b>Not scheduled</b><small>no date yet</small></button>`:'');
+    let card=i=>{let K=this.PJ_KINDS[i.kind]||this.PJ_KINDS.other;let o=team.find(m=>m.id===i.owner);let mine=!!(i.owner&&i.owner===me.id);let st=this.PJ_ST[i.st]||this.PJ_ST.planned;
+      let ex=P.ex.filter(e=>e.i===i.id),rm=P.rm.filter(r=>r.i===i.id);let op=this._tmOpen&&this._tmOpen.id===i.id?this._tmOpen.k:'';
+      let lx=new Set(ex.map(e=>e.id)),lr=new Set(rm.map(r=>r.id));let ox=(i.ox||[]).filter(e=>!lx.has(e.id)),orr=(i.or||[]).filter(r=>!lr.has(r.id));
+      return `<article class="tm-it st-${i.st}${mine?' mine':''}"><div class="tm-ih"><div class="tm-time">${i.start?esc(i.start):'—'}${i.end?'<small>'+esc(i.end)+'</small>':''}</div>
+          <div class="tm-tt"><b>${K[0]} ${esc(i.title||K[1])}</b>${i.place?'<small>📍 '+esc(i.place)+'</small>':''}<small>${o?'👤 '+esc(o.n)+(mine?' (you)':''):'No one responsible yet'}${i.team?' · team only':''}</small></div><span class="pill ${st[1]}">${st[0]}</span></div>
+        ${i.note?'<p class="tm-note">'+esc(i.note)+'</p>':''}${i.st==='issue'?'<p class="tm-iss">⚠ '+esc(i.issue||'Problem')+'</p>':''}
+        ${ox.length||ex.length?`<ul class="tm-ex">${ox.map(e=>`<li class="of"><b>${this.money(e.a,e.cu||inv.cur)}</b><span>${esc(e.w)}${e.b?' <small>· '+esc(e.b)+'</small>':''}</span></li>`).join('')}${ex.map(e=>`<li><b>${this.money(e.a,inv.cur)}</b><span>${esc(e.w)}</span>${e.sent?'<small>sent</small>':`<button type="button" class="tm-x" aria-label="Remove" onclick="App.tmExDel('${e.id}')">×</button>`}</li>`).join('')}</ul>`:''}
+        ${orr.length||rm.length?`<ul class="tm-rm">${orr.map(r=>`<li class="of"><span>📝 ${r.b?'<b>'+esc(r.b)+':</b> ':''}${esc(r.x)}</span></li>`).join('')}${rm.map(r=>`<li><span>📝 ${esc(r.x)}</span>${r.sent?'<small>sent</small>':`<button type="button" class="tm-x" aria-label="Remove" onclick="App.tmRmDel('${r.id}')">×</button>`}</li>`).join('')}</ul>`:''}
+        <div class="tm-acts"><button type="button" class="tm-b${i.st==='done'?' on':''}" aria-pressed="${i.st==='done'}" title="${i.st==='done'?'Done — tap to undo':'Mark as done'}" onclick="App.tmSt('${i.id}','${i.st==='done'?'planned':'done'}')"><i>✓</i><span>Done</span></button><button type="button" class="tm-b${i.st==='issue'?' bad':''}${op==='iss'?' open':''}" aria-expanded="${op==='iss'}" onclick="App.tmToggle('${i.id}','iss')"><i>⚠</i><span>Problem</span></button><button type="button" class="tm-b${op==='ex'?' open':''}" aria-expanded="${op==='ex'}" onclick="App.tmToggle('${i.id}','ex')"><i>💸</i><span>Expense</span></button><button type="button" class="tm-b${op==='rm'?' open':''}" aria-expanded="${op==='rm'}" onclick="App.tmToggle('${i.id}','rm')"><i>📝</i><span>Remark</span></button><button type="button" class="tm-b${op==='msg'?' open':''}" aria-expanded="${op==='msg'}" onclick="App.tmToggle('${i.id}','msg')"><i>📲</i><span>Messages</span></button></div>
+        ${op==='ex'?`<div class="tm-form"><input id="tmA" inputmode="decimal" placeholder="Amount (${esc(this.sym(inv.cur))})" aria-label="Amount"><input id="tmW" placeholder="What for — e.g. taxi, tips, water" aria-label="What for" onkeydown="if(event.key==='Enter')App.tmEx('${i.id}')"><button type="button" class="ok sm" onclick="App.tmEx('${i.id}')">Add</button></div>`:''}
+        ${op==='rm'?`<div class="tm-form"><textarea id="tmR" rows="2" placeholder="What happened, what to remember" aria-label="Remark"></textarea><button type="button" class="ok sm" onclick="App.tmRm('${i.id}')">Add</button></div>`:''}
+        ${op==='iss'?`<div class="tm-form"><input id="tmI" value="${esc(i.st==='issue'?i.issue:'')}" placeholder="What is the problem?" aria-label="Problem" onkeydown="if(event.key==='Enter')App.tmIss('${i.id}')"><button type="button" class="ok sm" onclick="App.tmIss('${i.id}')">Save</button>${i.st==='issue'?`<button type="button" class="ghost sm" onclick="App.tmSt('${i.id}','planned')">Solved</button>`:''}</div>`:''}
+        ${op==='msg'?`<div class="tm-form tm-msgs"><button type="button" class="ghost sm" onclick="App.tmVendor('${i.id}')">${this.pjTransferish(i)?'🚐 Vehicle request':'📲 Booking request'}</button><button type="button" class="ghost sm" onclick="App.tmGuest('${i.id}')">💬 Message to participants</button></div>`:''}</article>`;};
+    let multi=Object.keys(S.pj).length>1;
+    b.innerHTML=`<header class="tm-top"><div class="tm-brand"><span class="tm-logo">CTB</span><div><b>${esc(inv.sh||'Team update')}</b><small>${esc(inv.nm)}</small></div></div>
+        <div class="tm-meta">${inv.A?esc(this.rcptRange(inv.A,inv.Z))+' · ':''}${inv.pax} participant${inv.pax===1?'':'s'}${inv.ho?' · 🏨 '+esc(inv.ho):''}</div><div class="tm-me">You: <b>${esc(me.n)}</b>${me.r?' · '+esc(me.r):''}</div></header>
+      <nav class="tm-days" aria-label="Day">${chips}</nav>
+      <div class="tm-dayh"><h2>${day?esc(this.pjDLong(day))+(lab(day)?' <small>'+esc(lab(day))+'</small>':''):'Not scheduled yet'}</h2>${day?`<div class="tm-dayb"><button type="button" class="ghost sm" onclick="App.tmGuestDay('${day}')">💬 Day message</button><button type="button" class="ghost sm" onclick="App.tmVehDay('${day}')">🚐 Vehicles</button></div>`:''}</div>
+      <main class="tm-list">${list.length?list.map(card).join(''):'<p class="tm-empty">Nothing planned for this day.</p>'}</main>
+      <p class="tm-foot">${multi?'<button class="linkbtn" type="button" onclick="App.tmHome()">My projects</button> · ':''}<button class="linkbtn" type="button" onclick="App.tmFull()">Open the full CTB ERP app</button>${P.last?' · last sent '+esc(this.pjWhen(P.last)):''}</p>
+      <footer class="tm-bar"><span>${pend?'<b>'+pend+'</b> change'+(pend>1?'s':'')+' not sent yet':(P.last?'All changes sent ✓':'Mark steps, add expenses or remarks')}</span><button type="button" class="ok" onclick="App.tmSend()">📤 Send update${inv.to&&inv.to.p&&inv.to.n?' to '+esc(this.pjFirst(inv.to.n)):''}</button></footer>`;},
+  tmDay(d){this._tmDay=d;this._tmOpen=null;this.tmRender();let ov=document.getElementById('ctbTeam');if(ov)ov.scrollTop=0;},
+  tmToggle(id,k){this._tmOpen=this._tmOpen&&this._tmOpen.id===id&&this._tmOpen.k===k?null:{id,k};this.tmRender();let f=document.querySelector('#ctbTeam .tm-form input,#ctbTeam .tm-form textarea');if(f)f.focus();},
+  tmSt(id,st,is){let {S,P}=this.tmGet();if(!P)return;P.st[id]={s:st,is:is||'',at:Date.now(),sent:false};this._tmOpen=null;this.tmSave(S);this.tmRender();},
+  tmIss(id){let el=document.getElementById('tmI');let v=String(el&&el.value||'').trim();if(!v){this.toast('Write what the problem is','err');return;}this.tmSt(id,'issue',v.slice(0,300));},
+  tmEx(id){let a=document.getElementById('tmA'),w=document.getElementById('tmW');if(!a||!w)return;let amt=Math.round((parseFloat(String(a.value).replace(/[,\s]/g,''))||0)*100)/100;
+    if(!(amt>0)){this.toast('Enter the amount','err');a.focus();return;}let what=String(w.value||'').trim();if(!what){this.toast('What was it for?','err');w.focus();return;}
+    let {S,P}=this.tmGet();if(!P)return;P.ex.push({id:this.pjNewId('x'),i:id,a:amt,w:what.slice(0,160),at:Date.now(),sent:false});this._tmOpen=null;this.tmSave(S);this.tmRender();this.toast('Expense added — send the update when you’re ready','ok');},
+  tmRm(id){let r=document.getElementById('tmR');let x=String(r&&r.value||'').trim();if(!x){if(r)r.focus();return;}let {S,P}=this.tmGet();if(!P)return;P.rm.push({id:this.pjNewId('r'),i:id,x:x.slice(0,500),at:Date.now(),sent:false});this._tmOpen=null;this.tmSave(S);this.tmRender();},
+  tmExDel(eid){let {S,P}=this.tmGet();if(!P)return;P.ex=P.ex.filter(e=>!(e.id===eid&&!e.sent));this.tmSave(S);this.tmRender();},
+  tmRmDel(rid){let {S,P}=this.tmGet();if(!P)return;P.rm=P.rm.filter(r=>!(r.id===rid&&!r.sent));this.tmSave(S);this.tmRender();},
+  tmOpen(pid){let S=this.tmLoad();if(!S.pj[pid])return;S.cur=pid;this.tmSave(S);this._tmPid=pid;this._tmDay=undefined;this._tmOpen=null;this.tmRender();},
+  tmHome(){let S=this.tmLoad();S.cur=null;this.tmSave(S);this._tmPid=null;this.tmRender();},
+  tmFull(){try{sessionStorage.setItem('ctb_tm_full','1');}catch(e){}try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}location.reload();},
+  tmCtx(P){let inv=P.inv;return {pid:inv.pid,name:inv.nm,short:inv.sh,pax:inv.pax||0,lead:inv.lead||'',org:inv.org||'',vendors:[],
+      team:(inv.team||[]).map(m=>({id:m.id,name:m.n,role:m.r,phone:m.ph})),
+      save:(i,patch)=>{let S=this.tmLoad();let P2=S.pj[inv.pid];if(!P2)return;P2.loc=P2.loc||{};P2.loc[i.id]=Object.assign(P2.loc[i.id]||{},patch);this.tmSave(S);}};},
+  tmVendor(id){let {P}=this.tmGet();if(!P)return;let i=this.tmItems(P).find(x=>x.id===id);if(i)this.pjVendorForm(this.tmCtx(P),i);},
+  tmGuest(id){let {P}=this.tmGet();if(!P)return;let i=this.tmItems(P).find(x=>x.id===id);if(i)this.pjGuestForm(this.tmCtx(P),i);},
+  tmDayItems(P,d){return this.tmItems(P).filter(i=>i.date===d&&i.st!=='cancelled').sort((a,c)=>this.pjSortKey(a)-this.pjSortKey(c));},
+  tmGuestDay(d){let {P}=this.tmGet();if(P)this.pjGuestDayForm(this.tmCtx(P),this.tmDayItems(P,d).filter(i=>!i.team),d);},
+  tmVehDay(d){let {P}=this.tmGet();if(P)this.pjVehDayForm(this.tmCtx(P),this.tmDayItems(P,d).filter(i=>this.pjTransferish(i)),d);},
+  tmSend(all){let {P}=this.tmGet();if(!P)return;let inv=P.inv;let items=this.tmItems(P);let byId=id=>items.find(i=>i.id===id)||{};
+    let st=Object.keys(P.st).map(k=>Object.assign({i:k},P.st[k]));let nst=st.filter(c=>!c.sent),nex=P.ex.filter(e=>!e.sent),nrm=P.rm.filter(r=>!r.sent);
+    if(!all&&!nst.length&&!nex.length&&!nrm.length){if(st.length||P.ex.length||P.rm.length){if(confirm('Nothing new since your last update. Send everything again?'))this.tmSend(true);}else this.toast('Nothing to send yet — mark a step, or add an expense or a remark','ok');return;}
+    let me=(inv.team||[]).find(m=>m.id===inv.me)||{id:inv.me,n:'Team member'};
+    let u={v:1,k:'upd',uid:this.pjNewId('u'),pid:inv.pid,nm:inv.sh||inv.nm,by:{id:me.id,n:me.n},cur:inv.cur,at:Date.now(),
+      st:st.map(c=>({i:c.i,s:c.s,is:c.is||'',at:c.at})),ex:P.ex.map(e=>({id:e.id,i:e.i,a:e.a,w:e.w,cu:inv.cur,at:e.at})),rm:P.rm.map(r=>({id:r.id,i:r.i,x:r.x,at:r.at}))};
+    let show=all?{st,ex:P.ex,rm:P.rm}:{st:nst,ex:nex,rm:nrm};let L=['*'+(inv.sh||inv.nm)+' — team update*','From '+me.n+' · '+this.pjWhen(Date.now()),''];
+    show.st.forEach(c=>{let i=byId(c.i);L.push((c.s==='done'?'✓ ':c.s==='issue'?'⚠ ':'• ')+(i.title||'Step')+(i.start?' ('+i.start+')':'')+' — '+(c.s==='issue'?(c.is||'problem'):(this.PJ_ST[c.s]||['updated'])[0].toLowerCase()));});
+    show.ex.forEach(e=>{let i=byId(e.i);L.push('💸 '+this.money(e.a,inv.cur)+' — '+e.w+' ('+(i.title||'step')+')');});
+    show.rm.forEach(r=>{let i=byId(r.i);L.push('📝 '+(i.title||'Step')+': '+r.x);});
+    this.pjPack(u).then(code=>{L.push('','Tap to add it to CTB ERP:',(inv.app||this.pjAppUrl())+'#upd='+code);let to=(inv.to&&inv.to.n)||'the office';
+      this.showMsg(L.join('\n'),'📤 Update for '+to,{wa:(inv.to&&inv.to.wa)||'',note:'“WhatsApp” opens a chat with '+to+'. The link adds everything to CTB ERP.',onSend:()=>this.tmMarkSent(inv.pid)});})
+      .catch(e=>{console.error(e);this.toast('The update couldn’t be made — please try again','err');});},
+  tmMarkSent(pid){let S=this.tmLoad();let P=S.pj[pid];if(!P)return;Object.values(P.st).forEach(c=>{c.sent=true;});P.ex.forEach(e=>{e.sent=true;});P.rm.forEach(r=>{r.sent=true;});P.last=Date.now();this.tmSave(S);this.tmRender();},
   /* ===== HOTEL RESERVATION LETTER ===== */
   fillHrBookings(){let el=document.getElementById('hrBooking');if(!el)return;let cur=el.value;
     let opts=this.d.bookings.slice().sort((a,b)=>b.created-a.created).map(b=>{let who=(b.billTo&&b.billTo.name)||b.groupName||b.clientName||'—';let pax=this.personGroups(this.bookingPax(b)).length;return `<option value="${b.id}">${this.esc(b.docNo)} · ${this.esc(who)} · ${this.esc(b.type)}${pax?' ('+pax+' pax)':''}</option>`;}).join('');
@@ -8076,8 +8500,9 @@ Rules for every kind: never invent prices, names, passport numbers or dates — 
     let c=[st.phone,st.email].filter(Boolean).join(' | ');
     if(c){L.push('');L.push(c);}
     this.showMsg(L.join('\n'));},
-  showMsg(t,title){let el=document.getElementById('txtBody');if(el)el.value=t;let h=document.getElementById('txtTitle');if(h)h.innerText=title||'💬 Message Summary';txtModal.classList.add('show');},
-  copyMsg(){let el=document.getElementById('txtBody');if(!el)return;
+  showMsg(t,title,o){o=o||{};this._txtO=o;let el=document.getElementById('txtBody');if(el){el.value=t;el.scrollTop=0;}let h=document.getElementById('txtTitle');if(h)h.innerText=title||'💬 Message Summary';let n=document.getElementById('txtNote');if(n)n.textContent=o.note||'Plain text ready to paste into WhatsApp, Line or email. Edit it if you like, then copy.';txtModal.classList.add('show');if(el)el.scrollTop=0;let mc=txtModal.querySelector('.modal-card');if(mc)mc.scrollTop=0;},
+  waMsg(){let el=document.getElementById('txtBody');if(!el)return;let o=this._txtO||{};let n=o.wa?this.pjWa(o.wa):'';window.open('https://wa.me/'+n+'?text='+encodeURIComponent(el.value),'_blank','noopener');if(o.onSend)try{o.onSend();}catch(e){console.error(e);}},
+  copyMsg(){let el=document.getElementById('txtBody');if(!el)return;if(this._txtO&&this._txtO.onSend)try{this._txtO.onSend();}catch(e){console.error(e);}
     try{el.select();el.setSelectionRange(0,999999);}catch(e){}
     let done=false;
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(el.value).then(()=>{this.toast('Copied — paste into WhatsApp or Line','ok');}).catch(()=>{try{document.execCommand('copy');this.toast('Copied','ok');}catch(e2){this.toast('Press Ctrl+C / Cmd+C to copy','err');}});done=true;}
@@ -12040,7 +12465,7 @@ Rules for every kind: never invent prices, names, passport numbers or dates — 
     if(exDate)exDate.value=new Date().toISOString().slice(0,10);
   }
 };
-CtbLock.boot(function(){App.init();try{App.pjAlarmStart();App.pjBellUpdate();}catch(e){console.error(e);}try{App.lockCard();}catch(e){console.error(e);}});
+if(!App.tmStart())CtbLock.boot(function(){App.init();try{App.pjAlarmStart();App.pjBellUpdate();}catch(e){console.error(e);}try{App.lockCard();}catch(e){console.error(e);}try{App.pjInbox();}catch(e){console.error(e);}});
 </script>
 <div id="rowMenu" class="rowmenu"></div>
 </body>
