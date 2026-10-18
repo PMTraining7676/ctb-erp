@@ -1451,12 +1451,73 @@ tr.pv-org td{background:var(--surface2);padding-top:9px;padding-bottom:7px;font-
 .cal-pjt{font-weight:700;font-variant-numeric:tabular-nums;min-width:44px}
 .cal-pjo{font-size:12px;white-space:nowrap}
 @media (max-width:760px){.pj-gap{margin-left:0}.pj-alarms{right:12px;left:12px;width:auto;bottom:76px}.pj-bellp{right:10px;left:10px;width:auto;top:110px}.cal-pjo{display:none}}
+/* ===== PASSCODE LOCK ===== */
+.lk-on body{overflow:hidden}
+.lk{position:fixed;inset:0;z-index:30000;display:flex;align-items:center;justify-content:center;padding:28px 16px;overflow:auto;
+  background:radial-gradient(900px 520px at 18% -8%,rgba(217,165,32,.16),transparent 60%),linear-gradient(165deg,#1B2A4A 0%,#141E33 55%,#0E1627 100%);color:#1B2230}
+.lk-box{width:min(410px,100%);display:flex;flex-direction:column;gap:16px;margin:auto}
+.lk-brand{display:flex;align-items:center;gap:12px;color:#fff;padding:0 4px}
+.lk-logo{width:44px;height:44px;border-radius:11px;background:linear-gradient(145deg,#E2B23A,#B8860B);color:#141E33;font-weight:800;font-size:14px;letter-spacing:.02em;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.28)}
+.lk-brand b{display:block;font-size:16px;line-height:1.2}
+.lk-brand small{display:block;color:#AEB8CC;font-size:12px;margin-top:2px}
+.lk-card{background:#fff;border-radius:16px;padding:26px 24px 18px;box-shadow:0 28px 70px rgba(0,0,0,.38);display:flex;flex-direction:column}
+.lk-card[hidden]{display:none}
+.lk-ic{font-size:26px;line-height:1;margin-bottom:12px}
+.lk h1{font-size:21px;line-height:1.25;margin:0 0 6px;color:#141E33;font-weight:750;letter-spacing:-.01em}
+.lk h2{font-size:18px;line-height:1.3;margin:0 0 10px;color:#141E33;font-weight:750}
+.lk-sub,.lk-erase p{margin:0 0 16px;color:#5B6576;font-size:13.5px;line-height:1.55}
+.lk-erase p{margin-bottom:10px}
+.lk-lab{display:block;font-size:12px;font-weight:650;color:#5B6576;margin:4px 0 6px}
+.lk-in{display:flex;align-items:stretch;border:1.5px solid #CDD3DC;border-radius:10px;background:#fff;overflow:hidden;transition:border-color .15s,box-shadow .15s}
+.lk-in:focus-within{border-color:#B8860B;box-shadow:0 0 0 3px rgba(184,134,11,.2)}
+.lk .lk-in input{flex:1;min-width:0;width:auto;border:0;border-radius:0;outline:0;padding:12px 13px;font-size:16px;background:transparent;color:#141E33;letter-spacing:.04em}
+.lk .lk-in input:focus{border:0}
+.lk .lk-eye{border:0;border-radius:0;background:transparent;color:#5B6576;font-size:12.5px;font-weight:650;padding:0 14px;cursor:pointer}
+.lk .lk-eye:hover{background:#F3F4F6;color:#141E33}
+.lk-msg{min-height:20px;font-size:13px;line-height:1.45;color:#B3261E;margin:8px 0 6px}
+.lk .lk-go{border:0;border-radius:10px;padding:12px 16px;font-size:15px;font-weight:700;background:#B8860B;color:#fff;cursor:pointer;transition:filter .15s}
+.lk .lk-go:hover{filter:brightness(1.06)}
+.lk .lk-go[disabled]{opacity:.62;cursor:default;filter:none}
+.lk .lk-link{align-self:center;margin-top:12px;border:0;background:none;color:#234BB0;font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:2px;cursor:pointer;padding:4px 6px}
+.lk .lk-txt{width:100%;border:1.5px solid #CDD3DC;border-radius:10px;padding:11px 12px;font-size:15px;letter-spacing:.08em;background:#fff;color:#141E33}
+.lk .lk-txt:focus{border-color:#B3261E;outline:0}
+.lk-row{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:14px;flex-wrap:wrap}
+.lk-row .lk-link{margin-top:0}
+.lk .lk-danger{border:0;border-radius:10px;padding:11px 14px;font-size:14px;font-weight:700;background:#B3261E;color:#fff;cursor:pointer}
+.lk .lk-danger[disabled]{opacity:.4;cursor:not-allowed}
+.lk-foot{margin:0;color:#8C97AB;font-size:11.5px;text-align:center}
+.lk .pj-alarms{z-index:1}
+@media (prefers-color-scheme:dark){
+  .lk{--surface:#182236;--surface2:#1F2B42;--border:#33415A;--text:#E6E9EF;--muted:#A9B2C3}
+  .lk-card{background:#182236;color:#E6E9EF;box-shadow:0 28px 70px rgba(0,0,0,.55)}
+  .lk h1,.lk h2{color:#F1F3F7}
+  .lk-sub,.lk-erase p,.lk-lab{color:#A9B2C3}
+  .lk-in{background:#0F1726;border-color:#33415A}
+  .lk .lk-in input{color:#F1F3F7}
+  .lk .lk-eye{color:#A9B2C3}.lk .lk-eye:hover{background:#1F2B42;color:#fff}
+  .lk .lk-txt{background:#0F1726;border-color:#33415A;color:#F1F3F7}
+  .lk .lk-link{color:#8AB4FF}
+  .lk-msg{color:#FF8A80}
+}
+@media (max-width:480px){.lk{padding:20px 12px;align-items:flex-start}.lk-card{padding:22px 18px 16px}.lk h1{font-size:19px}}
+/* the lock in Settings and the top bar */
+.lk-topbtn{padding:6px 10px;font-size:14px;line-height:1.1}
+.lk-topbtn[hidden]{display:none}
+.lk-st{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 10px;border-radius:999px;margin-left:8px;vertical-align:2px;letter-spacing:.01em}
+.lk-st.on{background:#E7F6EC;color:#15803D}
+.lk-st.off{background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
+[data-theme="dark"] .lk-st.on{background:rgba(22,163,74,.18);color:#86EFAC}
+.lk-ctl{display:flex;gap:10px 22px;flex-wrap:wrap;align-items:flex-end;margin:4px 0 14px}
+.lk-ctl .field{margin:0;min-width:240px}
+.lk-ctl .chk{margin-bottom:9px}
+.lk-note{font-size:12.5px;color:var(--muted);line-height:1.55;margin:12px 0 0}
+.lk-ferr{color:var(--red);font-size:12.5px;line-height:1.45;min-height:18px}
 </style>
 </head>
 <body>
 <div class="app">
   <div class="sidebar">
-    <div class="brand"><div class="logo">CTB</div><div><h2>CTB Thailand</h2><small>ERP Pro · build 2026.10.18</small></div></div>
+    <div class="brand"><div class="logo">CTB</div><div><h2>CTB Thailand</h2><small>ERP Pro · build 2026.10.18.2</small></div></div>
     <div class="nav" id="nav">
       <a class="active" data-page="dashboard"><span class="ico">📊</span> Dashboard</a>
       <a data-page="projects"><span class="ico">🗂</span> Training Projects</a>
@@ -1511,7 +1572,7 @@ tr.pv-org td{background:var(--surface2);padding-top:9px;padding-bottom:7px;font-
 
   <div class="main">
     <div class="topbar"><h1 id="pageTitle">Dashboard<div id="pageHint" class="muted" style="font-size:12px;font-weight:400;margin-top:2px"></div></h1>
-      <div class="actions"><button class="ghost sm pj-bellbtn" id="pjBellBtn" type="button" onclick="App.pjBellToggle(event)" aria-label="Alerts" title="Alerts and alarms">🔔<span class="pj-bellnum" id="pjBellNum" hidden>0</span></button><button class="ok sm" id="topSmart" title="Paste a client’s message or describe what you need — it fills the right form" onclick="App.smOpen('any')">✨ Smart fill</button><button class="ghost sm" id="topBackup" title="Download a backup of all your data" onclick="App.backupJSON()">⬇ Backup</button><span class="muted" style="font-size:12px">Dark</span>
+      <div class="actions"><button class="ghost sm pj-bellbtn" id="pjBellBtn" type="button" onclick="App.pjBellToggle(event)" aria-label="Alerts" title="Alerts and alarms">🔔<span class="pj-bellnum" id="pjBellNum" hidden>0</span></button><button class="ghost sm lk-topbtn" id="lkTopBtn" type="button" onclick="CtbLock.lockNow()" title="Lock the app now" aria-label="Lock the app now" hidden>🔒</button><button class="ok sm" id="topSmart" title="Paste a client’s message or describe what you need — it fills the right form" onclick="App.smOpen('any')">✨ Smart fill</button><button class="ghost sm" id="topBackup" title="Download a backup of all your data" onclick="App.backupJSON()">⬇ Backup</button><span class="muted" style="font-size:12px">Dark</span>
         <label class="switch"><input type="checkbox" id="darkToggle"><span class="slider"></span></label>
         <button class="ghost sm" onclick="App.exportCSV()">⬇ Export CSV</button></div>
     </div>
@@ -2579,6 +2640,7 @@ tr.pv-org td{background:var(--surface2);padding-top:9px;padding-bottom:7px;font-
 
         <button class="ok" style="margin-top:14px" onclick="App.saveSettings()">💾 Save Settings</button>
       </div>
+      <div class="card" id="lockCard"></div>
       <div class="card"><h3>Data &amp; Backup</h3>
         <p class="muted" style="font-size:13px;margin-top:-6px">Saved automatically in this browser. <b>Backup</b> often (keep the file in Google Drive); <b>Restore</b> to load it back on any computer.</p>
         <div class="row-flex">
@@ -3612,6 +3674,240 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var n,r,i,a,
 </script>
 <script>
 const KEY='ctb_erp_v3';
+/* ===== PASSCODE LOCK =====
+   When the lock is on, the data on this device is saved encrypted (AES-GCM, 256-bit key). The key is made from
+   the passcode with PBKDF2-SHA-256 (600,000 rounds) and is kept only in memory while the app is open — it is never
+   saved anywhere. Without the passcode the saved data can't be read. */
+const CtbLock=(function(){
+  const LK='ctb_erp_lock',TRY='ctb_lock_tries',SCH='ctb_lock_alarms',PING='ctb_lock_ping',FIRED='ctb_pj_fired',IT=600000,CHK='ctb-erp-ok';
+  let key=null,hdr=null,startOn=null,dead=false,busy=false,want=null,warned=false,onOpen=null,last=Date.now(),autoT=null,alT=null,waitT=null,
+      chain=Promise.resolve(),inerted=[],title0=null,ac=null;
+  let reload=()=>{try{location.reload();}catch(e){}};
+  const LS=()=>{try{return window.localStorage;}catch(e){return null;}};
+  const SS=()=>{try{return window.sessionStorage;}catch(e){return null;}};
+  const get=k=>{try{let s=LS();return s?s.getItem(k):null;}catch(e){return null;}};
+  const del=k=>{try{let s=LS();if(s)s.removeItem(k);}catch(e){}};
+  const $=id=>document.getElementById(id);
+  const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const enc=s=>new TextEncoder().encode(s),dec=u=>new TextDecoder().decode(u);
+  const b64=u=>{let s='';for(let i=0;i<u.length;i+=0x8000)s+=String.fromCharCode.apply(null,u.subarray(i,i+0x8000));return btoa(s);};
+  const unb64=s=>{let b=atob(s),u=new Uint8Array(b.length);for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return u;};
+  const rnd=n=>crypto.getRandomValues(new Uint8Array(n));
+  const run=fn=>{let p=chain.then(fn,fn);chain=p.catch(()=>{});return p;};   /* one storage job at a time */
+  function supported(){try{return !!(window.crypto&&window.crypto.subtle&&typeof TextEncoder!=='undefined'&&typeof TextDecoder!=='undefined'&&typeof atob==='function'&&window.isSecureContext!==false);}catch(e){return false;}}
+  async function pump(rs){let r=rs.getReader(),parts=[],n=0;for(;;){let x=await r.read();if(x.done)break;parts.push(x.value);n+=x.value.length;}
+    let out=new Uint8Array(n),o=0;for(const p of parts){out.set(p,o);o+=p.length;}return out;}
+  async function gz(u,undo){let s=undo?new DecompressionStream('gzip'):new CompressionStream('gzip');let w=s.writable.getWriter();
+    w.write(u).catch(()=>{});w.close().catch(()=>{});return pump(s.readable);}
+  async function derive(pass,salt,it){let base=await crypto.subtle.importKey('raw',enc(pass),'PBKDF2',false,['deriveKey']);
+    return crypto.subtle.deriveKey({name:'PBKDF2',hash:'SHA-256',salt:unb64(salt),iterations:it||IT},base,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);}
+  async function seal(str,k,plain){let u=enc(str),z='';
+    if(!plain&&typeof CompressionStream!=='undefined'){try{u=await gz(u);z='gzip';}catch(e){u=enc(str);z='';}}
+    let iv=rnd(12);let ct=new Uint8Array(await crypto.subtle.encrypt({name:'AES-GCM',iv},k,u));return {z,iv:b64(iv),ct:b64(ct)};}
+  async function open(box,k){let u=new Uint8Array(await crypto.subtle.decrypt({name:'AES-GCM',iv:unb64(box.iv)},k,unb64(box.ct)));
+    if(box.z==='gzip')u=await gz(u,true);return dec(u);}
+  async function fits(k,vf){try{return (await open(vf,k))===CHK;}catch(e){return false;}}
+  async function fresh(pass){let salt=b64(rnd(16));let k=await derive(pass,salt,IT);let vf=await seal(CHK,k,true);
+    return {k,h:{v:1,app:'ctb-erp',kdf:{n:'PBKDF2',h:'SHA-256',it:IT,salt},vf}};}
+
+  /* ----- saving: every save is encrypted with the key in memory; nothing is written in plain text ----- */
+  function startLocked(){if(startOn===null)startOn=!!get(LK);return startOn;}
+  function claims(){return dead||!!key||startLocked();}
+  function save(data){if(dead||!key)return false;want=JSON.stringify(data);if(!busy){busy=true;run(flush);}return true;}
+  async function flush(){
+    try{while(want!==null&&!dead){let j=want;want=null;
+        if(!key){try{LS().setItem(KEY,j);warned=false;}catch(e){full();}continue;}   /* the lock was turned off meanwhile */
+        let k=key,h=hdr,box=await seal(j,k);if(dead)return;
+        if(k!==key){if(want===null)want=j;continue;}                                      /* the passcode changed meanwhile */
+        try{LS().setItem(LK,JSON.stringify(Object.assign({},h,box,{at:Date.now()})));warned=false;}catch(e){full();}}}
+    catch(e){console.error('[lock] save',e);try{App.toast('⚠ The last change couldn’t be saved — download a backup now','err');}catch(_){}}
+    finally{busy=false;if(want!==null&&!dead){busy=true;run(flush);}}}
+  function full(){if(warned)return;warned=true;try{App.toast('⚠ Browser storage is full — your latest change is kept in memory but NOT saved. Download a backup now, then remove large attachments to free space.','err');}catch(e){}}
+  function idle(){return new Promise(r=>{let t=()=>(!busy&&want===null)?r():setTimeout(t,25);t();});}
+
+  /* ----- turning the lock on, changing the passcode, turning it off ----- */
+  function enable(pass){if(key||dead||!supported())return Promise.reject(new Error('state'));
+    return run(async()=>{let json=JSON.stringify(Store.data),n=await fresh(pass),box=await seal(json,n.k);
+      if((await open(box,n.k))!==json)throw new Error('verify');
+      let e=JSON.stringify(Object.assign({},n.h,box,{at:Date.now()})),s=LS();
+      try{s.setItem(LK,e);}catch(x){try{s.removeItem(KEY);s.setItem(LK,e);}catch(y){try{s.removeItem(LK);}catch(_){}try{s.setItem(KEY,json);}catch(_){}throw new Error('full');}}
+      if(s.getItem(LK)!==e){try{s.removeItem(LK);s.setItem(KEY,json);}catch(_){}throw new Error('verify');}
+      s.removeItem(KEY);key=n.k;hdr=n.h;startOn=true;startAuto();ui();return true;});}
+  async function change(cur,nw){if(!key||dead)throw new Error('state');
+    let k0=await derive(cur,hdr.kdf.salt,hdr.kdf.it);if(!(await fits(k0,hdr.vf)))return false;
+    await run(async()=>{let json=JSON.stringify(Store.data),n=await fresh(nw),box=await seal(json,n.k);
+      if((await open(box,n.k))!==json)throw new Error('verify');
+      let e=JSON.stringify(Object.assign({},n.h,box,{at:Date.now()})),s=LS(),old=s.getItem(LK);
+      try{s.setItem(LK,e);}catch(x){throw new Error('full');}
+      if(s.getItem(LK)!==e){try{if(old)s.setItem(LK,old);}catch(_){}throw new Error('verify');}
+      key=n.k;hdr=n.h;});
+    return true;}
+  async function disable(cur){if(!key||dead)throw new Error('state');
+    let k0=await derive(cur,hdr.kdf.salt,hdr.kdf.it);if(!(await fits(k0,hdr.vf)))return false;
+    await run(async()=>{let json=JSON.stringify(Store.data),s=LS(),old=s.getItem(LK);
+      try{s.setItem(KEY,json);}catch(x){try{s.removeItem(LK);s.setItem(KEY,json);}catch(y){try{s.removeItem(KEY);}catch(_){}try{if(old)s.setItem(LK,old);}catch(_){}throw new Error('full');}}
+      if(s.getItem(KEY)!==json){try{s.removeItem(KEY);if(old)s.setItem(LK,old);}catch(_){}throw new Error('verify');}
+      s.removeItem(LK);key=null;hdr=null;startOn=false;stopAuto();ui();});
+    return true;}
+  function wipe(){dead=true;key=null;[LK,KEY,TRY,FIRED].forEach(del);try{let s=SS();if(s)s.removeItem(SCH);}catch(e){}}
+
+  /* ----- locked backups: the same encryption, so a backup file opens only with the passcode ----- */
+  function backupLocked(){let s=(Store.data&&Store.data.settings)||{};return !!key&&!dead&&s.lockBackup!==false;}
+  async function backupFile(data){if(!key)throw new Error('state');let box=await seal(JSON.stringify(data),key);
+    return JSON.stringify(Object.assign({ctbErpBackup:'locked',v:1,app:'CTB ERP',made:new Date().toISOString(),kdf:hdr.kdf,vf:hdr.vf},box));}
+  async function openBackup(o,pass){if(!o||!o.kdf||!o.vf||!o.ct)throw new Error('bad');let k;
+    if(key&&hdr&&o.kdf.salt===hdr.kdf.salt)k=key;
+    else{if(pass==null)return {need:1};k=await derive(String(pass).trim(),o.kdf.salt,o.kdf.it);if(!(await fits(k,o.vf)))return {wrong:1};}
+    return {data:JSON.parse(await open(o,k))};}
+
+  /* ----- locking: save, keep today's alarm list for the lock screen, then reload so nothing stays in memory ----- */
+  async function lockNow(why){if(!key||dead)return;try{await run(()=>{});await idle();}catch(e){}
+    let s=schedule();try{let ss=SS();if(ss){if(s)ss.setItem(SCH,JSON.stringify(s));else ss.removeItem(SCH);}}catch(e){}
+    if(why!=='auto'&&why!=='ping')try{LS().setItem(PING,String(Date.now()));}catch(e){}
+    dead=true;key=null;reload();}
+  const EV=['pointerdown','keydown','wheel','touchstart','mousemove','scroll'];
+  function poke(){last=Date.now();}
+  function mins(){let s=(Store.data&&Store.data.settings)||{};return s.lockAuto==null?30:(+s.lockAuto||0);}
+  function check(){if(!key||dead)return;let m=mins();if(m>0&&Date.now()-last>=m*60000)lockNow('auto');}
+  function startAuto(){if(startAuto.on)return;startAuto.on=1;last=Date.now();EV.forEach(e=>window.addEventListener(e,poke,{passive:true,capture:true}));
+    document.addEventListener('visibilitychange',check);window.addEventListener('focus',check);autoT=setInterval(check,15000);}
+  function stopAuto(){if(!startAuto.on)return;startAuto.on=0;EV.forEach(e=>window.removeEventListener(e,poke,{capture:true}));
+    document.removeEventListener('visibilitychange',check);window.removeEventListener('focus',check);clearInterval(autoT);}
+  /* other tabs of the app: follow a lock turned on/off, a changed passcode, or “Lock now” */
+  function watch(){if(watch.on)return;watch.on=1;
+    window.addEventListener('storage',e=>{try{
+      if(e.key===PING){if(key)lockNow('ping');return;}
+      if(e.key!==null&&e.key!==LK)return;
+      let v=e.key===null?null:e.newValue;
+      if(key){if(!v){dead=true;key=null;reload();return;}let m=/"salt":"([^"]+)"/.exec(v.slice(0,800));if(!m||m[1]!==hdr.kdf.salt){dead=true;key=null;reload();}return;}
+      if(startOn){if(!v)reload();return;}
+      if(v){dead=true;reload();}}catch(err){}});
+    window.addEventListener('beforeunload',e=>{if(key&&(busy||want!==null)){e.preventDefault();e.returnValue='';}});}
+  function ui(){let b=$('lkTopBtn');if(b)b.hidden=!key;}
+
+  /* ----- the alarm list the lock screen keeps: only times, step names and who is responsible ----- */
+  function schedule(){try{if(typeof App==='undefined'||!App.pjAlarmCfg)return null;let c=App.pjAlarmCfg();if(!c.on)return null;
+      let now=Date.now(),t0=App.pjToday(),out=[];
+      App.pjAll().forEach(p=>{if(p.cancelled)return;let sp=App.pjSpan(p),A=sp[0],Z=sp[1];if(!A)return;
+        [t0,App.isoAdd(t0,1)].forEach(t=>{if(t<A||t>Z)return;
+          App.pjItemsOn(p,t).forEach(i=>{if(i.st==='done'||i.st==='cancelled'||!i.start)return;let lead=App.pjLead(i,c);if(lead==null)return;
+            let st=new Date(t+'T'+i.start+':00').getTime();if(isNaN(st)||st+600000<=now)return;let K=App.PJ_KINDS[i.kind]||App.PJ_KINDS.other,o=App.pjMember(p,i.owner);
+            out.push({k:'s|'+p.id+'|'+i.id+'|'+t+'|'+i.start,at:st-lead*60000,st,end:st+600000,ic:K[0],h:i.title||K[1],
+              sub:[i.start+(i.end?'–'+i.end:''),i.place].filter(Boolean).join(' · '),who:o?o.name:'',ph:(o&&o.phone)||'',pj:App.pjShort(p)});});
+          if(c.flights)App.pjFlightGroups(p,t).forEach(g=>{let st=new Date(t+'T'+g.time+':00').getTime();if(isNaN(st)||st<=now)return;
+            let o=App.pjTransferOwner(p,t,g.type),fl=g.flight||'The flight',n=g.people.length;
+            out.push({k:'f|'+p.id+'|'+g.type+'|'+t+'|'+g.time+'|'+g.flight,at:st-(g.type==='arr'?60:180)*60000,st,end:st,fl:1,ic:g.type==='arr'?'✈️':'🛫',
+              h:fl+(g.type==='arr'?' lands':' takes off'),sub:(g.type==='arr'?'Lands ':'Takes off ')+g.time+' · '+n+' participant'+(n>1?'s':''),who:o?o.name:'',ph:(o&&o.phone)||'',pj:App.pjShort(p)});});});});
+      out.sort((a,b)=>a.at-b.at);return out.length?{v:1,sound:c.sound!==false,desktop:!!c.desktop,list:out.slice(0,60)}:null;}
+    catch(e){console.error('[lock] alarm list',e);return null;}}
+  function dur(m){m=Math.max(0,Math.round(m));if(m<60)return m+' min';let h=Math.floor(m/60),r=m%60;return h+' h'+(r?' '+r+' min':'');}
+  function audioOn(){try{let C=window.AudioContext||window.webkitAudioContext;if(C&&!ac)ac=new C();if(ac&&ac.state==='suspended')ac.resume();}catch(e){}}
+  function beep(){try{let C=window.AudioContext||window.webkitAudioContext;if(!C)return;ac=ac||new C();if(ac.state==='suspended')ac.resume();let t0=ac.currentTime+0.02;
+      [0,0.32,0.64].forEach((dt,i)=>{let o=ac.createOscillator(),g=ac.createGain();o.type='sine';o.frequency.value=i===2?1046.5:880;
+        g.gain.setValueAtTime(0.0001,t0+dt);g.gain.exponentialRampToValueAtTime(0.25,t0+dt+0.02);g.gain.exponentialRampToValueAtTime(0.0001,t0+dt+0.26);
+        o.connect(g);g.connect(ac.destination);o.start(t0+dt);o.stop(t0+dt+0.3);});}catch(e){}}
+  function ring(a,S){let box=$('lkAlarms');if(!box)return;let m=Math.round((a.st-Date.now())/60000);
+    let head=(a.fl||m>0)?a.h+' in '+dur(m):(m===0?a.h+' — starting now':a.h+' started '+dur(-m)+' ago');let tel=a.ph?String(a.ph).replace(/[^\d+]/g,''):'';
+    let el=document.createElement('div');el.className='pj-alarm';el.setAttribute('role','alert');el.dataset.key=a.k;
+    el.innerHTML=`<div class="pj-al-h"><span class="pj-al-ic" aria-hidden="true">${esc(a.ic||'🔔')}</span><div class="pj-al-t"><b>${esc(head)}</b><small>${esc(a.sub||'')}</small></div><button type="button" class="pj-al-x" aria-label="Dismiss" title="Dismiss">×</button></div>
+      <div class="pj-al-b">${esc(a.pj||'')}${a.who?`<div class="pj-al-o"><span class="pj-al-on"><b>${esc(a.who)}</b> is responsible${a.ph?`<small>${esc(a.ph)}</small>`:''}</span>${tel?`<span class="pj-calls"><a class="pj-ph" href="tel:${esc(tel)}" title="Call ${esc(a.who)}" aria-label="Call ${esc(a.who)}">📞</a></span>`:''}</div>`:''}</div>
+      <div class="pj-al-a"><button type="button" class="ok sm" data-a="open">Unlock</button><button type="button" class="ghost sm" data-a="snooze">Snooze 5 min</button></div>`;
+    el.querySelector('.pj-al-x').onclick=()=>el.remove();
+    el.querySelector('[data-a="open"]').onclick=()=>{el.remove();side(false);try{$('lkPass').focus();}catch(e){}};
+    el.querySelector('[data-a="snooze"]').onclick=()=>{el.remove();setTimeout(()=>{if($('ctbLock'))ring(a,S);},300000);};
+    [...box.querySelectorAll('.pj-alarm')].filter(x=>x.dataset.key===a.k).forEach(x=>x.remove());box.prepend(el);[...box.querySelectorAll('.pj-alarm')].slice(4).forEach(x=>x.remove());
+    if(S.sound!==false)beep();
+    if(S.desktop)try{if(window.Notification&&Notification.permission==='granted'){let n=new Notification((a.ic?a.ic+' ':'')+head,{body:[a.sub,a.who?a.who+' is responsible':''].filter(Boolean).join(' — '),tag:a.k});n.onclick=()=>{try{window.focus();}catch(e){}n.close();};}}catch(e){}
+    if(document.hidden){if(title0===null)title0=document.title;document.title='🔔 '+head;}}
+  function alarms(){let S=null;try{let ss=SS();S=JSON.parse((ss&&ss.getItem(SCH))||'null');}catch(e){}if(!S||!Array.isArray(S.list)||!S.list.length)return;
+    let tick=()=>{let F={};try{F=JSON.parse(get(FIRED)||'{}')||{};}catch(e){}let now=Date.now(),ch=0;
+      S.list.forEach(a=>{if(now>=a.at&&now<a.end&&!F[a.k]){F[a.k]=now;ch=1;ring(a,S);}});
+      if(ch)try{LS().setItem(FIRED,JSON.stringify(F));}catch(e){}};
+    tick();clearInterval(alT);alT=setInterval(tick,20000);}
+
+  /* ----- the lock screen ----- */
+  function msg(t){let m=$('lkMsg');if(m)m.textContent=t||'';}
+  function tries(){try{let t=JSON.parse(get(TRY)||'null');if(t&&typeof t.n==='number')return {n:t.n,until:+t.until||0};}catch(e){}return {n:0,until:0};}
+  function wait(until){let go=$('lkGo');clearInterval(waitT);
+    let f=()=>{let s=Math.ceil((until-Date.now())/1000);if(s<=0){clearInterval(waitT);if(go)go.disabled=false;msg('');return;}
+      if(go)go.disabled=true;msg('Too many wrong tries — try again in '+Math.floor(s/60)+':'+String(s%60).padStart(2,'0')+'.');};
+    f();waitT=setInterval(f,1000);}
+  function side(erase){let f=$('lkForm'),x=$('lkErase');if(!f||!x)return;f.hidden=!!erase;x.hidden=!erase;
+    setTimeout(()=>{try{(erase?$('lkEraseIn'):$('lkPass')).focus();}catch(e){}},20);}
+  async function unlock(pass){let raw=get(LK);if(!raw)return {gone:1};let env;try{env=JSON.parse(raw);}catch(e){return {damaged:1};}
+    if(!env||!env.kdf||!env.vf||!env.ct)return {damaged:1};
+    let k=await derive(pass,env.kdf.salt,env.kdf.it);
+    if(!(await fits(k,env.vf))){let t=tries(),n=t.n+1,until=0;if(n%5===0)until=Date.now()+Math.min(900000,30000*Math.pow(2,n/5-1));
+      try{LS().setItem(TRY,JSON.stringify({n,until}));}catch(e){}return {wrong:1,n,until};}
+    let data;try{data=JSON.parse(await open(env,k));}catch(e){return {damaged:1};}
+    if(!data||typeof data!=='object'||!data.settings)return {damaged:1};
+    del(TRY);key=k;hdr={v:env.v||1,app:'ctb-erp',kdf:env.kdf,vf:env.vf};Store.data=data;Store.migrate();return {ok:1};}
+  async function submit(){let inp=$('lkPass'),go=$('lkGo');if(!inp||!go||go.disabled)return;let p=(inp.value||'').trim();
+    if(!p){msg('Enter your passcode.');inp.focus();return;}
+    let t=tries();if(t.until>Date.now()){wait(t.until);return;}
+    go.disabled=true;go.textContent='Checking…';msg('');
+    let r;try{r=await unlock(p);}catch(e){console.error('[lock] unlock',e);r={err:1};}
+    if(r.ok){inp.value='';done();return;}
+    go.disabled=false;go.textContent='Unlock';
+    if(r.gone){reload();return;}
+    if(r.wrong){try{inp.select();}catch(e){}if(r.until)wait(r.until);else msg(r.n%5===4?'That passcode isn’t right. One more wrong try and you’ll have to wait.':'That passcode isn’t right.');}
+    else if(r.damaged)msg('The passcode is right, but the saved data can’t be read — it may be damaged. Choose “Forgot the passcode?” to erase it, then restore your latest backup.');
+    else msg('Something went wrong — please try again.');}
+  function done(){let ov=$('ctbLock');if(ov)ov.remove();document.documentElement.classList.remove('lk-on');
+    inerted.forEach(([el,ah])=>{el.removeAttribute('inert');if(ah===null)el.removeAttribute('aria-hidden');else el.setAttribute('aria-hidden',ah);});inerted=[];
+    clearInterval(alT);clearInterval(waitT);try{let s=SS();if(s)s.removeItem(SCH);}catch(e){}if(title0!==null){document.title=title0;title0=null;}
+    startAuto();try{if(onOpen)onOpen();}catch(e){console.error(e);}ui();stray();}
+  /* data written without the lock by an older copy of the app (for example opened offline): save it as a file, then remove it */
+  function stray(){let raw=get(KEY);if(!raw)return;let d=null;try{d=JSON.parse(raw);}catch(e){}let n=0;
+    if(d&&typeof d==='object')['bookings','clients','people','projects','bills','expenses','vpays','receipts'].forEach(k=>{if(Array.isArray(d[k]))n+=d[k].length;});
+    if(n){try{App.download('ctb_unlocked_copy_'+new Date().toISOString().slice(0,10)+'.json',raw,'application/json');
+        setTimeout(()=>{try{App.toast('Found data saved without the passcode (from an older copy of the app) — it was downloaded as a file and removed from this device','ok');}catch(e){}},600);}catch(e){return;}}
+    del(KEY);}
+  /* everything behind the lock screen is out of reach (also for keyboards and screen readers) */
+  function hideRest(){if(!$('ctbLock'))return;[...document.body.children].forEach(el=>{if(el.id!=='ctbLock'&&!el.hasAttribute('inert')){inerted.push([el,el.getAttribute('aria-hidden')]);el.setAttribute('inert','');el.setAttribute('aria-hidden','true');}});}
+  function show(){let ov=document.createElement('div');ov.id='ctbLock';ov.className='lk';ov.setAttribute('role','dialog');ov.setAttribute('aria-modal','true');ov.setAttribute('aria-labelledby','lkT');
+    ov.innerHTML=`<div class="lk-box">
+      <div class="lk-brand"><span class="lk-logo" aria-hidden="true">CTB</span><span><b>CTB Thailand</b><small>ERP Pro</small></span></div>
+      <form class="lk-card" id="lkForm" autocomplete="off" novalidate>
+        <div class="lk-ic" aria-hidden="true">🔒</div>
+        <h1 id="lkT">The app is locked</h1>
+        <p class="lk-sub">Enter your passcode to open the data on this device.</p>
+        <label class="lk-lab" for="lkPass">Passcode</label>
+        <div class="lk-in"><input id="lkPass" type="password" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="go"><button type="button" class="lk-eye" id="lkEye" aria-controls="lkPass" aria-pressed="false">Show</button></div>
+        <div class="lk-msg" id="lkMsg" role="alert" aria-live="assertive"></div>
+        <button type="submit" class="lk-go" id="lkGo">Unlock</button>
+        <button type="button" class="lk-link" id="lkForgot">Forgot the passcode?</button>
+      </form>
+      <div class="lk-card lk-erase" id="lkErase" hidden>
+        <h2>Forgot the passcode?</h2>
+        <p>Without it, nobody can open the data on this device — that’s what keeps it safe.</p>
+        <p>If you have a backup, you can erase the locked data here, then restore the backup in <b>Settings → Data &amp; Backup</b>.</p>
+        <label class="lk-lab" for="lkEraseIn">Type ERASE to confirm</label>
+        <input id="lkEraseIn" class="lk-txt" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false">
+        <div class="lk-row"><button type="button" class="lk-link" id="lkBack">← Back</button><button type="button" class="lk-danger" id="lkEraseGo" disabled>Erase the data on this device</button></div>
+      </div>
+      <p class="lk-foot">The data on this device is encrypted.</p>
+    </div>
+    <div id="lkAlarms" class="pj-alarms" aria-live="assertive"></div>`;
+    document.body.appendChild(ov);document.documentElement.classList.add('lk-on');hideRest();
+    if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',hideRest);
+    $('lkForm').addEventListener('submit',e=>{e.preventDefault();submit();});
+    $('lkEye').addEventListener('click',()=>{let i=$('lkPass'),s=i.type==='password';i.type=s?'text':'password';$('lkEye').textContent=s?'Hide':'Show';$('lkEye').setAttribute('aria-pressed',String(s));i.focus();});
+    $('lkForgot').addEventListener('click',()=>side(true));$('lkBack').addEventListener('click',()=>side(false));
+    $('lkEraseIn').addEventListener('input',e=>{$('lkEraseGo').disabled=e.target.value.trim().toUpperCase()!=='ERASE';});
+    $('lkEraseGo').addEventListener('click',()=>{if($('lkEraseIn').value.trim().toUpperCase()!=='ERASE')return;wipe();reload();});
+    document.addEventListener('pointerdown',audioOn,{once:true,capture:true});
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden&&title0!==null){document.title=title0;title0=null;}});
+    if(!supported()){msg('This browser can’t open the locked data. Use a current Chrome, Edge, Safari or Firefox, from the app’s https web address.');$('lkGo').disabled=true;$('lkPass').disabled=true;}
+    else{let t=tries();if(t.until>Date.now())wait(t.until);setTimeout(()=>{try{$('lkPass').focus();}catch(e){}},30);}
+    alarms();}
+  function boot(cb){onOpen=cb;watch();if(!startLocked()){cb();ui();return;}show();}
+
+  return {supported,startLocked,claims,save,boot,lockNow,enable,change,disable,wipe,backupLocked,backupFile,openBackup,idle,ui,poke,
+    active:()=>!!key,
+    _t:{setReload(f){reload=f;},state:()=>({key:!!key,busy,want:want!==null,dead,startOn,last}),setLast(t){last=t;},check,schedule,alarms,unlock,submit}};
+})();
+
 const ROOM_TYPES=['Single','Twin Sharing','Double','Triple Sharing','Quad Sharing','5-Bed Sharing','6-Bed Dormitory','Family','Studio','Suite','Junior Suite','Connecting'];
 const PAY_METHODS=['Cash','Bank Transfer','Credit Card','Debit Card','Cheque','Online / QR'];
 const DOC_TYPES=['Tax Invoice','Pro Forma Invoice','Quotation'];
@@ -3656,9 +3952,9 @@ const Store={data:null,
      if(S.hrFooter==='[HOTEL NAME] · Reservation Confirmation — we look forward to welcoming you.')S.hrFooter=def.settings.hrFooter;}},
   load(){let d=null;try{const r=localStorage.getItem(KEY);d=r?JSON.parse(r):null;}catch(e){}
     if(!d&&window.__ctb_mem)d=window.__ctb_mem;this.data=d||defaultData();this.migrate();},
-  save(){window.__ctb_mem=this.data;try{localStorage.setItem(KEY,JSON.stringify(this.data));window.__ctb_quota=false;return true;}catch(e){if(!window.__ctb_quota){window.__ctb_quota=true;try{if(window.App&&App.toast)App.toast('⚠ Browser storage is full — your latest change is kept in memory but NOT saved to disk. Export a JSON backup now (Settings → Backup), then remove large bill/font attachments to free space.','err');else if(typeof alert==='function')alert('Browser storage is full. Export a JSON backup and remove large attachments to free space.');}catch(_){}}return false;}}
+  save(){window.__ctb_mem=this.data;if(CtbLock.claims())return CtbLock.save(this.data);try{localStorage.setItem(KEY,JSON.stringify(this.data));window.__ctb_quota=false;return true;}catch(e){if(!window.__ctb_quota){window.__ctb_quota=true;try{if(window.App&&App.toast)App.toast('⚠ Browser storage is full — your latest change is kept in memory but NOT saved to disk. Export a JSON backup now (Settings → Backup), then remove large bill/font attachments to free space.','err');else if(typeof alert==='function')alert('Browser storage is full. Export a JSON backup and remove large attachments to free space.');}catch(_){}}return false;}}
 };
-Store.load();
+if(CtbLock.startLocked())Store.data=defaultData();else Store.load();
 
 const App={
   hotelRooms:[],roomEditIdx:null,groupPool:[],editId:{hotel:null,tour:null,hall:null,training:null},pendingMergeIds:null,pendingReceiptIds:null,hrLogoData:'',hrSigData:'',hrSealData:'',hrMapData:'',atOrgLogoData:'',atLoadedBookingId:null,
@@ -3752,6 +4048,7 @@ const App={
       ai:()=>this.aiInit(),
       studio:()=>this.cardInit(),
       people:()=>{this.clearPersonForm();this.renderPeople();},
+      settings:()=>this.lockCard(),
       merch:()=>{this.clearMerchForm();this.renderMerch();this.renderMoves();}}[page]||(()=>{}))();},
 
   fillSelects(){let b=this.base();this.refreshGuestList();this.refreshGroupList();this.fillHallServices();this.tplRefresh();
@@ -5268,6 +5565,73 @@ const App={
       ${its.length?its.map(i=>{let K=this.PJ_KINDS[i.kind]||this.PJ_KINDS.other;let o=this.pjMember(p,i.owner);let S=this.PJ_ST[i.st]||this.PJ_ST.planned;
         return `<div class="pick-row cal-pjrow"><span class="cal-pjt">${esc(i.start||'—')}</span><span aria-hidden="true">${K[0]}</span><span style="flex:1;min-width:0"><b>${esc(i.title||K[1])}</b>${i.place?' <span class="muted">· '+esc(i.place)+'</span>':''}</span><span class="muted cal-pjo">${o?esc(o.name):'No one responsible'}</span>${i.st!=='planned'?`<span class="pill ${S[1]}">${S[0]}</span>`:''}</div>`;}).join('')
         :`<p class="muted pj-small">No steps planned for this day.</p>`}</div>`;},
+  /* ===== PASSCODE LOCK — the card in Settings and its windows ===== */
+  LOCK_AUTO:[['5','5 minutes without use'],['15','15 minutes without use'],['30','30 minutes without use'],['60','1 hour without use'],['240','4 hours without use'],['0','Only when I lock it or close the app']],
+  lockAutoText(m){m=+m;return m>=60?(m/60)+' hour'+(m>60?'s':''):m+' minutes';},
+  lockCard(){let el=document.getElementById('lockCard');if(!el)return;let s=this.d.settings,on=CtbLock.active();
+    if(!CtbLock.supported()){el.innerHTML='<h3>🔒 Passcode lock</h3><p class="muted" style="font-size:13px;margin-top:-6px">This browser can’t lock the data. Open the app from its web address (https) in a current Chrome, Edge, Safari or Firefox to use the passcode lock.</p>';return;}
+    let au=s.lockAuto==null?30:+s.lockAuto;
+    el.innerHTML=on?`<h3>🔒 Passcode lock <span class="lk-st on">On</span></h3>
+      <p class="muted" style="font-size:13px;margin-top:-6px">The data on this device is encrypted (AES-256). The app asks for the passcode each time it opens${au?', and after '+this.lockAutoText(au)+' without use':''}.</p>
+      <div class="lk-ctl"><div class="field"><label for="lkAuto">Lock automatically</label><select id="lkAuto" onchange="App.lockSetAuto(this.value)">${this.LOCK_AUTO.map(o=>`<option value="${o[0]}"${+o[0]===au?' selected':''}>${o[1]}</option>`).join('')}</select></div>
+        <label class="chk"><input type="checkbox" id="lkBk"${s.lockBackup===false?'':' checked'} onchange="App.lockSetBackup(this.checked)"> Lock backups with the passcode too</label></div>
+      <div class="row-flex"><button class="ok" type="button" onclick="CtbLock.lockNow()">🔒 Lock now</button><button class="ghost" type="button" onclick="App.lockChange()">Change passcode</button><button class="ghost" type="button" onclick="App.lockOff()">Turn off</button></div>
+      <p class="lk-note"><b>If you forget the passcode, the data on this device can’t be opened.</b> Keep a recent backup somewhere safe${s.lockBackup===false?'':' — a locked backup opens with the passcode that was in use when it was made'}.</p>
+      <p class="lk-note">While the app is locked, alarms still pop up. To do that, it keeps the times, names and person responsible for today’s and tomorrow’s steps until you unlock — never client, money or passport details.</p>`
+     :`<h3>🔒 Passcode lock <span class="lk-st off">Off</span></h3>
+      <p class="muted" style="font-size:13px;margin-top:-6px">Protect the data on this device. Once the lock is on, everything the app saves here is encrypted, and it asks for your passcode each time it opens.</p>
+      <div class="row-flex"><button class="ok" type="button" onclick="App.lockOn()">🔒 Turn on passcode lock</button></div>
+      <p class="lk-note">Each computer or phone keeps its own data, so set up the lock on every device you use.</p>`;},
+  lockErr(m){let e=document.getElementById('lkFormErr'),open=document.getElementById('pjModal');
+    if(e&&open&&open.classList.contains('show'))e.textContent=m||'';else if(m)this.toast(m,'err');return false;},
+  lockBusy(on,t){let b=document.getElementById('pjmOk');if(!b)return;
+    if(on){b.dataset.t=b.textContent;b.textContent=t||'…';b.disabled=true;}else{b.disabled=false;if(b.dataset.t){b.textContent=b.dataset.t;delete b.dataset.t;}}},
+  lockFields(ac){ac.forEach((a,i)=>{let x=document.getElementById('pjf_'+i);if(x){x.setAttribute('autocomplete',a);x.setAttribute('spellcheck','false');x.setAttribute('autocapitalize','off');}});},
+  lockOn(){if(CtbLock.active())return;if(!CtbLock.supported()){this.toast('This browser can’t lock the data — open the app from its https web address','err');return;}
+    this.pjAsk({title:'🔒 Turn on passcode lock',intro:'Choose a passcode for this device — at least 8 characters. A short sentence, or a mix of words and numbers, works best. Don’t let the browser save it.',
+      fields:[{k:'p1',label:'New passcode',type:'password',full:true},{k:'p2',label:'Type it again',type:'password',full:true},
+        {k:'auto',label:'Lock automatically',type:'select',full:true,value:'30',options:this.LOCK_AUTO},
+        {k:'bk',label:'Lock backups with the passcode too',type:'check',value:true},
+        {k:'ok',label:'I understand: if I forget this passcode, the data on this device can’t be opened. I’ll keep a backup.',type:'check',value:false},
+        {k:'_e',type:'html',html:'<div class="lk-ferr" id="lkFormErr" role="alert" aria-live="assertive"></div>'}],ok:'🔒 Turn on',
+      onSave:v=>{if(v.p1.length<8)return this.lockErr('Use at least 8 characters.');if(v.p1!==v.p2)return this.lockErr('The two passcodes are different — type them again.');
+        if(!v.ok)return this.lockErr('Tick the box to confirm you’ll keep a backup.');
+        let s=this.d.settings,old=[s.lockAuto,s.lockBackup];s.lockAuto=+v.auto;s.lockBackup=!!v.bk;this.lockErr('');this.lockBusy(true,'Encrypting…');
+        CtbLock.enable(v.p1).then(()=>{this.lockBusy(false);this.pjModalClose(true);Store.save();this.lockCard();this.toast('Passcode lock is on — the data on this device is now encrypted','ok');})
+          .catch(err=>{s.lockAuto=old[0];s.lockBackup=old[1];this.lockBusy(false);
+            this.lockErr(err&&err.message==='full'?'There isn’t enough browser storage to encrypt the data — download a backup and remove large attachments first. Nothing was changed.':'The lock couldn’t be turned on. Nothing was changed.');});
+        return false;}});
+    this.lockFields(['new-password','new-password']);},
+  lockChange(){if(!CtbLock.active())return;
+    this.pjAsk({title:'Change passcode',intro:'Locked backups you made before still open with the old passcode.',
+      fields:[{k:'cur',label:'Current passcode',type:'password',full:true},{k:'p1',label:'New passcode — at least 8 characters',type:'password',full:true},{k:'p2',label:'Type the new one again',type:'password',full:true},
+        {k:'_e',type:'html',html:'<div class="lk-ferr" id="lkFormErr" role="alert" aria-live="assertive"></div>'}],ok:'Change passcode',
+      onSave:v=>{if(!v.cur)return this.lockErr('Enter your current passcode.');if(v.p1.length<8)return this.lockErr('Use at least 8 characters for the new passcode.');
+        if(v.p1!==v.p2)return this.lockErr('The two new passcodes are different — type them again.');this.lockErr('');this.lockBusy(true,'Changing…');
+        CtbLock.change(v.cur,v.p1).then(ok=>{this.lockBusy(false);if(!ok)return this.lockErr('The current passcode isn’t right.');this.pjModalClose(true);this.toast('Passcode changed','ok');})
+          .catch(err=>{this.lockBusy(false);this.lockErr(err&&err.message==='full'?'There isn’t enough browser storage to do this — download a backup first. Your passcode is still the old one.':'Something went wrong — your passcode is still the old one.');});
+        return false;}});
+    this.lockFields(['current-password','new-password','new-password']);},
+  lockOff(){if(!CtbLock.active())return;
+    this.pjAsk({title:'Turn off the passcode lock',intro:'The data on this device will be saved without encryption again, and the app will open without asking for a passcode.',
+      fields:[{k:'cur',label:'Passcode',type:'password',full:true},{k:'_e',type:'html',html:'<div class="lk-ferr" id="lkFormErr" role="alert" aria-live="assertive"></div>'}],ok:'Turn off',
+      onSave:v=>{if(!v.cur)return this.lockErr('Enter your passcode.');this.lockErr('');this.lockBusy(true,'Turning off…');
+        CtbLock.disable(v.cur).then(ok=>{this.lockBusy(false);if(!ok)return this.lockErr('That passcode isn’t right.');this.pjModalClose(true);this.lockCard();this.toast('Passcode lock is off','ok');})
+          .catch(err=>{this.lockBusy(false);this.lockErr(err&&err.message==='full'?'There isn’t enough browser storage to do this — download a backup first. The lock is still on.':'Something went wrong — the lock is still on.');});
+        return false;}});
+    this.lockFields(['current-password']);},
+  lockSetAuto(v){this.d.settings.lockAuto=+v;Store.save();CtbLock.poke();this.lockCard();
+    this.toast(+v?'The app will lock after '+this.lockAutoText(+v)+' without use':'The app will lock only when you lock it or close it','ok');},
+  lockSetBackup(on){this.d.settings.lockBackup=!!on;Store.save();this.lockCard();this.toast(on?'Backups will be locked with your passcode':'Backups will be saved without the passcode — keep them somewhere private','ok');},
+  lockAskBackup(o){return new Promise(res=>{let done=false;
+    this.pjAsk({title:'🔒 Locked backup',intro:'This backup is locked. Enter the passcode that was in use when it was made.',
+      fields:[{k:'p',label:'Passcode',type:'password',full:true},{k:'_e',type:'html',html:'<div class="lk-ferr" id="lkFormErr" role="alert" aria-live="assertive"></div>'}],ok:'Open the backup',
+      onCancel:()=>{if(!done){done=true;res(null);}},
+      onSave:v=>{if(!v.p)return this.lockErr('Enter the passcode.');this.lockErr('');this.lockBusy(true,'Opening…');
+        CtbLock.openBackup(o,v.p).then(r=>{this.lockBusy(false);if(!r||!r.data)return this.lockErr('That passcode doesn’t open this backup.');done=true;this.pjModalClose(true);res(r.data);})
+          .catch(()=>{this.lockBusy(false);done=true;this.pjModalClose(true);this.toast('This backup file is damaged and can’t be opened','err');res(null);});
+        return false;}});
+    this.lockFields(['off']);});},
   /* ===== HOTEL RESERVATION LETTER ===== */
   fillHrBookings(){let el=document.getElementById('hrBooking');if(!el)return;let cur=el.value;
     let opts=this.d.bookings.slice().sort((a,b)=>b.created-a.created).map(b=>{let who=(b.billTo&&b.billTo.name)||b.groupName||b.clientName||'—';let pax=this.personGroups(this.bookingPax(b)).length;return `<option value="${b.id}">${this.esc(b.docNo)} · ${this.esc(who)} · ${this.esc(b.type)}${pax?' ('+pax+' pax)':''}</option>`;}).join('');
@@ -10830,7 +11194,8 @@ Rules for every kind: never invent prices, names, passport numbers or dates — 
     let h=['Title','Client','Value','Currency','Stage','Probability%','Status','Source','Owner','Expected Close','Quotation','Invoice','Training','Notes','Created'];
     let rows=deals.map(d=>[d.title,this.dealClientName(d),d.value||0,d.currency||'',d.stage,PIPE_PROB[d.stage]||'',d.closedReason||'open',d.source||'',d.owner||'',d.expClose||'',nm(d.quoteId),nm(d.invoiceId),nm(d.trainingId),d.notes||'',new Date(d.created).toISOString().slice(0,10)].map(v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"').join(','));
     this.download('CTB-pipeline_'+new Date().toISOString().slice(0,10)+'.csv',[h.join(','),...rows].join('\n'),'text/csv');this.toast('Pipeline exported','ok');},
-  backupJSON(){this.download('ctb_backup_'+new Date().toISOString().slice(0,10)+'.json',JSON.stringify(this.d,null,2),'application/json');
+  backupJSON(){if(CtbLock.backupLocked()){CtbLock.backupFile(this.d).then(t=>{this.download('ctb_backup_'+new Date().toISOString().slice(0,10)+'_locked.json',t,'application/json');this.d.settings.lastBackup=new Date().toISOString().slice(0,10);Store.save();this.renderBackupAlert();this.toast('Locked backup downloaded — it opens only with your passcode','ok');}).catch(()=>this.toast('The backup couldn’t be made — please try again','err'));return;}
+    this.download('ctb_backup_'+new Date().toISOString().slice(0,10)+'.json',JSON.stringify(this.d,null,2),'application/json');
     this.d.settings.lastBackup=new Date().toISOString().slice(0,10);Store.save();this.renderBackupAlert();this.toast('Backup downloaded — keep it in Google Drive or email it to yourself','ok');},
   daysSinceBackup(){let lb=this.d.settings.lastBackup;if(!lb)return null;
     let d=Math.floor((new Date().setHours(0,0,0,0)-new Date(lb).setHours(0,0,0,0))/86400000);return isNaN(d)?null:d;},
@@ -11368,12 +11733,18 @@ Rules for every kind: never invent prices, names, passport numbers or dates — 
   cardFontUpload(input){let f=input.files[0];if(!f)return;let rd=new FileReader();rd.onload=e=>{try{let ff=new FontFace('CardCustom',e.target.result);ff.load().then(face=>{document.fonts.add(face);let has=false;for(let i=0;i<cardFont.options.length;i++)if(cardFont.options[i].value==='CardCustom')has=true;if(!has){let opt=document.createElement('option');opt.value='CardCustom';opt.textContent='★ My Uploaded Font';cardFont.appendChild(opt);}cardFont.value='CardCustom';this.drawCard();this.toast('Font loaded into the design','ok');}).catch(()=>this.toast('Could not read that font file','err'));}catch(err){this.toast('Invalid font file','err');}};rd.readAsArrayBuffer(f);input.value='';},
   cardDownload(){let cv=document.getElementById('cardCanvas');if(!cv)return;this.drawCard();try{let url=cv.toDataURL('image/png');let a=document.createElement('a');a.href=url;a.download='CTB-'+(cardOcc.value||'card')+'-'+Date.now()+'.png';a.click();this.toast('PNG downloaded','ok');}catch(e){this.toast('Export failed: '+(e.message||''),'err');}},
   cardPrint(){let cv=document.getElementById('cardCanvas');if(!cv)return;this.drawCard();let url;try{url=cv.toDataURL('image/png');}catch(e){return this.toast('Print failed','err');}this.printHTML('<div style="text-align:center;padding:0"><img src="'+url+'" style="max-width:100%;height:auto"></div>');},
-  restoreJSON(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const data=JSON.parse(r.result);if(!data||!data.settings||!Array.isArray(data.bookings))throw new Error('bad');if(!confirm('This replaces ALL current data. Continue?')){e.target.value='';return;}Store.data=data;Store.migrate();Store.save();this.refreshAll();this.toast('Backup restored','ok');}catch(err){this.toast('Invalid backup file','err');}e.target.value='';};r.readAsText(f);},
+  restoreJSON(e){const f=e.target.files[0];if(!f)return;const inp=e.target;const r=new FileReader();
+    r.onload=()=>{let data=null;try{data=JSON.parse(r.result);}catch(err){}inp.value='';
+      const use=d=>{try{if(!d||!d.settings||!Array.isArray(d.bookings))throw new Error('bad');if(!confirm('This replaces ALL current data. Continue?'))return;Store.data=d;Store.migrate();Store.save();this.refreshAll();this.lockCard();this.toast('Backup restored','ok');}catch(err){this.toast('Invalid backup file','err');}};
+      if(data&&data.ctbErpBackup==='locked'){if(!CtbLock.supported()){this.toast('This browser can’t open locked backups — use a current browser on the app’s https address','err');return;}
+        CtbLock.openBackup(data).then(x=>x&&x.data?x.data:this.lockAskBackup(data)).then(d=>{if(d)use(d);}).catch(()=>this.toast('This backup file is damaged and can’t be opened','err'));}
+      else use(data);};
+    r.readAsText(f);},
   download(name,content,mime){mime=mime||'application/octet-stream';
     try{var U=window.URL||window.webkitURL;if(U&&U.createObjectURL){var blob=new Blob([content],{type:mime});var url=U.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download=name;a.style.display='none';document.body.appendChild(a);a.click();setTimeout(function(){try{a.remove();U.revokeObjectURL(url);}catch(e){}},1500);return;}}catch(e){}
     try{var a2=document.createElement('a');a2.href='data:'+mime+';charset=utf-8,'+encodeURIComponent(content);a2.download=name;a2.style.display='none';document.body.appendChild(a2);a2.click();setTimeout(function(){try{a2.remove();}catch(e){}},1500);}
     catch(e2){if(this.toast)this.toast('Download not supported in this browser — try a different browser','err');}},
-  resetAll(){if(!confirm('This wipes ALL data permanently. Continue?'))return;Store.data=defaultData();Store.save();location.reload();},
+  resetAll(){if(!confirm('This wipes ALL data permanently. Continue?'))return;if(CtbLock.active()){CtbLock.wipe();location.reload();return;}Store.data=defaultData();Store.save();location.reload();},
   loadDemo(){let d=Store.data;
     d.hotels.push({id:101,name:'Omni Tower Serviced Apartments',address:'69/55 Soi Sukhumvit 4, Bangkok 10110',phone:'063 505 0506',notes:'Contracted rate'});
     d.clients.push({id:1,name:'ISINEPAL',company:'ISINEPAL Pvt. Ltd.',taxId:'',email:'info@isinepal.org',phone:'+977 1 4000000',country:'Nepal',address:'Kathmandu',type:'NGO/INGO',notes:'Group bookings'});
@@ -11669,8 +12040,7 @@ Rules for every kind: never invent prices, names, passport numbers or dates — 
     if(exDate)exDate.value=new Date().toISOString().slice(0,10);
   }
 };
-App.init();
-try{App.pjAlarmStart();App.pjBellUpdate();}catch(e){console.error(e);}
+CtbLock.boot(function(){App.init();try{App.pjAlarmStart();App.pjBellUpdate();}catch(e){console.error(e);}try{App.lockCard();}catch(e){console.error(e);}});
 </script>
 <div id="rowMenu" class="rowmenu"></div>
 </body>

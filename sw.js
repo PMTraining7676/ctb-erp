@@ -1,11 +1,11 @@
 /* CTB ERP service worker — network-first so updates arrive automatically,
    with full offline fallback from cache. Your data is NOT stored here; it
    lives in the browser's localStorage and is untouched by this file. */
-const CACHE = 'ctb-erp-v1';
+const CACHE = 'ctb-erp-v2'; /* new name for each release: the old cache is cleared and the new files are fetched fresh */
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS.map((u) => new Request(u, { cache: 'reload' })))).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', (e) => {
