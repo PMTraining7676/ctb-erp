@@ -7,6 +7,8 @@ Business app for Corporate Training Bangkok: bookings, training projects, invoic
 - Works in any modern browser, and can be installed on a phone or computer (Install / Add to Home Screen).
 - Your data is saved in the browser on each device — it is not stored on GitHub. Use **Backup** to save a copy, and **Restore from Backup** to move it to another device.
 - **Team updates:** in a training project, **Team → 📲 Invite** sends a team member the run sheet on WhatsApp. On their phone they mark steps done and add expenses and remarks; **📤 Send update** brings the changes back to you on WhatsApp. Nothing is stored on a server.
+- **Letters from your records:** invitation and confirmation letters fill in the participants, designations, passports, programme, dates and fees from the training.
+- **Merchandise per training:** each training project has a **Merchandise** tab — the kit per participant, what was handed out, what is short, supplier orders and a packing list. The Merchandise / Stock page shows every training's needs.
 - Turn on **Settings → Passcode lock** on each device: the data there is then encrypted (AES-256) and the app asks for the passcode when it opens.
 - To update the app, upload the new `index.html` here; it goes live within a few minutes.
 
