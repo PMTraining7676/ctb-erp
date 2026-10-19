@@ -6,7 +6,8 @@ Business app for Corporate Training Bangkok: bookings, training projects, invoic
 
 - Works in any modern browser, and can be installed on a phone or computer (Install / Add to Home Screen).
 - Your data is saved in the browser on each device — it is not stored on GitHub. Use **Backup** to save a copy, and **Restore from Backup** to move it to another device.
-- **Team updates:** in a training project, **Team → 📲 Invite** sends a team member the run sheet on WhatsApp. On their phone they mark steps done and add expenses and remarks; **📤 Send update** brings the changes back to you on WhatsApp. Nothing is stored on a server.
+- **Online team and Admin Panel:** team leads get their own login (email and password, made by the admin). On their phone they see only the projects shared with them; every step marked done, problem, expense and remark reaches the admin instantly — with a sound, a popup, the bell, and a phone notification. The **Admin Panel** shows all activity live, who is online, and lets the admin add people, make new passwords, share projects, and remove access at once. It runs on the company's own free Supabase project; the database rules (row level security) decide what each person can see.
+- **Team updates without a login:** in a training project, **Team → 📲 Invite** still sends a team member the run sheet on WhatsApp, and **📤 Send update** brings their changes back on WhatsApp.
 - **Letters from your records:** invitation and confirmation letters fill in the participants, designations, passports, programme, dates and fees from the training.
 - **Merchandise per training:** each training project has a **Merchandise** tab — the kit per participant, what was handed out, what is short, supplier orders and a packing list. The Merchandise / Stock page shows every training's needs.
 - Turn on **Settings → Passcode lock** on each device: the data there is then encrypted (AES-256) and the app asks for the passcode when it opens.
