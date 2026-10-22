@@ -1822,6 +1822,20 @@ tr.pv-org td{background:var(--surface2);padding-top:9px;padding-bottom:7px;font-
 .ad-conn .ad-adv{margin-top:6px;border-top:1px solid var(--line);padding-top:8px}
 details.ad-adv-steps>summary{font-size:13.5px;color:var(--text)}
 details.ad-adv-steps[open]>summary{margin-bottom:12px}
+/* choosing a new password from the email link, and "Forgot your password?" */
+.rc-card h1{font-size:21px}
+.rc-ok{width:46px;height:46px;border-radius:50%;background:#dcfce7;color:#15803d;font-size:24px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:4px}
+[data-theme="dark"] .rc-ok{background:rgba(34,197,94,.16);color:#86efac}
+.rc-user{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:0!important;border:0!important;opacity:0;pointer-events:none;overflow:hidden;clip-path:inset(50%)}
+.rc-tip{margin:6px 0 0;font-size:12.5px;color:var(--muted);line-height:1.45}
+.ad-forgot{margin:0;text-align:center}.ad-forgot .linkbtn{font-size:12.5px}
+.ad-fg-note{margin:8px 0 0;font-size:12.5px;line-height:1.5;color:#166534;background:#dcfce7;border-radius:8px;padding:8px 10px}
+.ad-fg-note[hidden]{display:none}
+[data-theme="dark"] .ad-fg-note{background:rgba(34,197,94,.14);color:#86efac}
+/* every passcode / password box with a Show button: the box shrinks with the screen (a 320–390 px phone never scrolls sideways) */
+.lk-in input{flex:1 1 0;width:0;min-width:0}
+/* phones: a wide table scrolls inside its card instead of widening the whole page (and the lock screen with it) */
+.card:has(>table){overflow-x:auto}
 /* ----- the team lead's phone ----- */
 .tm-si{max-width:440px;margin:0 auto;padding:28px 18px 30px;display:flex;flex-direction:column;gap:18px}
 .tm-si-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px 18px;display:flex;flex-direction:column;gap:6px;box-shadow:var(--pop)}
@@ -1830,7 +1844,7 @@ details.ad-adv-steps[open]>summary{margin-bottom:12px}
 .tm-si-card label{font-size:12px;font-weight:600;color:var(--muted);margin-top:6px}
 .tm-si-card input{font-size:16px;padding:11px 12px}
 .tm-si-card .lk-in{background:var(--surface);border-color:var(--border)}
-.tm-si-card .lk-in input{flex:1;min-width:0;width:auto;border:0;border-radius:0;box-shadow:none;outline:0;background:transparent;padding:11px 12px;font-size:16px}
+.tm-si-card .lk-in input{flex:1 1 0;min-width:0;width:0;border:0;border-radius:0;box-shadow:none;outline:0;background:transparent;padding:11px 12px;font-size:16px}
 .tm-si-card .lk-in input:focus{border:0;box-shadow:none}
 .tm-si-card .lk-eye{border:0;border-radius:0;background:transparent;color:var(--muted);font-size:12.5px;font-weight:650;padding:0 14px}
 .tm-si-msg{min-height:20px;color:var(--red);font-size:13px;font-weight:600;margin-top:4px}
@@ -1854,7 +1868,7 @@ details.ad-adv-steps[open]>summary{margin-bottom:12px}
 <body>
 <div class="app">
   <div class="sidebar">
-    <div class="brand"><div class="logo">CTB</div><div><h2>CTB Thailand</h2><small>ERP Pro · build 2026.10.20</small></div></div>
+    <div class="brand"><div class="logo">CTB</div><div><h2>CTB Thailand</h2><small>ERP Pro · build 2026.10.22</small></div></div>
     <div class="nav" id="nav">
       <a class="active" data-page="dashboard"><span class="ico">📊</span> Dashboard</a>
       <a data-page="projects"><span class="ico">🗂</span> Training Projects</a>
@@ -4316,11 +4330,11 @@ const CtbNet=(function(){
     return refreshing;}
   async function token(){if(!sess)return null;if(sess.exp-now()<60)await refresh(true);return sess?sess.at:null;}
   /* ---------- talking to the project ---------- */
-  async function raw(method,path,o){o=o||{};if(!cfg)return {ok:false,status:0,code:'setup',message:'Not connected',data:null};
-    let h={apikey:cfg.key};let t=o.noUser?null:(o.token||(sess&&sess.at));if(t)h.Authorization='Bearer '+t;else if(isJwt(cfg.key))h.Authorization='Bearer '+cfg.key;
+  async function raw(method,path,o){o=o||{};let C=o.cfg||cfg;if(!C)return {ok:false,status:0,code:'setup',message:'Not connected',data:null};
+    let h={apikey:C.key};let t=o.noUser?null:(o.token||(o.cfg?null:(sess&&sess.at)));if(t)h.Authorization='Bearer '+t;else if(isJwt(C.key))h.Authorization='Bearer '+C.key;
     if(o.body!==undefined)h['Content-Type']='application/json';if(o.prefer)h.Prefer=o.prefer;if(/^\/auth\//.test(path))h['X-Supabase-Api-Version']='2024-01-01';
     let ctl=typeof AbortController!=='undefined'?new AbortController():null;let tm=ctl?setTimeout(()=>ctl.abort(),o.timeout||20000):null;let res;
-    try{res=await fetch(cfg.url+path,{method,headers:h,body:o.body===undefined?undefined:JSON.stringify(o.body),signal:ctl?ctl.signal:undefined,cache:'no-store'});}
+    try{res=await fetch(C.url+path,{method,headers:h,body:o.body===undefined?undefined:JSON.stringify(o.body),signal:ctl?ctl.signal:undefined,cache:'no-store'});}
     catch(e){return {ok:false,status:0,code:'network',message:navigator.onLine===false?'No internet connection':'The online service can’t be reached',data:null};}
     finally{if(tm)clearTimeout(tm);}
     let txt='';try{txt=await res.text();}catch(e){}let data=null;try{data=txt?JSON.parse(txt):null;}catch(e){data=txt;}
@@ -4346,6 +4360,11 @@ const CtbNet=(function(){
     if(!r.ok||!r.data||!r.data.access_token){if(!sess)cfg=old&&okCfg(old)?old:c;return {ok:false,status:r.status,code:r.code||(r.status?'failed':'network'),message:r.message};}
     if(sess&&sess.uid&&r.data.user&&r.data.user.id!==sess.uid){rtStop();}
     take(r.data,em);me=null;lastRole='';await save();plan();emit('signedin');return {ok:true};}
+  /* forgotten password: Supabase emails a one-time link back to this app, where the person chooses a new password (see App.rcStart) */
+  async function recover(c,email,redirect){c={url:cleanUrl(c&&c.url),key:String((c&&c.key)||'').trim()};if(!okCfg(c))return {ok:false,status:0,code:'setup',message:'Check the project address and key'};
+    return raw('POST','/auth/v1/recover?redirect_to='+encodeURIComponent(redirect||appUrl()),{cfg:c,noUser:true,body:{email:String(email||'').trim().toLowerCase()}});}
+  function setPassword(c,token,password){return raw('PUT','/auth/v1/user',{cfg:c,token,body:{password:String(password||'')}});}
+  function dropToken(c,token){return raw('POST','/auth/v1/logout?scope=local',{cfg:c,token,timeout:6000}).catch(()=>null);}
   async function signOut(){let t=sess&&sess.at;if(t&&cfg)raw('POST','/auth/v1/logout?scope=local',{token:t,timeout:6000}).catch(()=>{});lost('signout');}
   function clear(){sess=null;me=null;cfg=null;lastEmail='';lastRole='';lastName='';clearTimeout(planT);rtStop();try{LS().removeItem(SK);}catch(e){}emit('signedout','cleared');}
   function setMe(m){me=m||null;if(me){lastRole=me.role||'';lastName=me.name||'';}save();emit('me',me);}
@@ -4399,7 +4418,7 @@ const CtbNet=(function(){
   function wake(){if(!sess)return;if(sess.exp-now()<120)refresh(true).catch(()=>{});if(RT.want&&!RT.ws){RT.tries=0;clearTimeout(RT.retryT);rtConnect();}emit('wake');}
   try{window.addEventListener('online',wake);document.addEventListener('visibilitychange',()=>{if(!document.hidden)wake();});window.addEventListener('focus',wake);}catch(e){}
 
-  return {load,signIn,signOut,clear,refresh,token,api,get,post,patch,del,rpc,fn,setMe,cleanUrl,okCfg,appUrl,
+  return {load,signIn,signOut,clear,refresh,token,api,get,post,patch,del,rpc,fn,setMe,cleanUrl,okCfg,appUrl,recover,setPassword,dropToken,
     persist:save,stored:read,ready:()=>!!sess,cfg:()=>cfg,me:()=>me,uid:()=>sess?sess.uid:'',email:()=>(sess&&sess.email)||lastEmail,role:()=>me?me.role:lastRole,
     on(f){L.add(f);return ()=>L.delete(f);},rtOn,rtOff,rtStop,rtState:()=>RT.state,wake,
     _t:{RT,sess:()=>sess,kill(){if(RT.ws)try{RT.ws.close();}catch(e){}}}};
@@ -6795,7 +6814,7 @@ const App={
     else{this.d.stockmoves.push(m);Store.save();}
     this.closeStockModal();this.renderMerch();this.renderMoves();this.toast(type==='in'?('Added '+qty+' to stock'):('Issued '+qty+(p?' to '+(this.mkWho(p)||p.name):'')),'ok');},
   /* ===== ONLINE TEAM: every team update arrives at once (sound, popup, bell, phone notification), the Admin Panel ===== */
-  olBuild(){return '2026.10.20';},
+  olBuild(){return '2026.10.22';},
   olD(){let d=this.d;let o=d.online;if(!o||typeof o!=='object'||Array.isArray(o))o=d.online={};if(!Array.isArray(o.feed))o.feed=[];
     ['applied','shared','pub'].forEach(k=>{if(!o[k]||typeof o[k]!=='object'||Array.isArray(o[k]))o[k]={};});o.read=+o.read||0;o.cur=+o.cur||0;if(o.sound===undefined)o.sound=true;return o;},
   olIsAdmin(){let m=CtbNet.me();return !!(CtbNet.ready()&&m&&m.status==='active'&&m.role==='admin');},
@@ -7019,6 +7038,8 @@ const App={
         <div class="field"><label for="adPw">Password</label><input id="adPw" type="password" autocomplete="current-password"></div>
         <div class="ad-err" id="adErr" role="alert">${esc(this._adSiErr||'')}</div>
         <button class="ok" type="submit" id="adGo">${built?'Sign in':'Connect and sign in'}</button>
+        <p class="ad-forgot"><button type="button" class="linkbtn" id="adForgot" onclick="App.adForgot()">Forgot your password?</button></p>
+        <p class="ad-fg-note" id="adFgNote" role="status"${this._adFgMsg?'':' hidden'}>${esc(this._adFgMsg||'')}</p>
         `;
     if(built)return `<div class="card ad-hero"><div><h2>Your online team</h2><p>Team leads sign in on their own phones. Every step they mark done, every problem, expense and remark reaches you here <b>the moment they send it</b> — with a sound — and on your phone as a notification. You decide who has access, and you can take it away instantly.</p></div><span class="ad-hero-ic" aria-hidden="true">🛡️</span></div>
       <div class="ad-one"><form class="card ad-conn" onsubmit="event.preventDefault();App.adConnect()"><h3>Sign in to the Admin Panel</h3>
@@ -7030,6 +7051,17 @@ const App={
       <div class="ad-cols"><div class="card ad-steps"><h3>Set up once — about 10 minutes</h3><ol>${steps}</ol></div>
       <form class="card ad-conn" onsubmit="event.preventDefault();App.adConnect()"><h3>Connect and sign in</h3>
         ${fields}${login}<p class="muted pj-small">The project URL and the publishable key are safe in the app — the database rules decide what each person may see. Never paste the <b>secret</b> key anywhere.</p></form></div>`;},
+  /* forgotten admin password: Supabase emails a link; the app's own page (App.rcStart) lets the person choose a new one */
+  async adForgot(){let g=id=>document.getElementById(id);let url=CtbNet.cleanUrl((g('adUrl')||{}).value||''),key=String((g('adKey')||{}).value||'').trim(),em=String((g('adEmail')||{}).value||'').trim().toLowerCase();
+    let say=t=>{this._adSiErr=t;let e=g('adErr');if(e)e.textContent=t;};let note=t=>{this._adFgMsg=t;let n=g('adFgNote');if(n){n.textContent=t;n.hidden=!t;}};
+    if(!CtbNet.okCfg({url,key}))return say('Check the project URL and the publishable key under Project settings.');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){say('Type your admin email above, then press “Forgot your password?” again.');try{g('adEmail').focus();}catch(e){}return;}
+    if(this._adFgAt&&this._adFgTo===em&&Date.now()-this._adFgAt<90000){say('');return note('The email to '+em+' is on its way — it can take a minute or two. Check the spam folder too.');}
+    let b=g('adForgot');if(b)b.disabled=true;say('');note('Sending the email…');
+    let r=await CtbNet.recover({url,key},em,CtbNet.appUrl());if(b)b.disabled=false;
+    if(r.ok){this._adFgAt=Date.now();this._adFgTo=em;return note('We emailed a link to '+em+'. Open it on this computer or on your phone and choose a new password — the link works once, for about an hour.');}
+    note('');if(r.status===429)return say('Several emails were sent just now — please wait a few minutes, then try again.');
+    say(r.status?(r.message||'The email could not be sent — please try again.'):'No internet connection — please try again.');},
   async adConnect(){let g=id=>document.getElementById(id);let url=CtbNet.cleanUrl(g('adUrl').value),key=String(g('adKey').value||'').trim(),em=String(g('adEmail').value||'').trim(),pw=g('adPw').value||'';
     let say=t=>{this._adSiErr=t;let e=g('adErr');if(e)e.textContent=t;};
     if(!CtbNet.okCfg({url,key}))return say('Check the project URL (https://….supabase.co) and the publishable key.');
@@ -7218,7 +7250,7 @@ const App={
     this.adAdd({name:m.name,phone:m.phone,pid,mid});},
   pjTouch(p,msg){this.pjTouchBase(p,msg);try{if(p&&!this._olApplying&&this.olShared(p.id)&&this.olIsAdmin())this.olPublishSoon(p.id);}catch(e){console.error(e);}},
   /* ===== THE TEAM LEAD'S PHONE, ONLINE: sign in, the projects shared with them, every change sent at once ===== */
-  tmStart(){if(!this._tmHash){this._tmHash=1;window.addEventListener('hashchange',()=>{let h=location.hash||'';if(/^#(join|upd|signin)=/.test(h))location.reload();else if(/^#team=/.test(h)&&document.getElementById('ctbTeam'))this.tmFromHash();});}
+  tmStart(){if(!this._tmHash){this._tmHash=1;window.addEventListener('hashchange',()=>{let h=location.hash||'';if(/^#(join|upd|signin)=/.test(h)||/(^#|&)(access_token|error_code)=/.test(h))location.reload();else if(/^#team=/.test(h)&&document.getElementById('ctbTeam'))this.tmFromHash();});}
     let h=location.hash||'';let skip=false;try{skip=sessionStorage.getItem('ctb_tm_full')==='1';}catch(e){}
     let m=/^#join=([zj]\.[A-Za-z0-9_-]+)/.exec(h);
     if(m){this.tmShell();this.tmMsg('Opening the run sheet…');
@@ -7434,6 +7466,61 @@ const App={
   tmPw(){this.pjAsk({title:'Change my password',intro:'At least 8 characters. You stay signed in on this phone.',fields:[{k:'a',label:'New password',type:'password'},{k:'b',label:'New password again',type:'password'}],ok:'Change password',
       onSave:v=>{if(String(v.a||'').length<8){this.toast('Use at least 8 characters','err');return false;}if(v.a!==v.b){this.toast('The two passwords are not the same','err');return false;}
         CtbNet.api('PUT','/auth/v1/user',{body:{password:v.a}}).then(r=>{if(r.ok)this.toast('Password changed ✓','ok');else this.toast(r.code==='same_password'?'That is already your password':r.code==='reauthentication_needed'?'Please sign out and in again, then change it':r.code==='weak_password'?'Choose a stronger password':(r.message||'The password couldn’t be changed'),'err');});}});},
+  /* ===== CHOOSE A NEW PASSWORD — the page behind the email link Supabase sends ("Forgot your password?", or an invitation).
+     It opens before the lock screen and needs none of the data on the device, so it works on any computer or phone.
+     The link's one-time token is taken out of the address bar at once and is never stored. ===== */
+  rcRead(){let h=location.hash||'';if(h.length<2||!/(access_token|error)=/.test(h))return null;let q;try{q=new URLSearchParams(h.slice(1));}catch(e){return null;}
+    let at=q.get('access_token'),ty=q.get('type')||'';
+    if(at&&/^(recovery|invite|magiclink|signup)$/.test(ty))return {token:at,type:ty};
+    let er=q.get('error_code')||q.get('error');if(er)return {error:er,desc:q.get('error_description')||''};
+    return null;},
+  rcClaims(t){try{let p=String(t||'').split('.')[1].replace(/-/g,'+').replace(/_/g,'/');while(p.length%4)p+='=';
+      let b=atob(p);return JSON.parse(new TextDecoder().decode(Uint8Array.from(b,c=>c.charCodeAt(0))));}catch(e){return null;}},
+  /* the link must come from this team's own project: the token names it (iss), and the app knows its address and public key */
+  rcCfg(t){let c=this.rcClaims(t);if(!c||typeof c.iss!=='string')return null;let from=CtbNet.cleanUrl(c.iss.replace(/\/auth\/v1\/?$/,''));
+    let d=typeof CTB_NET_DEFAULT!=='undefined'?CTB_NET_DEFAULT:{};let st=CtbNet.stored()||{};
+    for(const x of [d,st])if(x&&x.url&&x.key&&CtbNet.cleanUrl(x.url)===from&&CtbNet.okCfg({url:CtbNet.cleanUrl(x.url),key:x.key}))
+      return {url:CtbNet.cleanUrl(x.url),key:x.key,email:String(c.email||''),exp:+c.exp||0};
+    return null;},
+  rcStart(){let r=this.rcRead();if(!r)return false;this._rc=r;
+    try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}
+    window.addEventListener('hashchange',()=>location.reload());   /* another link opened in this tab: start again from it */
+    this.tmShell();this.rcView();return true;},
+  rcView(state){let b=document.getElementById('tmBox');if(!b)return;let r=this._rc||{};let esc=s=>this.esc(s);let c=r.token?this.rcCfg(r.token):null;
+    if(c&&c.exp&&c.exp*1000<Date.now()){r=this._rc={error:'otp_expired'};c=null;}
+    let card;
+    if(state==='done')card=`<div class="tm-si-card rc-card"><div class="rc-ok" aria-hidden="true">✓</div><h1>Your new password is saved</h1>
+        <p class="tm-si-hi">Sign in with it${this._rcEmail?` as <b>${esc(this._rcEmail)}</b>`:''} — in the 🛡️ Admin Panel on your computer, or in the app on your phone.</p>
+        <button type="button" class="ok" id="rcOpen" onclick="App.rcDone()">Open the CTB ERP app</button></div>`;
+    else if(!c){let bad=!r.error;card=`<div class="tm-si-card rc-card"><h1>${bad?'This link can’t be used here':'This link has expired'}</h1>
+        <p class="tm-si-hi">${bad?'It was made for a different online team.':'A password link works once, and only for about an hour.'} Ask for a new one: open the app → 🛡️ <b>Admin Panel</b> → <b>Forgot your password?</b></p>
+        <button type="button" class="ok" id="rcOpen" onclick="App.rcDone()">Open the CTB ERP app</button></div>`;}
+    else{this._rcEmail=c.email;let inv=r.type==='invite'||r.type==='signup';
+      card=`<form class="tm-si-card rc-card" onsubmit="event.preventDefault();App.rcSave()" autocomplete="on"><h1>${inv?'Choose your password':'Choose a new password'}</h1>
+        <p class="tm-si-hi">For <b>${esc(c.email||'your login')}</b> — the password you will use to sign in to the CTB ERP online team.</p>
+        <input type="email" class="rc-user" name="username" autocomplete="username" value="${esc(c.email||'')}" readonly tabindex="-1" aria-hidden="true">
+        <label for="rcP1">New password</label><div class="lk-in"><input id="rcP1" type="password" autocomplete="new-password" autocapitalize="off" autocorrect="off" spellcheck="false"><button type="button" class="lk-eye" id="rcEye" aria-pressed="false" onclick="App.rcEye(this)">Show</button></div>
+        <label for="rcP2">Type it again</label><div class="lk-in"><input id="rcP2" type="password" autocomplete="new-password" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done"></div>
+        <p class="rc-tip">At least 8 characters. Write it down and keep it somewhere safe.</p>
+        <div class="tm-si-msg" id="rcMsg" role="alert"></div><button type="submit" class="ok" id="rcGo">Save my new password</button></form>`;}
+    b.innerHTML=`<div class="tm-si"><div class="tm-brand"><span class="tm-logo">CTB</span><div><b>CTB Thailand · ERP Pro</b><small>Online team sign-in</small></div></div>${card}
+      ${state==='done'||!c?'':'<p class="tm-foot"><button class="linkbtn" type="button" onclick="App.rcDone()">Cancel — open the app</button></p>'}</div>`;
+    setTimeout(()=>{let f=document.getElementById('rcP1')||document.getElementById('rcOpen');if(f)try{f.focus();}catch(e){}},40);},
+  rcEye(btn){let s=(document.getElementById('rcP1')||{}).type==='password';['rcP1','rcP2'].forEach(id=>{let i=document.getElementById(id);if(i)i.type=s?'text':'password';});
+    btn.textContent=s?'Hide':'Show';btn.setAttribute('aria-pressed',String(s));},
+  async rcSave(){let g=id=>document.getElementById(id);let p1=(g('rcP1')||{}).value||'',p2=(g('rcP2')||{}).value||'';let say=t=>{let e=g('rcMsg');if(e)e.textContent=t;};
+    if(p1.length<8)return say('Use at least 8 characters.');
+    if(p1!==p2)return say('The two passwords are different — type the same one twice.');
+    let r=this._rc||{};let c=r.token?this.rcCfg(r.token):null;if(!c||(c.exp&&c.exp*1000<Date.now()))return this.rcView();
+    if(this._rcBusy)return;this._rcBusy=true;let b=g('rcGo');if(b){b.disabled=true;b.textContent='Saving…';}say('');
+    let res;try{res=await CtbNet.setPassword(c,r.token,p1);}finally{this._rcBusy=false;}
+    if(!res.ok){if(b){b.disabled=false;b.textContent='Save my new password';}
+      if(res.code==='same_password')return say('That is already your password — you can sign in with it.');
+      if(res.code==='weak_password'||res.status===422)return say(res.message||'Choose a stronger password.');
+      if(res.status===401||res.status===403){this._rc={error:'otp_expired'};return this.rcView();}
+      return say(res.status?('That didn’t work: '+(res.message||'please try again')):'No internet connection — please try again.');}
+    CtbNet.dropToken(c,r.token);this._rc=null;this.rcView('done');},
+  rcDone(){this._rc=null;try{location.replace(location.pathname+location.search);}catch(e){location.reload();}},
   /* ===== HOTEL RESERVATION LETTER ===== */
   fillHrBookings(){let el=document.getElementById('hrBooking');if(!el)return;let cur=el.value;
     let opts=this.d.bookings.slice().sort((a,b)=>b.created-a.created).map(b=>{let who=(b.billTo&&b.billTo.name)||b.groupName||b.clientName||'—';let pax=this.personGroups(this.bookingPax(b)).length;return `<option value="${b.id}">${this.esc(b.docNo)} · ${this.esc(who)} · ${this.esc(b.type)}${pax?' ('+pax+' pax)':''}</option>`;}).join('');
@@ -13784,7 +13871,7 @@ Rules for every kind: never invent prices, names, passport numbers or dates — 
     if(exDate)exDate.value=new Date().toISOString().slice(0,10);
   }
 };
-if(!App.tmStart())CtbLock.boot(function(){App.init();try{App.pjAlarmStart();App.pjBellUpdate();}catch(e){console.error(e);}try{App.lockCard();}catch(e){console.error(e);}try{App.pjInbox();}catch(e){console.error(e);}try{App.olBoot();}catch(e){console.error(e);}});
+if(!App.rcStart()&&!App.tmStart())CtbLock.boot(function(){App.init();try{App.pjAlarmStart();App.pjBellUpdate();}catch(e){console.error(e);}try{App.lockCard();}catch(e){console.error(e);}try{App.pjInbox();}catch(e){console.error(e);}try{App.olBoot();}catch(e){console.error(e);}});
 </script>
 <div id="rowMenu" class="rowmenu"></div>
 </body>
