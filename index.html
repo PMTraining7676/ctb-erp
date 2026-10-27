@@ -1953,6 +1953,10 @@ h3.cf-title{display:flex;align-items:center;gap:10px}
 input.cf-auto{background:var(--surface2);color:var(--muted)}
 .cf-top>.field{display:flex;flex-direction:column}
 .cf-top>.field>label{margin-top:auto}
+.cf-dr{display:flex;align-items:center;gap:6px}
+.cf-dr input{flex:1;min-width:0}
+.cf-dr span{color:var(--muted);font-size:12px;font-weight:600}
+@media (min-width:760px){.cf-top>.cf-dates{grid-column:span 2}}
 /* narrower list: three rows per item — name; price, basis, persons, days, VAT; cost and total */
 @container cfrows (max-width:1080px){
   .cfr{grid-template-columns:50px minmax(0,.8fr) minmax(0,1.3fr) minmax(0,.8fr) minmax(0,.8fr) 38px;
@@ -1989,13 +1993,13 @@ input.cf-auto{background:var(--surface2);color:var(--muted)}
 .cfq-date{color:var(--cn);font-weight:800;font-size:11.5px}
 .cfq-title{position:relative;text-align:center;margin:3mm 0 3mm}
 .cfq-title h1{margin:0;font-size:20px;letter-spacing:.22em;color:var(--cn);font-weight:800;line-height:1.2}
-.cfq-tsub{margin-top:1mm;font-size:11.5px;letter-spacing:.03em;color:var(--cr);font-weight:800}
+.cfq-tsub{margin-top:1.2mm;font-size:10.4px;letter-spacing:.18em;text-transform:uppercase;color:var(--cr);font-weight:800}
 .cfq-title::after{content:'';display:block;width:30mm;height:.8mm;margin:2mm auto 0;background:linear-gradient(90deg,var(--cn) 0 50%,var(--cr) 50% 100%);border-radius:1mm}
 .inv.cfq .cfq-title .stampwrap{position:absolute;right:0;top:0;height:auto;z-index:2}
 .inv.cfq .cfq-title .stamp{top:0;margin:0}
 .cfq-parties{display:grid;grid-template-columns:1.12fr 1fr;gap:4.5mm;margin-top:2mm}
 .cfq-box{border:1px solid var(--cl);border-radius:2.4mm;padding:2.3mm 3.2mm;background:rgba(255,255,255,.55)}
-.cfq-box h4{display:flex;align-items:center;gap:2mm;margin:0 0 1.3mm;font-size:11.8px;color:var(--cn);font-weight:800;letter-spacing:0;text-transform:none}
+.cfq-box h4{display:flex;align-items:center;gap:2mm;margin:0 0 1.3mm;font-size:10.8px;color:var(--cn);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
 .cfq-hb{display:inline-flex;align-items:center;justify-content:center;width:6mm;height:6mm;border-radius:1.6mm;background:var(--cr);flex-shrink:0}
 .inv.cfq .cfq-hb .cfq-i{width:13px;height:13px;color:#fff}
 .cfq-bd{font-size:11px;line-height:1.5;color:var(--ci)}
@@ -2007,7 +2011,7 @@ input.cf-auto{background:var(--surface2);color:var(--muted)}
 .cfq-evt{display:flex;gap:2.6mm;align-items:center;padding-bottom:2mm;margin-bottom:2.2mm;border-bottom:1px dashed var(--cl)}
 .cfq-ei{display:inline-flex;align-items:center;justify-content:center;width:8.6mm;height:8.6mm;border-radius:2.2mm;background:var(--cn);flex-shrink:0}
 .inv.cfq .cfq-ei .cfq-i{width:18px;height:18px;color:#fff}
-.cfq-evt div>span,.cfq-fact div>span{display:block;font-size:9.8px;color:var(--cm);font-weight:700;line-height:1.3}
+.cfq-evt div>span,.cfq-fact div>span{display:block;font-size:8.8px;color:var(--cm);font-weight:800;line-height:1.35;letter-spacing:.1em;text-transform:uppercase}
 .cfq-evt b{display:block;font-size:13.8px;color:var(--cn);line-height:1.3;font-weight:800}
 .cfq-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(31mm,1fr));gap:2.2mm 4mm}
 .cfq-fact{display:flex;gap:2mm;align-items:flex-start;min-width:0}
@@ -2018,7 +2022,7 @@ input.cf-auto{background:var(--surface2);color:var(--muted)}
 /* the price table: a solid heading row, bold section rows, tight rows */
 .cfq-tbl{width:100%;border-collapse:collapse;margin-top:3mm}
 .cfq-tbl thead tr,.cfq-tbl tr.pdf-th:not(.cfq-gh){background:var(--cn)}
-.cfq-tbl th{background:transparent;color:#fff;font-size:10.6px;letter-spacing:.02em;font-weight:800;text-transform:none;padding:1.7mm 2.2mm;text-align:left;white-space:nowrap;border:0;background:var(--cn);box-shadow:1px 0 0 var(--cn),-1px 0 0 var(--cn)}
+.cfq-tbl th{background:transparent;color:#fff;font-size:9.8px;letter-spacing:.08em;font-weight:800;text-transform:uppercase;padding:1.7mm 2.2mm;text-align:left;white-space:nowrap;border:0;background:var(--cn);box-shadow:1px 0 0 var(--cn),-1px 0 0 var(--cn)}
 .cfq-tbl>tbody>tr:last-child>td{border-bottom:1.4px solid var(--cn)}
 .cfq-tbl td{padding:1.15mm 2.2mm;border-bottom:1px solid var(--cl);vertical-align:top;font-size:10.8px;color:var(--ci)}
 .cfq-tbl .cfq-n{width:5mm;text-align:center;color:var(--cm);font-weight:700}
@@ -2033,7 +2037,7 @@ input.cf-auto{background:var(--surface2);color:var(--muted)}
 .cfq-d small{display:block;margin-top:.5mm;font-size:9.5px;line-height:1.42;color:var(--cm);font-weight:500}
 .cfq-d small.cfq-nv{color:#b45309}
 .cfq-tbl tr.cfq-gh{background:var(--cc)}
-.cfq-tbl tr.cfq-gh td{color:var(--cn);font-weight:800;font-size:11.4px;padding:1.05mm 2.2mm;border-top:1px solid rgba(32,33,84,.3);border-bottom:1px solid rgba(32,33,84,.3)}
+.cfq-tbl tr.cfq-gh td{color:var(--cn);font-weight:800;font-size:10.6px;letter-spacing:.07em;text-transform:uppercase;padding:1.05mm 2.2mm;border-top:1px solid rgba(32,33,84,.3);border-bottom:1px solid rgba(32,33,84,.3)}
 .cfq-ghw{display:flex;align-items:center;gap:2.2mm}
 .cfq-ghi{display:flex;align-items:center;justify-content:center;width:5.8mm;height:5.8mm;border-radius:1.5mm;background:var(--cn);flex-shrink:0}
 .inv.cfq tr.cfq-gh .cfq-i{width:13px;height:13px;color:#fff}
@@ -2046,15 +2050,16 @@ input.cf-auto{background:var(--surface2);color:var(--muted)}
 /* totals */
 .cfq-totals{display:grid;grid-template-columns:minmax(0,1fr) 74mm;gap:5mm;margin-top:3.4mm;align-items:start}
 .cfq-words{font-size:10.8px;line-height:1.45;border-left:1mm solid var(--cr);background:var(--cs);padding:2mm 3mm;border-radius:0 2mm 2mm 0;font-weight:600}
-.cfq-words span{display:block;font-size:10px;color:var(--cn);font-weight:800;margin-bottom:.4mm}
+.cfq-words span{display:block;font-size:9.2px;color:var(--cn);font-weight:800;margin-bottom:.5mm;letter-spacing:.1em;text-transform:uppercase}
 .cfq-per{display:flex;gap:2mm;align-items:center;margin-top:2.4mm;font-size:10.6px;color:#2c3150;line-height:1.4}
 .cfq-per b{color:var(--cn);font-weight:800}
 .cfq-ln{display:flex;justify-content:space-between;gap:4mm;padding:1.05mm .5mm;border-bottom:1px solid var(--cl);font-size:11.2px;font-weight:600;font-variant-numeric:tabular-nums}
 .cfq-grand{display:flex;justify-content:space-between;gap:3mm;margin-top:1.6mm;padding:2.2mm 3mm;background:var(--cn);color:#fff;border-radius:1.8mm;font-weight:800;font-size:13.8px;letter-spacing:.01em;font-variant-numeric:tabular-nums}
+.cfq-grand>span:first-child{text-transform:uppercase;letter-spacing:.06em}
 .cfq-ln.cfq-bal{font-weight:800;color:var(--cr)}
 .cfq-ln.cfq-bal0{font-weight:800;color:var(--cn)}
 /* section headings */
-.inv.cfq h3.sec.cfq-h{display:flex;align-items:center;gap:2.2mm;margin:4.6mm 0 0;font-size:12.8px;letter-spacing:.01em;text-transform:none;color:var(--cn);font-weight:800;border:0;padding:0;background:none}
+.inv.cfq h3.sec.cfq-h{display:flex;align-items:center;gap:2.2mm;margin:4.6mm 0 0;font-size:11.6px;letter-spacing:.09em;text-transform:uppercase;color:var(--cn);font-weight:800;border:0;padding:0;background:none}
 .cfq-hi{display:inline-flex;align-items:center;justify-content:center;width:6.4mm;height:6.4mm;border-radius:1.6mm;background:var(--cn);flex-shrink:0}
 .inv.cfq .cfq-hi .cfq-i{width:14px;height:14px;color:#fff}
 .inv.cfq h3.sec.cfq-h::after{content:'';flex:1;height:1.2px;background:var(--cl);margin-left:1mm}
@@ -2074,26 +2079,31 @@ input.cf-auto{background:var(--surface2);color:var(--muted)}
 .cfq-bank .cfq-kv{display:grid;grid-template-columns:24mm minmax(0,1fr);gap:2mm;line-height:1.5;margin-top:.5mm}
 .cfq-bank .cfq-kv b{text-align:left}
 .inv.cfq .cfq-bi{width:20px;height:20px;color:var(--cr)}
-.cfq-bt{font-size:11.4px;color:var(--cn);font-weight:800;margin-bottom:1mm}
+.cfq-bt{font-size:10.2px;color:var(--cn);font-weight:800;margin-bottom:1mm;letter-spacing:.09em;text-transform:uppercase}
 .cfq-sign{display:grid;grid-template-columns:1fr 1fr;gap:9mm;margin-top:5mm;align-items:start}
 .cfq-sig{min-width:0}
-.cfq-sigh{font-size:11.4px;color:var(--cn);font-weight:800;margin-bottom:1.4mm}
+.cfq-sigh{font-size:10.2px;color:var(--cn);font-weight:800;margin-bottom:1.4mm;letter-spacing:.08em;text-transform:uppercase}
 .cfq-art{height:16mm;display:flex;align-items:flex-end;gap:2mm}
 .cfq-art .sealimg{height:16mm;max-width:24mm;object-fit:contain}
 .cfq-art .sigimg{max-height:13mm;max-width:42mm;object-fit:contain}
 .cfq-sigl{border-top:1.2px solid var(--cn);padding-top:1.4mm;font-size:10.6px;line-height:1.45}
 .cfq-sigl b,.cfq-sigl span,.cfq-sigl small{display:block}
 .cfq-sigl b{color:var(--cn);font-weight:800}
-.cfq-sigl small{color:var(--cm);font-size:9.8px;margin-top:.4mm;font-weight:700}
+.cfq-sigl small{color:var(--cm);font-size:8.6px;margin-top:.5mm;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
 .cfq-accl{display:flex;align-items:flex-end;gap:2mm;margin-top:4mm;font-size:10.4px;color:var(--cm);font-weight:700}
 .cfq-accl span{white-space:nowrap;min-width:30mm}
 .cfq-accl i{flex:1;border-bottom:1px dotted var(--cn);height:4mm}
+/* ===== Every document heading in UPPERCASE, like the invoices and receipts: the hotel voucher too ===== */
+.inv.vch h1.vc-title{text-transform:uppercase;letter-spacing:.07em}
+.inv.vch h3.vc-h{text-transform:uppercase;letter-spacing:.08em;font-size:10.6px}
+.inv.vch table.vc-tb th,.inv.vch table.vc-pay th{text-transform:uppercase;letter-spacing:.07em;font-weight:700;font-size:8px}
+.inv.vch .vc-l{text-transform:uppercase;letter-spacing:.07em;font-weight:600;font-size:7.8px}
 </style>
 </head>
 <body>
 <div class="app">
   <div class="sidebar">
-    <div class="brand"><div class="logo">CTB</div><div><h2>CTB Thailand</h2><small>ERP Pro · build 2026.10.26</small></div></div>
+    <div class="brand"><div class="logo">CTB</div><div><h2>CTB Thailand</h2><small>ERP Pro · build 2026.10.26.2</small></div></div>
     <div class="nav" id="nav">
       <a class="active" data-page="dashboard"><span class="ico">📊</span> Dashboard</a>
       <a data-page="projects"><span class="ico">🗂</span> Training Projects</a>
@@ -2603,7 +2613,7 @@ input.cf-auto{background:var(--surface2);color:var(--muted)}
           <div class="field"><label>Venue / Hotel</label><select id="cHotel"></select></div>
           <div class="field"><label>Client</label><select id="cClient"></select></div>
           <div class="field"><label>Group / Reservation Name</label><input id="cGroup" placeholder="(optional)"></div>
-          <div class="field"><label>Attendees</label><input id="cPax" type="number" value="1" oninput="App.calcHall()"></div><div class="field"><label>Programme Days <span class="muted" style="font-size:10px">— counted from the days below</span></label><input id="cDays" type="number" min="1" step="1" placeholder="1" oninput="App.calcHall()"></div>
+          <div class="field"><label>Attendees</label><input id="cPax" type="number" value="1" oninput="App.calcHall()"></div><div class="field cf-dates"><label>Programme Dates <span class="muted" style="font-size:10px">— first and last day</span></label><div class="cf-dr"><input id="cStart" type="date" aria-label="Start date" oninput="App.calcHall()" onchange="App.calcHall()"><span aria-hidden="true">to</span><input id="cEnd" type="date" aria-label="End date" oninput="App.calcHall()" onchange="App.calcHall()"></div></div><div class="field"><label>Programme Days <span class="muted" style="font-size:10px">— from the dates or the days below</span></label><input id="cDays" type="number" min="1" step="1" placeholder="1" oninput="App.calcHall()"></div>
           <div class="field"><label>Event / Programme Title <span class="muted" style="font-size:10px">(prints on documents)</span></label><input id="cEvent" placeholder="e.g. Public Financial Management Workshop"></div>
           <div class="field"><label>Group Size shown on documents <span class="muted" style="font-size:10px">— optional, e.g. 10–20 pax</span></label><input id="cPaxNote" placeholder="e.g. 10–20 participants"></div>
         </div>
@@ -7042,7 +7052,7 @@ const App={
     else{this.d.stockmoves.push(m);Store.save();}
     this.closeStockModal();this.renderMerch();this.renderMoves();this.toast(type==='in'?('Added '+qty+' to stock'):('Issued '+qty+(p?' to '+(this.mkWho(p)||p.name):'')),'ok');},
   /* ===== ONLINE TEAM: every team update arrives at once (sound, popup, bell, phone notification), the Admin Panel ===== */
-  olBuild(){return '2026.10.26';},
+  olBuild(){return '2026.10.26.2';},
   olD(){let d=this.d;let o=d.online;if(!o||typeof o!=='object'||Array.isArray(o))o=d.online={};if(!Array.isArray(o.feed))o.feed=[];
     ['applied','shared','pub'].forEach(k=>{if(!o[k]||typeof o[k]!=='object'||Array.isArray(o[k]))o[k]={};});o.read=+o.read||0;o.cur=+o.cur||0;if(o.sound===undefined)o.sound=true;return o;},
   olIsAdmin(){let m=CtbNet.me();return !!(CtbNet.ready()&&m&&m.status==='active'&&m.role==='admin');},
@@ -7879,14 +7889,27 @@ const App={
   hallDays(){let sl=this.hallSlots();
     let ds=[...new Set(sl.map(x=>x.date).filter(Boolean))];if(ds.length)return ds.length;
     let dl=[...new Set(sl.map(x=>(x.day||'').trim().toLowerCase()).filter(Boolean))];if(dl.length)return dl.length;
+    let rg=this.cfRangeDays();if(rg)return rg;
     let e=document.getElementById('cDays');return Math.max(1,Math.round(+(e&&e.value)||1));},
+  /* the programme's start and end dates on the page (when no hall row has a date): their length in days, both counted */
+  cfRangeDays(){let s=(document.getElementById('cStart')||{}).value,e=(document.getElementById('cEnd')||{}).value;if(!s||!e)return 0;
+    let d=Math.round((new Date(e+'T00:00:00')-new Date(s+'T00:00:00'))/864e5)+1;return d>0&&d<=366?d:0;},
+  /* every date of a saved programme: the hall rows' dates, or start to end */
+  cfProgDates(r){r=r||{};let ds=[...new Set((r.slots||[]).map(x=>x.date).filter(Boolean))].sort();if(ds.length)return ds;
+    if(!r.start)return [];let out=[r.start],e=r.end&&r.end>=r.start?r.end:r.start,d=r.start,k=0;while(d<e&&k<366){d=this.isoAdd(d,1);out.push(d);k++;}return out;},
   cfProgDays(){return this.hallDays();},
   hallWhen(sl){let d=sl.date?this.fmtDate(sl.date):'';let lbl=(sl.day||'').trim();
     return (lbl&&d)?(lbl+', '+d):(lbl||d||'');},
   /* the days box follows the schedule when there is one; with packages only, you type the number of days */
-  cfDaysUI(){let e=document.getElementById('cDays');if(!e)return;let has=this.hallSlots().some(s=>s.date||(s.day||'').trim());
-    if(has){let n=this.hallDays();if(document.activeElement!==e||e.readOnly)e.value=n;e.readOnly=true;e.classList.add('cf-auto');e.title='Counted from the programme days below';}
-    else{e.readOnly=false;e.classList.remove('cf-auto');e.title='Number of programme days';}},
+  cfDaysUI(){let e=document.getElementById('cDays');if(!e)return;let sl=this.hallSlots();let ds=sl.map(x=>x.date).filter(Boolean).sort();
+    let st=document.getElementById('cStart'),en=document.getElementById('cEnd');
+    let lock=(el,on,t)=>{if(!el)return;el.readOnly=on;el.classList.toggle('cf-auto',on);el.title=t||'';};
+    /* dated hall rows set the programme dates; otherwise you type them */
+    if(ds.length){if(st)st.value=ds[0];if(en)en.value=ds[ds.length-1];lock(st,true,'From the programme days below');lock(en,true,'From the programme days below');}
+    else{if(st&&st.readOnly&&st.classList.contains('cf-auto')){st.value='';if(en)en.value='';}lock(st,false,'First day of the programme');lock(en,false,'Last day of the programme');}
+    let has=sl.some(x=>x.date||(x.day||'').trim());let rg=!has&&this.cfRangeDays();
+    if(has||rg){let n=this.hallDays();if(document.activeElement!==e||e.readOnly)e.value=n;lock(e,true,has?'Counted from the programme days below':'Counted from the start and end dates');}
+    else lock(e,false,'Number of programme days');},
   /* ---------- rows ---------- */
   cfBasisOpts(sel){let B=this.cfBases();return Object.keys(B).map(k=>`<option value="${k}"${k===sel?' selected':''}>${B[k].lbl}</option>`).join('');},
   addHallAddon(a){a=this.cfNorm(a);let pkg=a.cat==='pkg';let div=document.createElement('div');div.className='cfr'+(pkg?' cfr-pkg':'');div.dataset.cat=a.cat;div.dataset.icon=a.icon;
@@ -8033,6 +8056,7 @@ const App={
       if(!sl.date&&!(sl.day||'').trim())w.push(lbl+': set a date or a day label (e.g. Day 1).');
       if((sl.rate||0)<=0&&!pkgs.length)w.push(lbl+': the rate is 0 — fine if the hall is free or included elsewhere; it will show in the schedule only.');
       if(sl.basis==='Per Pax'&&!(sl.pax||+cPax.value))w.push(lbl+': charged per person but there is no attendee count.');});
+    {let st=(document.getElementById('cStart')||{}).value,en=(document.getElementById('cEnd')||{}).value;if(st&&en&&en<st)w.push('The end date is before the start date.');}
     let pax=+cPax.value||0;let dys=this.cfProgDays();
     let auto=rows.filter(a=>B[a.basis].people&&!(a.n>0));
     if(pax<=1&&auto.length){let pnote=((document.getElementById('cPaxNote')||{}).value||'').trim();
@@ -8051,19 +8075,21 @@ const App={
     let rows=this.readHallAddons();let B=this.cfBases();let _pax=+cPax.value||0;let _auto=rows.filter(a=>B[a.basis].people&&!(a.n>0));
     if(_pax<=1&&_auto.length&&!confirm('Attendees is '+_pax+', so these items are charged for '+(_pax||1)+' person only:\n\n• '+_auto.map(a=>a.label).join('\n• ')+'\n\nSave anyway?'))return;
     let slots=this.hallSlots();let ev=(document.getElementById('cEvent')||{}).value||'';let days=this.cfProgDays();
-    let dates=slots.map(x=>x.date).filter(Boolean).sort();let pn=((document.getElementById('cPaxNote')||{}).value||'').trim();let cc=document.getElementById('cCost');
+    let dates=slots.map(x=>x.date).filter(Boolean).sort();let pst=dates[0]||((document.getElementById('cStart')||{}).value||''),pen=dates.length?dates[dates.length-1]:((document.getElementById('cEnd')||{}).value||'');
+    if(pst&&(!pen||pen<pst))pen=this.isoAdd(pst,Math.max(1,days)-1);if(!pst)pen='';let pn=((document.getElementById('cPaxNote')||{}).value||'').trim();let cc=document.getElementById('cCost');
     this.finalize({type:'Conference Hall',hotelId:cHotel.value||null,hotelName:this.hotelName(cHotel.value),clientId:cClient.value,groupName:cGroup.value,lines,discount:+cDiscount.value||0,vat:cVat.checked,wht:+cWht.value||0,currency:cCur.value,pay:cPay.value,sur:+cSur.value||0,doc:cDoc.value,
       note:`${ev?ev+' · ':''}${cHotel.value?this.hotelName(cHotel.value)+' · ':''}${days} day(s) · ${pn||(_pax+' attendees')}`,
       cost:+(cc&&cc.value)||0,
-      stay:dates.length?{checkin:dates[0],checkout:dates[dates.length-1],nights:0}:null,
-      raw:{v:2,hotelId:cHotel.value||null,clientId:cClient.value,groupName:cGroup.value,pax:_pax,paxNote:pn,event:ev,notes:((document.getElementById('cNotes')||{}).value||'').trim(),days,slots,addons:rows,costManual:!!(cc&&cc.dataset.manual)},editId:this.editId.hall});
+      stay:pst?{checkin:pst,checkout:pen||pst,nights:0}:null,
+      raw:{v:2,start:pst,end:pen,hotelId:cHotel.value||null,clientId:cClient.value,groupName:cGroup.value,pax:_pax,paxNote:pn,event:ev,notes:((document.getElementById('cNotes')||{}).value||'').trim(),days,slots,addons:rows,costManual:!!(cc&&cc.dataset.manual)},editId:this.editId.hall});
     this.cfResetForm();},
   cfResetForm(){hallTable.innerHTML='';this.cfClear();['cSur','cWht','cDiscount','cCost'].forEach(i=>{let e=document.getElementById(i);if(e)e.value=0;});
     let cc=document.getElementById('cCost');if(cc)cc.dataset.manual='';
-    cGroup.value='';['cEvent','cNotes','cPaxNote','cDays'].forEach(i=>{let e=document.getElementById(i);if(e)e.value='';});
+    cGroup.value='';['cEvent','cNotes','cPaxNote','cDays','cStart','cEnd'].forEach(i=>{let e=document.getElementById(i);if(e){e.value='';e.readOnly=false;e.classList.remove('cf-auto');}});
     cVat.checked=true;cCur.value=this.base();this.editId.hall=null;cEdit.classList.remove('show');this.calcHall();},
   /* after an existing booking is opened for editing */
   cfAfterLoad(r,b){r=r||{};let e=document.getElementById('cDays');if(e)e.value=r.days||'';
+    {let st=document.getElementById('cStart'),en=document.getElementById('cEnd');let ds=this.cfProgDates(r);if(st)st.value=r.start||ds[0]||'';if(en)en.value=r.end||(ds.length?ds[ds.length-1]:'');}
     let cc=document.getElementById('cCost');if(cc){let auto=(r.slots||[]).reduce((s,x)=>s+(+x.cost||0),0)+(r.addons||[]).reduce((s,a)=>s+(+a.cost||0),0);
       cc.dataset.manual=r.v===2?(r.costManual?'1':''):((+b.cost||0)>0&&Math.abs((+b.cost||0)-auto)>0.005?'1':'');}},
   cfInit(){let cc=document.getElementById('cCost');if(cc&&!cc.dataset.cfw){cc.dataset.cfw='1';cc.addEventListener('input',e=>{if(e.isTrusted)cc.dataset.manual=cc.value===''?'':'1';});}},
@@ -8103,7 +8129,8 @@ const App={
       +kv('Your Ref.',b.clientRef?esc(b.clientRef):'')+kv('Terms',b.payTerms?esc(b.payTerms):'')+kv('Currency',esc(CUR))+(isQuo?'':kv('Payment',esc(b.paymentMethod||'')))+kv('Prepared By',b.preparedBy?esc(b.preparedBy):'')
       +(s.taxId?kv('Tax ID',esc(s.taxId)+(isInv?' (Head Office)':'')):'');
     /* the event */
-    let sl=(r.slots||[]).slice();let dates=sl.map(x=>x.date).filter(Boolean).sort();
+    let sl=(r.slots||[]).slice();let dates=this.cfProgDates(r);
+    let dayDate=x=>{if(x.date)return x.date;let m=/^day\s*(\d{1,3})$/i.exec(String(x.day||'').trim());return (m&&r.start)?this.isoAdd(r.start,+m[1]-1):'';};
     let days=+r.days||(new Set(dates).size||new Set(sl.map(x=>(x.day||'').trim().toLowerCase()).filter(Boolean)).size||0);
     let setups=[...new Set(sl.map(x=>x.setup).filter(Boolean))];let venue=b.hotelName||'';let H=this.d.hotels.find(x=>x.id==r.hotelId);
     let fact=(ic,k,v)=>v?`<div class="cfq-fact"><span class="cfq-fi">${this.cfIco(ic)}</span><div><span>${k}</span><b>${v}</b></div></div>`:'';
@@ -8138,7 +8165,7 @@ const App={
     /* the schedule */
     let pk=Object.keys(G).includes('pkg');let allInc=pk&&sl.length>0&&sl.every(x=>!(+x.rate>0));
     let sched=sl.length?`<h3 class="sec cfq-h"><span class="cfq-hi">${this.cfIco('cal')}</span>Programme Schedule</h3><table class="cfq-tbl cfq-sch"><thead><tr><th>Day</th><th>Date</th><th>Time</th><th>Hall / Room</th><th>Set-Up</th><th class="cfq-q">Pax</th></tr></thead><tbody>${
-      sl.sort((x,y)=>((x.date||'')+(x.day||'')).localeCompare((y.date||'')+(y.day||''))||(x.start||'').localeCompare(y.start||'')).map(x=>`<tr><td><b>${esc(this.cfTitle(x.day||''))||'—'}</b></td><td>${x.date?this.fmtDate(x.date):'To Be Confirmed'}</td><td>${x.start&&x.end?esc(x.start)+'–'+esc(x.end):'—'}</td><td><b>${esc(this.cfTitle(x.hall||'Hall'))}</b>${!(+x.rate>0)&&pk&&!allInc?'<small>Included In The Meeting Package</small>':''}</td><td>${esc(this.cfTitle(x.setup||'—'))}</td><td class="cfq-q">${x.pax||pax||'—'}</td></tr>`).join('')}</tbody></table>${allInc?'<div class="cfq-cap cfq-blk">The meeting rooms are included in the meeting package.</div>':''}`:'';
+      sl.sort((x,y)=>((x.date||'')+(x.day||'')).localeCompare((y.date||'')+(y.day||''))||(x.start||'').localeCompare(y.start||'')).map(x=>`<tr><td><b>${esc(this.cfTitle(x.day||''))||'—'}</b></td><td>${dayDate(x)?this.fmtDate(dayDate(x)):'To Be Confirmed'}</td><td>${x.start&&x.end?esc(x.start)+'–'+esc(x.end):'—'}</td><td><b>${esc(this.cfTitle(x.hall||'Hall'))}</b>${!(+x.rate>0)&&pk&&!allInc?'<small>Included In The Meeting Package</small>':''}</td><td>${esc(this.cfTitle(x.setup||'—'))}</td><td class="cfq-q">${x.pax||pax||'—'}</td></tr>`).join('')}</tbody></table>${allInc?'<div class="cfq-cap cfq-blk">The meeting rooms are included in the meeting package.</div>':''}`:'';
     /* notes, terms, payment and signatures */
     let notes=(b.note&&!this.isAutoNote(b))?`<div class="cfq-note cfq-blk"><b>Notes:</b> ${this.rt(b.note)}</div>`:'';
     if(r.notes)notes+=`<div class="cfq-note cfq-blk"><b>Remarks:</b> ${this.rt(r.notes)}</div>`;
@@ -9440,7 +9467,7 @@ const App={
     let hotel='{"client":"","group":"","basedOn":"","pax":0,"stops":[{"hotel":"","checkin":"","checkout":"","nights":0}],"times":{"checkin":"","checkout":""},"guests":[{"name":"","passport":"","nationality":"","room":""}],"rooms":[{"type":"","beds":0,"count":0,"rate":0,"guests":[]}],"rates":[{"beds":0,"type":"","rate":0}],"sharing":{"size":0,"leftover":""},"loadGroup":false,"breakfast":{"included":null,"skip":[{"date":"","reason":""}]},"inclusive":{"breakfast":false,"lunch":false,"dinner":false,"pickup":false,"dropoff":false,"note":""},"charges":{"breakfast":0,"lunch":0,"dinner":0,"pickup":0,"dropoff":0,"transport":0},"addons":[{"label":"","rate":0,"qty":1,"unit":""}],"billing":{"basis":"","ratePerPerson":0,"persons":0,"perNight":false},"currency":"","vat":null,"document":"","payment":"","discount":0,"deposit":{"amount":0,"due":""},"freeCancelUntil":"","confirmation":{"issuer":"","payment":"","status":""},"notes":""}';
     let training='{"org":{"name":"","address":"","country":"","taxId":""},"refNo":"","currency":"","vat":false,"include":"","logistics":{"hotelName":"","nights":0,"accommodation":0,"pickup":0,"dropoff":0},"programs":[{"type":"","name":"","start":"","end":"","venue":"","feePerParticipant":0,"lumpSum":false,"participants":[""]}]}';
     let letter='{"type":"invitation","title":"","org":"","country":"","duration":"","start":"","end":"","venue":"","fee":0,"currency":"","attnRole":"","participants":[{"name":"","role":"","passport":""}]}';
-    let hall='{"venue":"","client":"","group":"","event":"","pax":0,"paxNote":"","days":0,"slots":[{"date":"","day":"","start":"","end":"","hall":"","setup":"","basis":"","rate":0,"pax":0}],"services":[{"item":"","rate":0,"qty":0,"unit":"","basis":"","days":0,"include":""}],"currency":"","vat":null,"document":"","payment":"","discount":0,"notes":""}';
+    let hall='{"venue":"","client":"","group":"","event":"","pax":0,"paxNote":"","days":0,"start":"","end":"","slots":[{"date":"","day":"","start":"","end":"","hall":"","setup":"","basis":"","rate":0,"pax":0}],"services":[{"item":"","rate":0,"qty":0,"unit":"","basis":"","days":0,"include":""}],"currency":"","vat":null,"document":"","payment":"","discount":0,"notes":""}';
     let tour='{"client":"","group":"","name":"","date":"","day":"","pax":0,"pricePerPax":0,"pickup":0,"dropoff":0,"transport":0,"meals":0,"currency":"","vat":null,"document":"","payment":"","discount":0}';
     return this.aiCo()+` You read a request written by the company's staff, or a message they received from a client (email, WhatsApp, rooming list, screenshot or PDF). Work out the situation and return ONE JSON object only — no markdown, no code fences, no commentary.
 Today is ${today}. Return dates as YYYY-MM-DD. When the year is missing, use the first such date from three months ago onward (a stay that has just happened is usually being invoiced; anything earlier means next year) and add an assumption when that date is already past. When a check-out is missing but nights are given, add the nights.
@@ -9451,7 +9478,7 @@ Hotel rules: one entry in "stops" per hotel, in travel order (one hotel = one st
 training = ${training}
 letter = ${letter} ("type": "invitation" = one letter per participant, "confirmation" = one confirmation of participation per organisation)
 hall = ${hall}
-Venue rules: one entry in "slots" per day (and per room or time block); "day" is "Day 1", "Day 2"… when there is no date; "basis" of the room price: "Full Day", "Half Day", "Hour", "Per Pax" or "Fixed"; "setup": "Theatre", "Classroom", "U-Shape", "Boardroom", "Banquet/Rounds", "Cabaret", "Cocktail" or "Hollow Square". Leave "slots" empty for a package quotation without a meeting room. Every other priced item goes in "services": "item" as written (a meeting or day-delegate package is one item); "rate" per unit; "unit" "Pax", "Van", "Day", "Room", "Item" or "Trip"; "qty" (0 = the number of attendees when "unit" is "Pax"); "basis" "ppd" (per person per day, e.g. a meeting package, coffee breaks, lunch), "pp" (per person once for the whole programme, e.g. a welcome dinner, a kit, certificates, a training fee), "pd" (per day, "qty" per day, e.g. a projector or a photographer), "lump" (one price for the whole programme, e.g. banner printing) or "unit" (per trip, van, set or copy, "qty" = how many, e.g. an airport transfer); "days" only when an item is not on every programme day; "include" = what a package includes, when written. "days" (top level) = the number of programme days. "pax" = attendees; "paxNote" only for a range such as "10–15 participants". "notes": set-up requests for the venue (set-up time, banner, head table, parking).
+Venue rules: one entry in "slots" per day (and per room or time block); "day" is "Day 1", "Day 2"… when there is no date; "basis" of the room price: "Full Day", "Half Day", "Hour", "Per Pax" or "Fixed"; "setup": "Theatre", "Classroom", "U-Shape", "Boardroom", "Banquet/Rounds", "Cabaret", "Cocktail" or "Hollow Square". Leave "slots" empty for a package quotation without a meeting room. Every other priced item goes in "services": "item" as written (a meeting or day-delegate package is one item); "rate" per unit; "unit" "Pax", "Van", "Day", "Room", "Item" or "Trip"; "qty" (0 = the number of attendees when "unit" is "Pax"); "basis" "ppd" (per person per day, e.g. a meeting package, coffee breaks, lunch), "pp" (per person once for the whole programme, e.g. a welcome dinner, a kit, certificates, a training fee), "pd" (per day, "qty" per day, e.g. a projector or a photographer), "lump" (one price for the whole programme, e.g. banner printing) or "unit" (per trip, van, set or copy, "qty" = how many, e.g. an airport transfer); "days" only when an item is not on every programme day; "include" = what a package includes, when written. "days" (top level) = the number of programme days; "start" and "end" (top level) = the first and last programme dates (YYYY-MM-DD) when known, also when "slots" is empty. "pax" = attendees; "paxNote" only for a range such as "10–15 participants". "notes": set-up requests for the venue (set-up time, banner, head table, parking).
 tour = ${tour}
 Training rules: "type" is exactly "Training", "Workshop", "Study-Visit" or "Exposure Visit"; "participants" are full names as written; "include" is what the fee includes.
 Rules for every kind: never invent prices, names, passport numbers or dates — leave "", 0 or null when not given. When the request clearly refers to a KNOWN hotel, client, group or person below, return that name exactly as listed. Put anything you had to guess in "assumptions" and anything you could not work out in "questions" — short, plain English.`;},
@@ -10061,7 +10088,7 @@ Rules for every kind: never invent prices, names, passport numbers or dates — 
       ['Airport Pick-Up',/\bairport\s+transfers?\b|\bpick.?ups?\b/i,'Trip','once'],['Airport Drop-Off',/\bairport\s+transfers?\b|\bdrop.?offs?\b/i,'Trip','once']];
     KNOWN.forEach(([nm,re,unit,b])=>{if(re.test(T)&&!V.services.some(s=>re.test(s.item)||s.item===nm))V.services.push({item:nm,rate:0,qty:b==='once'?1:0,unit,basis:b,days:b==='perday'?n:1});});
     if(!basis)basis=/\bhalf[ -]?day\b/i.test(T)?'Half Day':/\bper hour\b|\bhourly\b/i.test(T)?'Hour':'Full Day';
-    V.days=n;for(let i=0;i<n;i++)V.slots.push({date:dates[i]||'',day:'Day '+(i+1),start:tm.start||'',end:tm.end||'',hall:hallName,setup,basis,rate:hallRate,pax:0});
+    V.days=n;V.start=dates[0]||'';V.end=dates.length?dates[dates.length-1]:'';for(let i=0;i<n;i++)V.slots.push({date:dates[i]||'',day:'Day '+(i+1),start:tm.start||'',end:tm.end||'',hall:hallName,setup,basis,rate:hallRate,pax:0});
     if(!/\b(?:hall|ballroom|venue|meeting|conference|seminar|function room|board ?room|training room|classroom|theatre|u[- ]?shape)\b/i.test(T)&&!hallRate){V.slots=[];asm.push('No meeting room in the message — only the priced items were added');}
     /* amounts written as “6,000 lump sum” or “8,000 for 1 day” */
     String(T).split(/\r?\n|;|\.\s+(?=[A-Z])/).forEach(c=>c.split(/,\s+(?=[A-Za-z])/).forEach(p=>{
@@ -10142,7 +10169,7 @@ Rules for every kind: never invent prices, names, passport numbers or dates — 
     let pick=(list,v)=>{v=String(v||'').toLowerCase().replace(/[^a-z]/g,'');return list.find(x=>x.toLowerCase().replace(/[^a-z]/g,'')===v)||list.find(x=>{let k=x.toLowerCase().replace(/[^a-z]/g,'');return v&&(k.startsWith(v)||v.startsWith(k));})||'';};
     let slots=(Array.isArray(V.slots)?V.slots:[]).filter(s=>s&&typeof s==='object');
     slots.forEach((s,i)=>this.addHallRow({hall:String(s.hall||''),day:String(s.day||'').trim()||'Day '+(i+1),date:iso(s.date),start:tm(s.start),end:tm(s.end),setup:pick(SET,s.setup),basis:pick(BAS,s.basis)||'Full Day',rate:+s.rate||0,pax:+s.pax||''}));
-    let days=slots.length?Math.max(1,new Set(slots.map((s,i)=>iso(s.date)||('d'+i))).size):Math.max(1,Math.round(+V.days||1));{let e=document.getElementById('cDays');if(e)e.value=slots.length?'':(+V.days>0?Math.round(+V.days):'');}
+    let days=slots.length?Math.max(1,new Set(slots.map((s,i)=>iso(s.date)||('d'+i))).size):Math.max(1,Math.round(+V.days||1));{let e=document.getElementById('cDays');if(e)e.value=slots.length?'':(+V.days>0?Math.round(+V.days):'');}{let st=document.getElementById('cStart'),en=document.getElementById('cEnd');if(st){st.readOnly=false;st.value=slots.some(s=>iso(s.date))?'':iso(V.start);}if(en){en.readOnly=false;en.value=slots.some(s=>iso(s.date))?'':iso(V.end);}}
     let UN={pax:'Pax',person:'Pax',people:'Pax',van:'Van',car:'Van',vehicle:'Van',bus:'Van',day:'Day',room:'Room',night:'Night',item:'Item',set:'Item',unit:'Item',trip:'Trip',hour:'Hour',session:'Session'};
     let svc=(Array.isArray(V.services)?V.services:[]).filter(a=>a&&String(a.item||a.label||'').trim());
     svc.forEach(a=>{let u=String(a.unit||'Pax');let uk=u.toLowerCase().replace(/s$/,'');let unit=UN[uk]||u;this.addHallAddon(this.cfFromSmart(a,unit,days));});
@@ -10469,7 +10496,7 @@ Rules for every kind: never invent prices, names, passport numbers or dates — 
     if(b.type==='Conference Hall'){let sl=r.slots||[];
       L.push('Attendees: '+(r.pax||'-'));L.push('');L.push('*PROGRAMME*');
       sl.forEach((x,i)=>L.push((i+1)+'. '+(this.hallWhen?this.hallWhen(x):(x.date||x.day||''))+' '+(x.start||'')+'-'+(x.end||'')+' | '+(x.hall||'Hall')+(x.setup?' | '+x.setup:'')));
-      if(!sl.length&&+r.days)L.push(r.days+' programme day'+(+r.days>1?'s':'')+' — dates to be confirmed');
+      if(!sl.length&&+r.days){let pd=this.cfProgDates(r);L.push(r.days+' programme day'+(+r.days>1?'s':'')+(pd.length?' — '+this.cfDateRange(pd):' — dates to be confirmed'));}
       let ad=this.cfResolved(r);
       if(ad.length){L.push('');L.push('*PACKAGES & SERVICES*');ad.forEach(a=>L.push('- '+this.cfMsgLine(a)));}
       if(r.notes){L.push('');L.push('*NOTES*');L.push(this.rtPlain(r.notes));}
@@ -10757,7 +10784,7 @@ Rules for every kind: never invent prices, names, passport numbers or dates — 
     let td='padding:5px 8px;border-bottom:1px solid var(--rule);font-size:11px;vertical-align:top';
     let rows=slots.slice().sort((a,c)=>((a.date||a.day||'').localeCompare(c.date||c.day||''))||(a.start||'').localeCompare(c.start||''))
       .map((sl,i)=>`<tr style="${i%2?'background:#f4f6fa':''}"><td style="${td};text-align:center">${i+1}</td><td style="${td};white-space:nowrap">${this.esc(this.hallWhen(sl))||'—'}</td><td style="${td};white-space:nowrap">${this.esc(sl.start||'—')} – ${this.esc(sl.end||'—')}</td><td style="${td}"><b>${this.esc(sl.hall||'Hall')}</b></td><td style="${td}">${this.esc(sl.setup||'—')}</td><td style="${td};text-align:center">${sl.pax||pax||'—'}</td></tr>`).join('');
-    if(!rows){let nd=+r.days||0;rows=`<tr><td style="${td};text-align:center">1</td><td style="${td}" colspan="5">Meeting room as per the meeting package${nd?' — '+nd+' programme day'+(nd>1?'s':''):''}. Dates, times and room to be confirmed.</td></tr>`;}
+    if(!rows){let nd=+r.days||0;let pd=this.cfProgDates(r);rows=`<tr><td style="${td};text-align:center">1</td><td style="${td}" colspan="5">Meeting room as per the meeting package${nd?' — '+nd+' programme day'+(nd>1?'s':''):''}${pd.length?', <b>'+this.cfDateRange(pd)+'</b>':''}. ${pd.length?'Times':'Dates, times'} and room to be confirmed.</td></tr>`;}
     let addHtml=this.cfOrderHTML(r,th,td);
     let info=(l,v)=>`<td style="padding:4.5px 10px;font-size:8.5px;text-transform:uppercase;letter-spacing:.13em;color:var(--ink2);white-space:nowrap;font-weight:700">${l}</td><td style="padding:4.5px 10px;font-size:11px;font-weight:600">${v}</td>`;
     let infoBar=`<table style="width:100%;border:1px solid var(--rule);border-radius:8px;border-collapse:separate;margin:8px 0 12px"><tr>${info('Order No',no)}${info('Date',this.fmtDate(new Date().toISOString().slice(0,10)))}${info('Attendees',this.esc(r.paxNote||'')||pax||'—')}</tr><tr>${info('Venue',this.esc(venue))}${info('Event',this.esc(r.event||b.groupName||'—'))}${info('Ref. Document',this.esc(b.docNo||'—'))}</tr></table>`;
@@ -10973,7 +11000,7 @@ Rules for every kind: never invent prices, names, passport numbers or dates — 
       if(ex.length)it.lines.push('Also covers '+this.rcptList(ex));
       let seen={};(r.rooms||[]).forEach(rm=>(rm.occupants||[]).forEach(o=>{if(!o||!o.name)return;let k=this.nameKey(o.name);if(seen[k])return;seen[k]=1;it.people.push({name:o.name,role:'',passport:o.passport||'',nat:o.nationality||'',progs:[]});}));
       it.kind='Guests';}
-    else if(d.type==='Conference Hall'){let sl=(r.slots||[]);let ds=sl.map(x=>x.date).filter(Boolean).sort();
+    else if(d.type==='Conference Hall'){let sl=(r.slots||[]);let ds=sl.map(x=>x.date).filter(Boolean).sort();if(!ds.length&&r.start)ds=[r.start,r.end||r.start];
       it.title=[r.event,d.hotelName||'Conference hall'].filter(Boolean).join(' — ');
       let l=[ds.length?this.rcptRange(ds[0],ds[ds.length-1]):'',sl.length?pl(new Set(sl.map((x,i)=>x.date||x.day||i)).size,'day'):(+r.days>0?pl(+r.days,'day'):''),(r.paxNote||'')||(+r.pax>0?pl(+r.pax,'attendee'):'')].filter(Boolean).join(' · ');if(l)it.lines.push(l);
       let ex=(r.addons||[]).filter(a=>a&&a.label).map(a=>a.label);if(ex.length)it.lines.push('Also covers '+this.rcptList(ex));}

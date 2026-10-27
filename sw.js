@@ -2,7 +2,7 @@
    offline fallback from the cache. Requests to other sites (such as the online team service) go straight to the
    network and are never stored here. It also shows team notifications and opens the app when one is tapped.
    Your data is NOT stored here; it lives in the browser's localStorage and is untouched by this file. */
-const CACHE = 'ctb-erp-v8'; /* new name for each release: the old cache is cleared and the new files are fetched fresh */
+const CACHE = 'ctb-erp-v9'; /* new name for each release: the old cache is cleared and the new files are fetched fresh */
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 const FONTS = /^https:\/\/fonts\.(googleapis|gstatic)\.com$/;
 
